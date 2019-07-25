@@ -8,9 +8,8 @@
 </p>
 		
 <p>
-	The code is open source and hosted on <a href="https://github.com/landgreen/landgreen.github.io">github</a>.
-	<br>It's free to use under the <a href="https://github.com/landgreen/landgreen.github.io/blob/master/LICENSE">GNU General Public License v3.0</a>.
-	<br>The diagrams are SVG written in a text editor.
+	It's free to use under the GNU General Public License v3.0.
+	The diagrams are SVG written in a text editor.
 	<br>The math is rendered with the typesetting library <a href="https://katex.org/">KaTeX</a>.
 	<br>The simulations are JavaScript outputting to canvas or SVG.
 	<br>Collision simulations use the <a href="http://brm.io/matter-js/">Matter.js</a> 2-D physics engine.
