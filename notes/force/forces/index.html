@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#222" />
+  <meta name="description" content="Interactive notes for algebra based physics.">
+  <meta name="author" content="Ross Landgreen">
+  <meta property="og:description" content="Interactive notes for algebra based physics.">
+  <meta property="og:title" content="Physics Notes">
+  <meta name="twitter:title" content="Physics Notes">
+  <meta name="twitter:description" content="Interactive notes for algebra based physics.">
+
+  <title>Forces</title>
+  <link rel="shortcut icon" href="../../../media/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="../../../lib/katex/katex.min.css">
+  <script src="../../../lib/katex/katex.min.js"></script>
+  <script src="../../../lib/katex/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+
+<body>
+  <header>
+    <h1>
+      <a href="../../../index.html">Forces</a>
+    </h1>
+  </header>
+
+  <article>
+    <p>
+      Free body diagrams are a technique that helps visualize the force vectors used to solve Newton's second law.
+    </p>
+    <div class="definition">
+      <svg class='center' viewBox="0 0 500 350">
+        <defs>
+          <g id="vector">
+            <line x1="0" y1="0" x2="0" y2="45" style="stroke:#000;stroke-width:2" />
+            <polygon points="0,0 -6,-12 0,-10 6,-12" transform='translate(0 50)' />
+          </g>
+        </defs>
+        <g transform='translate(100 80)'>
+          <g transform='translate(0 0)'>
+            <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="#fff" />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>m</text>
+          </g>
+          <use xlink:href="#vector" transform='translate(0 40) rotate(90)' />
+          <text x="-63" y="45" fill="black">F</text>
+          <use xlink:href="#vector" transform='translate(40 80) rotate(0)' />
+          <text x="35" y="150" fill="black">F</text>
+
+        </g>
+        <g transform='translate(313 80)'>
+          <g transform='translate(0 0)'>
+            <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="#fff" />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>m</text>
+          </g>
+          <use xlink:href="#vector" transform='translate(0 40) rotate(90)' />
+          <text x="-63" y="45" fill="black">F</text>
+          <use xlink:href="#vector" transform='translate(80 60) rotate(-90)' />
+          <text x="135" y="66" fill="black">F</text>
+          <use xlink:href="#vector" transform='translate(80 20) rotate(-90)' />
+          <text x="135" y="26" fill="black">F</text>
+          <use xlink:href="#vector" transform='translate(20 80) rotate(0)' />
+          <text x="15" y="150" fill="black">F</text>
+          <use xlink:href="#vector" transform='translate(60 80) rotate(0)' />
+          <text x="55" y="150" fill="black">F</text>
+          <use xlink:href="#vector" transform='translate(40 0) rotate(180)' />
+          <text x="35" y="-55" fill="black">F</text>
+        </g>
+        <g transform='translate(313 260)'>
+          <g transform='translate(0 0)'>
+            <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="#fff" />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>m</text>
+          </g>
+          <use xlink:href="#vector" transform='translate(80 40) rotate(-90)' />
+          <text x="135" y="45" fill="black">F</text>
+        </g>
+        <g transform='translate(100 260)'>
+          <g transform='translate(0 0)'>
+            <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="#fff" />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>m</text>
+          </g>
+          <use xlink:href="#vector" transform='translate(0 40) rotate(90)' />
+          <text x="-63" y="45" fill="black">F</text>
+          <use xlink:href="#vector" transform='translate(80 60) rotate(-90)' />
+          <text x="135" y="66" fill="black">F</text>
+          <use xlink:href="#vector" transform='translate(80 20) rotate(-90)' />
+          <text x="135" y="26" fill="black">F</text>
+        </g>
+      </svg>
+      <p>
+        A <strong>free body diagram</strong> shows all the force vectors on an object.
+        Mass is typically written inside a box, with force vectors pointed away from the box.
+      </p>
+    </div>
+
+    <div class='example'>
+      <svg class='center' width="300" height="120" viewBox="-15 0 285 120">
+        <g transform='translate(100 20) rotate(0)'>
+          <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="var(--def-accent-color)" />
+          <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>2.0 kg</text>
+        </g>
+        <use xlink:href="#vector" transform='translate(100 60) rotate(90)' />
+        <text x="35" y="53" fill="black">200 N</text>
+        <use xlink:href="#vector" transform='translate(180 80) rotate(-90)' />
+        <text x="200" y="73" fill="black">500 N</text>
+        <use xlink:href="#vector" transform='translate(180 40) rotate(-90)' />
+        <text x="200" y="33" fill="black">300 N</text>
+      </svg>
+      <strong>Example:</strong> Use the free body diagram to calculate the mass's acceleration.
+      <details>
+        <summary>solution</summary>
+        $$\sum F=ma$$
+        $$-200\,\mathrm{N}+300\,\mathrm{N}+500\,\mathrm{N}=ma$$
+        $$600\,\mathrm{N}=(2\,\mathrm{kg})a$$
+        $$300 \mathrm{\tfrac{m}{s^2}}=a$$
+      </details>
+    </div>
+
+    <div class='example'>
+      <svg class='center' width="225" height="300" viewBox="0 -70 225 250">
+        <!-- <rect x="0" y="100" width="300" height="110" style="fill:#ccc" /> -->
+        <!-- <g transform='translate(75 60) rotate(0)'>
+          <text x="40" y="40" fill="white" text-anchor="middle" dominant-baseline="middle" font-size='20px'>0.09 kg</text>
+        </g> -->
+        <rect x="64.5" y="-10" width="100" height="150px" stroke='black' stroke-width='4' fill="none" />
+        <image xlink:href="themartian.jpg" x="65" y="-10" height="150px" />
+        <text x="116" y="100" fill="#fafada" text-anchor="middle" dominant-baseline="middle" font-size='15px' font-family="Lucida Console">0.09 kg</text>
+        <!-- height="450px" width="684px" -->
+
+        <line x1="0" y1="142" x2="225" y2="142" stroke="#000" stroke-width="3" />
+        <use xlink:href="#vector" transform='translate(115 140) rotate(0)' />
+        <text x="125" y="187" fill="black">0.34 N</text>
+        <use xlink:href="#vector" transform='translate(115 -10) rotate(180)' />
+        <text x="125" y="-47" fill="black">F= ? </text>
+      </svg>
+      <strong>Example:</strong> The book <a href='https://www.amazon.com/Martian-Novel-Andy-Weir-ebook/dp/B00EMXBDMA'>The Martian</a> by Andy Weir (mass = 0.09 kg) is resting on a table (acceleration = zero). The force of gravity produces a downwards force of 0.34 N.
+      What force is required to keep the book at rest on the table?
+      <details>
+        <summary>solution</summary>
+        $$\sum F=ma$$ $$F_{N} + F_{g} = ma$$
+        $$F_{N} - 0.34\, \mathrm{N} = (0.09\, \mathrm{kg})(0)$$
+        $$F_{N} - 0.34\,\mathrm{N} = 0$$
+        $$F_{N} = 0.34 \, \mathrm{N}$$
+      </details>
+    </div>
+
+    <div class='example'>
+      <strong>Example:</strong> Draw a free body diagram for a 83 kg person holding onto a rope in a game of "Tug of war". The rope is pulling them with a force of 520 N left. The person's feet are countering that with 540 N to the right.
+      <details>
+        <summary>solution</summary>
+        <svg class='center' width="300" height="120" viewBox="-15 0 285 120">
+          <g transform='translate(100 20) rotate(0)'>
+            <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="#f65" />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>83 kg</text>
+          </g>
+          <use xlink:href="#vector" transform='translate(100 60) rotate(90)' />
+          <text x="35" y="53" fill="black">520 N</text>
+          <use xlink:href="#vector" transform='translate(180 60) rotate(-90)' />
+          <text x="200" y="53" fill="black">540 N</text>
+        </svg>
+      </details>
+    </div>
+
+    <div class='example'>
+      <svg class='center' width="300" height="200">
+        <g transform='translate(100 60) rotate(0)'>
+          <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="var(--def-accent-color)" />
+          <text x="40" y="40" fill="#000" text-anchor="middle" dominant-baseline="middle" font-size='20px'>16 kg</text>
+        </g>
+        <use xlink:href="#vector" transform='translate(140 140) rotate(0)' />
+        <text x="150" y="187" fill="black">85 N</text>
+        <use xlink:href="#vector" transform='translate(140 60) rotate(180)' />
+        <text x="150" y="23" fill="black">22 N </text>
+
+        <use xlink:href="#vector" transform='translate(100 100) rotate(90)' />
+        <text x="30" y="93" fill="black">140 N</text>
+        <use xlink:href="#vector" transform='translate(180 120) rotate(-90)' />
+        <text x="210" y="113" fill="black">55 N</text>
+        <use xlink:href="#vector" transform='translate(180 80) rotate(-90)' />
+        <text x="210" y="73" fill="black">78 N</text>
+      </svg>
+      <strong>Example:</strong> Use the free body diagram to calculate the acceleration for both the horizontal and the vertical.
+      <details>
+        <summary>solution</summary>
+        $$ \text{vertical}$$
+        $$\sum F=ma$$
+        $$22 \, \mathrm{N} - 85 \, \mathrm{N} = (16 \, \mathrm{kg})a$$
+        $$-63 \, \mathrm{N} = (16 \, \mathrm{kg})a$$
+        $$-3.9 \, \mathrm{\tfrac{m}{s^2}} = a$$
+
+        <br> $$ \text{horizontal}$$
+        $$\sum F=ma$$
+        $$78 \, \mathrm{N}+55 \, \mathrm{N}-140 \, \mathrm{N} = (16 \, \mathrm{kg})a$$
+        $$-7 \, \mathrm{N} = (16 \, \mathrm{kg})a$$
+        $$-0.43 \, \mathrm{\tfrac{m}{s^2}} = a$$
+      </details>
+    </div>
+
+    <div class='example'>
+      <strong>Example:</strong> A red crate is falling, but a parachute is slowing its acceleration to only 2 m/s² down. The force of gravity is 833 N down. The parachute provides 663 N up. Draw a free body diagram and use it to find the mass of the crate.
+      <details>
+        <summary>solution</summary>
+        <svg class='center' width="300" height="200">
+          <!-- <rect x="0" y="100" width="300" height="110" style="fill:#ccc" /> -->
+          <g transform='translate(100 60) rotate(0)'>
+            <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="#f46" />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>m = ?</text>
+          </g>
+          <use xlink:href="#vector" transform='translate(140 140) rotate(0)' />
+          <text x="150" y="187" fill="black">833 N</text>
+          <use xlink:href="#vector" transform='translate(140 60) rotate(180)' />
+          <text x="150" y="23" fill="black">663 N </text>
+        </svg>
+        $$\sum F=ma$$ $$F_1+F_2=ma$$ $$-833+663 = m(2)$$
+        $$\frac{-170}{2} = \frac{m(2)}{2}$$
+        $$-85 \, \mathrm{kg} = m$$
+        <p>A negative mass doesn't make sense. Where did we mess up?
+          <br>Oh, the acceleration is negative, because it points down.</p>
+        $$\frac{-170}{-2} = \frac{m(-2)}{-2}$$
+        $$85 \, \mathrm{kg} = m$$
+      </details>
+    </div>
+
+    <h1 class='underlined'>The Force of gravity</h1>
+    <p>
+      <strong>Mass</strong> is a measure of an object's inertia. <strong>Mass</strong> also determines the strength of gravity. Because of gravity all objects are attracted to each other, but we mostly notice the attraction towards the Earth because it is so large and so close.
+    </p>
+    <p>There is a special word to describe the direction of gravity, down.</p>
+    <div class='definition' style="padding: 0px;">
+      <br>
+      <svg viewBox="-50 0 600 275" style="padding: 0px; margin-bottom: -25px;">
+        <g id="box-white" transform='translate(210 10)'>
+          <rect x="0" y="0" width="80" height="80" style="stroke:black;stroke-width:2;fill:#fff " />
+          <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size="25">m</text>
+        </g>
+        <use xlink:href="#vector" transform='translate(250 90) rotate(0)' />
+        <text x="250" y="164" text-anchor="middle" fill="black" font-size="25">F
+          <tspan font-size="0.7em" dy="5" dx="-5">g</tspan>
+        </text>
+        <circle cx="250" cy="880" r="695" fill="var(--def-accent-color)" stroke="#000" stroke-width="2" />
+      </svg>
+      <div style="padding: 20px; background-color: var(--def-accent-color); border-radius: 1em;">
+        <h1>$$F_g=mg $$</h1> \(F_g\) = the force of gravity, weight [N, Newtons, kg m/s²]
+        <em>vector</em>
+        <br>\(m\) = mass [kg]
+        <br>\(g\) = acceleration of gravity on Earth = 9.8 [m/s²]
+        <em>vector</em>
+      </div>
+    </div>
+    <p>
+      The force of gravity depends only on the mass of the object because on the surface of the Earth
+      <strong>acceleration from gravity is the same for all objects.</strong>. If you aren't on the surface of the Earth, there is a different way to calculate <a href="..\..\gravity\gravitation\index.html#universal-gravitation">gravity</a>.
+    </p>
+
+    <div class="example">
+      <strong>Question:</strong> Why do feathers fall slower than bricks?
+      <details>
+        <summary>solution</summary>
+        <p>
+          Air friction produces a force that opposes motion.
+          Feathers have a large surface area compared to their small mass so they have more air friction.
+        </p>
+      </details>
+    </div>
+
+    <div class='example'>
+      <p>
+        The acceleration of 9.8 m/s² on the surface of the Earth is just an approximation. The
+        <a href='https://en.wikipedia.org/wiki/Gravity_of_Earth'>gravity of earth</a> changes a bit depending on where you are.</p>
+      <details>
+        <summary>
+          <strong>Table:</strong> Comparative gravities in various cities around the world</summary>
+        <table style="text-align: left;">
+          <tr>
+            <th>Location</th>
+            <th>Acceleration in m/s² </th>
+            <th>Acceleration in ft/s²</th>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Amsterdam" class="extiw" title="wikipedia:Amsterdam">Amsterdam</a></td>
+            <td>9.813</td>
+            <td> 32.19</td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Athens" class="extiw" title="wikipedia:Athens">Athens</a></td>
+            <td>9.800</td>
+            <td> 32.15</td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Auckland" class="extiw" title="wikipedia:Auckland">Auckland</a></td>
+            <td>9.799</td>
+            <td> 32.15</td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Bangkok" class="extiw" title="wikipedia:Bangkok">Bangkok</a></td>
+            <td>9.783</td>
+            <td> 32.1</td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Brussels" class="extiw" title="wikipedia:Brussels">Brussels</a></td>
+            <td>9.811</td>
+            <td> 32.19</td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Buenos_Aires" class="extiw" title="wikipedia:Buenos Aires">Buenos Aires</a> </td>
+            <td>9.797 </td>
+            <td> 32.14 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Calcutta" class="extiw" title="wikipedia:Calcutta">Calcutta</a> </td>
+            <td>9.788 </td>
+            <td> 32.11 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Cape_Town" class="extiw" title="wikipedia:Cape Town">Cape Town</a> </td>
+            <td>9.796 </td>
+            <td> 32.14 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Chicago" class="extiw" title="wikipedia:Chicago">Chicago</a> </td>
+            <td>9.803 </td>
+            <td> 32.16 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Copenhagen" class="extiw" title="wikipedia:Copenhagen">Copenhagen</a> </td>
+            <td>9.815 </td>
+            <td> 32.2 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Frankfurt" class="extiw" title="wikipedia:Frankfurt">Frankfurt</a> </td>
+            <td>9.810 </td>
+            <td> 32.19 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Havana" class="extiw" title="wikipedia:Havana">Havana</a> </td>
+            <td>9.788 </td>
+            <td> 32.11 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Helsinki" class="extiw" title="wikipedia:Helsinki">Helsinki</a> </td>
+            <td>9.819 </td>
+            <td> 32.21 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Istanbul" class="extiw" title="wikipedia:Istanbul">Istanbul</a> </td>
+            <td>9.808 </td>
+            <td> 32.18 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Jakarta" class="extiw" title="wikipedia:Jakarta">Jakarta</a> </td>
+            <td>9.781 </td>
+            <td> 32.09 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Kuwait" class="extiw" title="wikipedia:Kuwait">Kuwait</a> </td>
+            <td>9.793 </td>
+            <td> 32.13 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Lisbon" class="extiw" title="wikipedia:Lisbon">Lisbon</a> </td>
+            <td>9.801 </td>
+            <td> 32.16 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/London" class="extiw" title="wikipedia:London">London</a> </td>
+            <td>9.812 </td>
+            <td> 32.19 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Los_Angeles" class="extiw" title="wikipedia:Los Angeles">Los Angeles</a> </td>
+            <td>9.796 </td>
+            <td> 32.14 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Madrid" class="extiw" title="wikipedia:Madrid">Madrid</a> </td>
+            <td>9.800 </td>
+            <td> 32.15 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Manila" class="extiw" title="wikipedia:Manila">Manila</a> </td>
+            <td>9.784 </td>
+            <td> 32.1 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Mexico_City" class="extiw" title="wikipedia:Mexico City">Mexico City</a> </td>
+            <td>9.779 </td>
+            <td> 32.08 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Montr%C3%A9al" class="extiw" title="wikipedia:Montréal">Montréal</a> </td>
+            <td>9.789 </td>
+            <td> 32.12 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/New_York_City" class="extiw" title="wikipedia:New York City">New York City</a> </td>
+            <td>9.802 </td>
+            <td> 32.16 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Nicosia" class="extiw" title="wikipedia:Nicosia">Nicosia</a> </td>
+            <td>9.797 </td>
+            <td> 32.14 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Oslo" class="extiw" title="wikipedia:Oslo">Oslo</a> </td>
+            <td>9.819 </td>
+            <td> 32.21 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Ottawa" class="extiw" title="wikipedia:Ottawa">Ottawa</a> </td>
+            <td>9.806 </td>
+            <td> 32.17 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Paris" class="extiw" title="wikipedia:Paris">Paris</a> </td>
+            <td>9.809 </td>
+            <td> 32.18 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Rio_de_Janeiro" class="extiw" title="wikipedia:Rio de Janeiro">Rio de Janeiro</a> </td>
+            <td>9.788 </td>
+            <td> 32.11 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Rome" class="extiw" title="wikipedia:Rome">Rome</a> </td>
+            <td>9.803 </td>
+            <td> 32.16 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/San_Francisco" class="extiw" title="wikipedia:San Francisco">San Francisco</a> </td>
+            <td>9.800 </td>
+            <td> 32.15 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Singapore" class="extiw" title="wikipedia:Singapore">Singapore</a> </td>
+            <td>9.781 </td>
+            <td> 32.09 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Skopje" class="extiw" title="wikipedia:Skopje">Skopje</a> </td>
+            <td>9.804 </td>
+            <td> 32.17 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Stockholm" class="extiw" title="wikipedia:Stockholm">Stockholm</a> </td>
+            <td>9.818 </td>
+            <td> 32.21 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Sydney" class="extiw" title="wikipedia:Sydney">Sydney</a> </td>
+            <td>9.797 </td>
+            <td> 32.14 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Taipei" class="extiw" title="wikipedia:Taipei">Taipei</a> </td>
+            <td>9.790 </td>
+            <td> 32.12 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Tokyo" class="extiw" title="wikipedia:Tokyo">Tokyo</a> </td>
+            <td>9.798 </td>
+            <td> 32.15 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Vancouver" class="extiw" title="wikipedia:Vancouver">Vancouver</a> </td>
+            <td>9.809 </td>
+            <td> 32.18 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Washington,_D.C." class="extiw" title="wikipedia:Washington, D.C.">Washington, D.C.</a> </td>
+            <td>9.801 </td>
+            <td> 32.16 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Wellington" class="extiw" title="wikipedia:Wellington">Wellington</a> </td>
+            <td>9.803 </td>
+            <td> 32.16 </td>
+          </tr>
+          <tr>
+            <td> <a href="http://en.wikipedia.org/wiki/Zurich" class="extiw" title="wikipedia:Zurich">Zurich</a> </td>
+            <td>9.807 </td>
+            <td> 32.18 </td>
+          </tr>
+        </table>
+      </details>
+      <p>What is the force of gravity in Los Angeles?</p>
+      <p>Why would the acceleration of gravity seem lower near the equator? </p>
+    </div>
+    <div class='example'>
+      <a href="https://www.amazon.com/Three-Body-Problem-Cixin-Liu/dp/0765382032">
+        <img class="book-cover" src="thethreebodyproblem.jpg" alt="The Three-Body Problem" width="150" height="237" />
+      </a>
+      <strong>Example:</strong> The Three-Body Problem by Cixin Liu has a mass of 0.44 kg. What force of gravity does the book have?
+      <details>
+        <summary>solution</summary>
+        $$F_g=mg$$ $$F_g=(0.44 \, \mathrm{kg} )(9.8\, \mathrm{\tfrac{m}{s^2}})$$ $$F_g=4.3 \, \mathrm{N}$$
+      </details>
+    </div>
+
+    <div class='example'>
+      <a href="https://www.amazon.com/Cats-Cradle-Novel-Kurt-Vonnegut/dp/038533348X">
+        <img class="book-cover" src="catscradle.jpg" alt="Cat's Cradle" width="150" height="241" />
+      </a>
+      <strong>Example:</strong> How much mass does the book Cat's Cradle by Kurt Vonnegut have if it feels a force of gravity of 1.8 N?
+      <details>
+        <summary>solution</summary>
+        $$F_g=mg$$ $$\frac{F_g}{g}=m$$
+        $$\frac{1.8 \,\mathrm{N}}{9.8\, \mathrm{\tfrac{m}{s^2}}}=m$$
+        $$0.18 \, \mathrm{kg}=m$$
+      </details>
+    </div>
+
+    <h3 class='underlined'>Weight and Mass</h3>
+    <p>
+      Another word for the force of gravity is <strong>weight</strong>. An object on the Moon would weigh less than it does on Earth because of the lower gravity, but it would still have the same mass.
+    </p>
+    <p>
+      Earth's gravity does extend into space, but it decreases with distance. It is about ~90% for astronauts in orbit around the earth, but they don't notice any gravity because they are in a freefall.
+    </p>
+    <p>
+      <strong>Freefall</strong> means that you are just letting gravity accelerate you without any opposing forces. To keep from falling we are careful to always counter the force of gravity. This can be done with a parachute, or a jet pack, or just the ground.
+    </p>
+    <div class='example'>
+      <a href="https://www.amazon.com/Name-Wind-Patrick-Rothfuss/dp/0756404746/">
+        <img class="book-cover" src="thenameofthewind.jpg" alt="The Name of the Wind" width="150" height="221" />
+      </a>
+      <strong>Example:</strong> The Name of the Wind by Patrick Rothfuss has a mass of 0.34 kg. How does its mass and weight change in a freefall on Earth?
+      <details>
+        <summary>solution</summary>
+        <p>An object's mass doesn't change when it is falling.</p>
+        <p>Weight just means the force of gravity, which also doesn't change in a short freefall.</p>
+        <!-- $$F_{g}=mg$$ $$F_{g}=(0.34)(9.8)$$ $$F_{g}=3.33 \, \mathrm{N}$$ -->
+      </details>
+    </div>
+    <div class='example'>
+      <a href="https://www.amazon.com/Seveneves-Neal-Stephenson/dp/0062334514/">
+        <img class="book-cover" src="seveneves.png" alt="Seveneves" width="150" height="225" />
+      </a>
+      <strong>Example:</strong> The hardcover version of Seveneves by Neal Stephenson has a mass of 0.95 kg.
+      What is the force of gravity felt by the book on Earth? What about on the Moon?
+      <details>
+        <summary>Local Massive Objects Surface Gravity</summary>
+        <style>
+          th {
+            background: #fff;
+            border: 0px solid #000;
+            color: #000;
+          }
+
+          .black {
+            background-color: #000;
+            border: 0px solid #000;
+            padding: 7px;
+          }
+
+          .planet {
+            margin: auto;
+            border-radius: 50%;
+            padding: 0px;
+            border: 0px solid #000;
+          }
+
+          .sun {
+            width: 90px;
+            height: 90px;
+            background-color: #fff;
+            top: -25px;
+            left: -20px;
+            position: relative;
+          }
+
+          .sun-div {
+            /* margin: 0px; */
+            width: 50px;
+            height: 50px;
+          }
+
+          .mercury {
+            width: 6px;
+            height: 6px;
+            background-color: rgb(199, 195, 192);
+          }
+
+          .venus {
+            width: 11px;
+            height: 11px;
+            background-color: rgb(216, 209, 203);
+          }
+
+          .earth {
+            width: 11.5px;
+            height: 11.5px;
+            background-color: rgb(130, 137, 179);
+          }
+
+          .moon {
+            width: 4px;
+            height: 4px;
+            background-color: rgb(159, 155, 152);
+          }
+
+          .mars {
+            width: 8px;
+            height: 8px;
+            background-color: rgb(207, 187, 137);
+          }
+
+          .jupiter {
+            width: 35px;
+            height: 35px;
+            background-color: rgb(238, 236, 188);
+          }
+
+          .saturn {
+            width: 30px;
+            height: 30px;
+            background-color: rgb(223, 229, 181);
+          }
+
+          .uranus {
+            width: 18px;
+            height: 18px;
+            background-color: rgb(173, 200, 211);
+          }
+
+          .neptune {
+            width: 17px;
+            height: 17px;
+            background-color: rgb(160, 183, 214);
+          }
+
+          .saturn-ring {
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            position: relative;
+            top: -7px;
+            left: -7px;
+            border: 4px solid rgba(216, 218, 169, 0.7);
+          }
+
+          .uranus-ring {
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            position: relative;
+            top: -5px;
+            left: -5px;
+            border: 1px solid rgba(255, 255, 230, 0.2);
+          }
+        </style>
+        <table>
+          <tr>
+            <th class="black"></th>
+            <th>name</th>
+            <th>g (m/s²)</th>
+          </tr>
+          <tr>
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Sun">
+                <div class="planet sun-div">
+                  <div class="planet sun"></div>
+                </div>
+              </a>
+            </td>
+            <td>Sun</td>
+            <td>275</td>
+          </tr>
+          <tr>
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Mercury_(planet)">
+                <div class="planet mercury"></div>
+              </a>
+            </td>
+            <td>Mercury</td>
+            <td>3.7</td>
+          </tr>
+          <tr>
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Venus">
+                <div class="planet venus"></div>
+              </a>
+            </td>
+            <td>Venus</td>
+            <td>8.9</td>
+          </tr>
+          <tr>
+
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Earth">
+                <div class="planet earth"></div>
+              </a>
+            </td>
+            <td>Earth</td>
+            <td>9.8</td>
+          </tr>
+          <tr>
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Moon">
+                <div class="planet moon"></div>
+              </a>
+            </td>
+            <td>Moon</td>
+            <td>1.6</td>
+          </tr>
+          <tr>
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Mars">
+                <div class="planet mars"></div>
+              </a>
+            </td>
+            <td>Mars</td>
+            <td>3.7</td>
+          </tr>
+          <tr>
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Jupiter">
+                <div class="planet jupiter"></div>
+              </a>
+            </td>
+            <td>Jupiter</td>
+            <td>25.8</td>
+          </tr>
+          <tr>
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Saturn">
+                <div class="planet saturn">
+                  <div class="saturn-ring"></div>
+                </div>
+              </a>
+            </td>
+            <td>Saturn</td>
+            <td>10.4</td>
+          </tr>
+          <tr>
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Uranus">
+                <div class="planet uranus">
+                  <div class="uranus-ring"></div>
+                </div>
+              </a>
+            </td>
+            <td>Uranus</td>
+            <td>8.7</td>
+          </tr>
+          <tr>
+            <td class="black">
+              <a href="https://en.wikipedia.org/wiki/Neptune">
+                <div class="planet neptune"></div>
+              </a>
+            </td>
+            <td>Neptune</td>
+            <td>11.2</td>
+          </tr>
+        </table>
+      </details>
+      <details>
+        <summary>solution</summary>
+        <p>Weight and force of gravity mean the same thing. A planet's gravity field determines your weight, but not your mass.</p>
+        <ul class="listing">
+          <li>
+            <div>
+              $$\text{Earth}$$ $$F_{g}=mg$$ $$F_{g}=(0.95)(9.8)$$ $$F_{g}=9.31 \, \mathrm{N}$$
+            </div>
+          </li>
+          <li>
+            <div>
+              $$\text{Moon}$$ $$F_{g}=mg$$ $$F_{g}=(0.95)(1.6)$$ $$F_{g}=1.52 \, \mathrm{N}$$
+            </div>
+          </li>
+        </ul>
+      </details>
+    </div>
+    <div class='example'>
+      <a href="https://www.amazon.com/Uprooted-Naomi-Novik/dp/0804179034">
+        <img class="book-cover" src="uprooted.jpg" alt="Uprooted" width="150" height="228" />
+      </a>
+      <strong>Example:</strong> Uprooted by Naomi Novik is resting on a table. The shipping weight is 1.2 pounds.
+      What is the book's mass in kilograms on Earth? On Mars?
+      <details>
+        <summary>solution</summary>
+        <p>
+          Mass doesn't depend on gravity, so it's the same everywhere.
+        </p>
+        $$ 1.2\,\mathrm{lbs} \left( \frac{1\,\mathrm{kg}}{2.2\,\mathrm{lbs}} \right)= 0.\overline{54}\,\mathrm{kg}$$
+        $$ m = 0. \overline{54} \, \mathrm{kg} $$
+      </details>
+      <br>What is the weight of the book in Newtons on Earth? On Mars?
+      <details>
+        <summary>solution</summary>
+        <ul class="listing">
+          <li>
+            <div>
+              $$\text{weight on Earth}$$ $$F_{g}=mg$$ $$F_{g}=(0.\overline{54})(9.8)$$ $$F_{g}=5.35\, \mathrm{N}$$
+            </div>
+          </li>
+          <li>
+            <div>
+              $$\text{weight on Mars}$$ $$F_{g}=mg$$ $$F_{g}=(0.\overline{54})(3.711)$$ $$F_{g}=2.02\, \mathrm{N}$$
+            </div>
+          </li>
+        </ul>
+      </details>
+    </div>
+
+    <h3 class='underlined' id="normal-force">The Normal Force</h3>
+    <p>Typically a normal force will balance the force of gravity to keep an object from accelerating up or down.</p>
+    <div class="definition" style="padding: 0px;">
+      <svg viewBox="0 -10 600 250" style="padding: 0px; margin-bottom: -25px;">
+        <defs>
+          <g id="vector">
+            <line x1="0" y1="0" x2="0" y2="45" style="stroke:#000;stroke-width:2" />
+            <polygon points="0,0 -6,-12 0,-10 6,-12" transform='translate(0 50)' />
+          </g>
+          <g id="box">
+            <rect x="0" y="0" width="80" height="80" style="stroke:black;stroke-width:2;fill:#fff " />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size="23px">m</text>
+          </g>
+        </defs>
+        <rect x="0" y="150" width="600" height="500" fill="var(--def-accent-color)" stroke="none" />
+        <line x1="0" y1="150" x2="600" y2="150" stroke="#000" stroke-width="2" />
+        <use x='260' y='70' xlink:href="#box" />
+        <use xlink:href="#vector" transform='translate(300 70) rotate(-180)' />
+        <text x="304" y="13" text-anchor="middle" fill="#000" font-size="21px">F
+          <tspan font-size="0.7em" dy="5" dx="-5">N</tspan>
+        </text>
+        <use xlink:href="#vector" transform='translate(300 150) rotate(0)' />
+        <text x="300" y="220" text-anchor="middle" fill="#000" font-size="21px">F
+          <tspan font-size="0.7em" dy="5" dx="-7">g</tspan>
+        </text>
+      </svg>
+
+      <div style="padding: 20px; background-color: var(--def-accent-color); border-radius: 1em;">
+        <p>
+          A <strong>normal force</strong> occurs when two objects are in contact. It is perpendicular to the point of contact. A normal force prevents objects from passing through each other.
+        </p>
+        <p>
+          A normal force will scale to a value that will keep the net force and acceleration zero.
+        </p>
+
+      </div>
+      <!-- 
+      <div style="padding-left: 20px; padding-right: 20px;">
+      </div> -->
+    </div>
+    <p>
+      Normal forces come from the combined effect of electromagnetic forces and the Pauli exclusion principle.
+    </p>
+    <p>
+      The <a href="..\..\electromagnetism\electrostatics\index.html">electromagnetic force</a> allows chemical bonds to form. These bonds give solid matter its rigid structure, which is required for normal forces.
+    </p>
+    <p>
+      At the atomic scale, particles can't pass through each other primarily because of a quantum mechanical effect called the <a href="https://en.wikipedia.org/wiki/Pauli_exclusion_principle">Pauli exclusion principle </a>. The Pauli exclusion principle is mostly responsible for keeping particles, like electrons, separate.
+    </p>
+
+    <div class="example hide-on-mobile">
+      <style>
+        .fixed {
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+        }
+
+        .static {
+          position: static;
+          top: 100px;
+          left: 100px;
+          z-index: 1;
+          width: 100px;
+          height: 100px;
+        }
+      </style>
+      <div style="height: 100px;">
+        <svg id="force-box" class="center" width="100" height="100">
+          <g id="rect" transform='translate(20 20)' stroke-width='2' stroke='#000' fill="#000">
+            <path id="right-vector" d="M40 20 h 0" />
+            <path id="left-vector" d="M0 20 h 0" />
+            <path id="up-vector" d="M20 0 v 0" />
+            <path id="down-vector" d="M20 40 v 0" />
+            <rect x="0" y="0" width="60" height="60" fill="#f45" />
+            <text x="30" y="30" fill="#fff" text-anchor="middle" dominant-baseline="middle" font-size='25px' stroke='none'>m</text>
+          </g>
+          <!-- <g id="readout" fill="#000" font-size='20px' stroke='none' text-anchor="end">
+            <rect x="10" y="10" width="230" height="100" fill="#ddd" />
+            <text id=position x="15" y="30">E to exit, WASD to move</text>
+            <text id=position x="15" y="55">position = </text>
+            <text id=position x="15" y="80">velocity = </text>
+            <text id=position x="15" y="105">acceleration = </text>
+            <text id=position x="15" y="130">thrust = </text>
+            <text id=position x="15" y="150">Fg = </text>
+            <text id=position x="15" y="175">Fn = </text>
+            <text id=position x="15" y="200">friction = </text>
+          </g>
+          <g id="readout" fill="#000" font-size='20px' stroke='none' text-anchor="end">
+
+          </g> -->
+        </svg>
+      </div>
+      <p>
+        Press <strong>E</strong> to activate the mass. Then press <strong>WASD</strong> to apply forces to the mass.
+      </p>
+      <strong>Question:</strong> What force keeps the mass from exiting the screen?
+      <details>
+        <summary>answer</summary>
+        <p>
+          The normal force.
+        </p>
+      </details>
+      <br>
+      <strong>Question:</strong> Why does pressing A and D at the same time do nothing?
+      <details>
+        <summary>answer</summary>
+        <p>
+          The left and right force cancel each other out.
+        </p>
+      </details>
+    </div>
+
+    <div class='example'>
+      <strong>Example:</strong> You are accelerating up in an elevator at 2&nbsp;m/s². If your mass is 100&nbsp;kg, what is the normal force you feel from the elevator?
+      <details>
+        <summary>solution</summary>
+        <svg class='center' width="280" height="200">
+          <line x1="0" y1="140" x2="280" y2="140" stroke="#000" stroke-width="2" />
+          <g transform='translate(100 60) rotate(0)'>
+            <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="#eaa" />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>100 kg</text>
+          </g>
+          <use xlink:href="#vector" transform='translate(140 140) rotate(0)' />
+          <text x="150" y="187" fill="black">F
+            <tspan font-size="0.7em" dy="5" dx="-5">g</tspan>
+            <tspan dy="-5">= 980 N</tspan>
+          </text>
+          <use xlink:href="#vector" transform='translate(140 60) rotate(180)' />
+          <text x="150" y="23" fill="black">F
+            <tspan font-size="0.7em" dy="5" dx="-5">N</tspan>
+            <tspan dy="-5">= ?</tspan>
+          </text>
+        </svg>
+        $$F_{g}=mg$$ $$F_{g}=(100)(-9.8)$$ $$F_{g}=-980\, \mathrm{N}$$
+        <br> $$\sum F=ma$$ $$F_{N}-F_{g}=ma$$ $$F_{N} - 980=(100)(2)$$ $$F_{N}=1180\, \mathrm{N}$$
+
+      </details>
+    </div>
+    <div class='example'>
+      <strong>Example:</strong> A 20 kg box is at rest on a horizontal sidewalk. Find the force of gravity and the normal force on the box.
+      <details>
+        <summary>solution</summary>
+        <p>
+          In the simple case of a flat horizontal surface with no vertical acceleration the force of gravity will always be equal and opposite to the normal force.
+        </p>
+        <svg class="center" width="240" height="225">
+          <line x1="0" y1="150" x2="200" y2="150" stroke="#000" stroke-width="2" />
+          <rect x="60" y="70" width="80" height="80" style="stroke:black;stroke-width:2;fill:#abc" />
+          <text x="100" y="110" fill="black" text-anchor="middle" dominant-baseline="middle">20 kg</text>
+          <use xlink:href="#vector" transform='translate(100 70) rotate(-180)' />
+          <g fill="black" font-size="1.1em">
+            <text x="100" y="15" text-anchor="middle">F
+              <tspan font-size="0.7em" dy="5" dx="-5">N</tspan>
+            </text>
+            <use xlink:href="#vector" transform='translate(100 150) rotate(0)' />
+            <text x="100" y="216" text-anchor="middle">F
+              <tspan font-size="0.7em" dy="5" dx="-5">g</tspan>
+            </text>
+          </g>
+        </svg>
+        $$F_{g}=mg$$ $$F_{g}=(20)(9.8)$$
+        $$F_{g}=196\, \mathrm{N}$$
+        <br> $$\sum F=ma$$
+        $$F_{N}-F_{g}=ma$$
+        $$F_{N} - 196=(20)(0) $$
+        $$F_{N}=196 \, \mathrm{N}$$
+      </details>
+    </div>
+
+    <div class='example'>
+      <svg class="center" width="230" height="226">
+        <g transform='translate(50 -50) rotate(20)'>
+          <line x1="-100" y1="170" x2="200" y2="170" stroke="#000" stroke-width="2" />
+          <rect x="60" y="90" width="80" height="80" style="stroke:black;stroke-width:2;fill:#f56" />
+          <text x="100" y="130" fill="#fff" text-anchor="middle" dominant-baseline="middle">20 kg</text>
+          <use xlink:href="#vector" transform='translate(100 90) rotate(-180)' />
+          <text x="100" y="33" text-anchor="middle" fill="black">F
+            <tspan font-size="0.7em" dy="5" dx="-5">N</tspan>
+          </text>
+        </g>
+        <g transform='translate(90 145) rotate(0)'>
+          <use xlink:href="#vector" />
+          <text x="0" y="70" text-anchor="middle" fill="black">Fg</text>
+        </g>
+      </svg>
+      <strong>Example:</strong> A 20 kg box is at rest on a steep sidewalk. The sidewalk is at an angle 20 degrees from horizontal. Find the force of gravity and the normal force on the box. What is the acceleration of the box? (assume no friction)
+      <details>
+        <summary>solution</summary>
+        <ul class="listing">
+          <li>
+            <div>
+              $$F_{g}=mg$$ $$F_{g}=(20)(9.8)$$ $$F_{g}=196 \, \mathrm{N}$$
+            </div>
+          </li>
+          <li>
+            <div>
+              <br>
+              <svg class="center" width="200" height="120">
+                <g transform='translate(100 1) rotate(0)'>
+                  <line x1="0" y1="0" x2="0" y2="95" style="stroke:#000;stroke-width:2" />
+                  <polygon points="0,0 -6,-12 0,-10 6,-12" transform='translate(0 100)' />
+                  <text x="0" y="115" text-anchor="middle" fill="black">Fg</text>
+                </g>
+                <g transform='translate(100 1) rotate(20)'>
+                  <line x1="0" y1="0" x2="0" y2="89" style="stroke:#000;stroke-width:2" />
+                  <polygon points="0,0 -6,-12 0,-10 6,-12" transform='translate(0 94)' />
+                  <text x="0" y="109" text-anchor="middle" fill="black">Fg⊥</text>
+                </g>
+                <g transform='translate(100 1) rotate(-70)'>
+                  <line x1="0" y1="0" x2="0" y2="29" style="stroke:#000;stroke-width:2" />
+                  <polygon points="0,0 -6,-12 0,-10 6,-12" transform='translate(0 34)' />
+                  <text x="0" y="49" text-anchor="middle" fill="black">Fg∥</text>
+                </g>
+              </svg>
+            </div>
+          </li>
+        </ul>
+        <p>
+          Separate the gravity <a href="..\..\review\vectors\index.html">vector</a> into components parallel and perpendicular to the ground. Acceleration is zero in the perpendicular direction.
+        </p>
+        <ul class="listing">
+          <li>
+            <div>
+              <p>
+                $$\text{perpendicular to ground}$$
+              </p>
+              $$F_{g\perp}=F_{g}\cos(20)$$ $$F_{g\perp}=(196)\cos(20)$$ $$F_{g\perp}=184 \, \mathrm{N}$$
+              <br> $$\sum F_{\perp}=ma$$
+              $$-F_{g\perp}+F_{N}=ma$$
+              $$F_{N}=ma+F_{g\perp}$$
+              $$F_{N}=(20)(0) + 184$$
+              $$F_{N}=184 \, \mathrm{N}$$
+              <br>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p>
+                $$\text{parallel to ground}$$
+              </p>
+              $$F_{g\parallel}=F_{g}\sin(20)$$
+              $$F_{g\parallel}=(196)\sin(20)$$
+              $$F_{g\parallel}=67 \, \mathrm{N}$$
+              <br> $$\sum F_{\parallel}=ma$$ $$F_{g\parallel}=ma$$ $$(67)=(20)a$$
+              $$3.35 \, \mathrm{\tfrac{m}{s^{2}}}=a$$
+            </div>
+          </li>
+        </ul>
+        <svg class="center" width="230" height="246">
+          <g transform='translate(50 -30) rotate(20)'>
+            <line x1="-100" y1="170" x2="200" y2="170" stroke="#000" stroke-width="2" />
+            <rect x="60" y="90" width="80" height="80" style="stroke:black;stroke-width:2;fill:#f56" />
+            <text x="100" y="130" fill="#fff" text-anchor="middle" dominant-baseline="middle">20 kg</text>
+            <use xlink:href="#vector" transform='translate(100 90) rotate(-180)' />
+            <text x="100" y="33" text-anchor="middle" fill="black">F
+              <tspan font-size="0.7em" dy="5" dx="-5">N</tspan>
+              <tspan dy="-5"> = 184 N</tspan>
+            </text>
+          </g>
+          <g transform='translate(90 165) rotate(0)'>
+            <use xlink:href="#vector" />
+            <text x="0" y="70" text-anchor="middle" fill="black">Fg = 196 N</text>
+          </g>
+        </svg>
+      </details>
+    </div>
+
+    <h3 class='underlined'>Tension Forces</h3>
+    <p>
+      When a person is walking a dog they are able to apply a force on the dog with a leash. They use the tension on the leash to transfer that force from their hand to the dog.
+    </p>
+    <div class="definition">
+      <svg class='center on-edge' viewBox="0 0 500 220">
+        <g font-size="19" stroke="#000" fill="#fff" stroke-width="2">
+          <rect x="50" y="10" width="50" height="50" />
+
+          <rect x="0" y="60" width="300" height="160" fill="var(--def-accent-color)" stroke="none" />
+          <path d="M0 60 h300 v160" fill="none" />
+
+          <path d="M100 35 h217 m8 8 v100" fill="none" />
+          <path d="M300 60 l 12 -12" fill="none" />
+          <circle cx="317" cy="43" r="8" fill="var(--def-accent-color)" />
+          <rect x="300" y="140" width="50" height="50" />
+        </g>
+        <g transform='translate(100 35) rotate(-90)'>
+          <use xlink:href="#vector" />
+        </g>
+        <text x="143" y="24" text-anchor="middle" fill="black">T</text>
+        <g transform='translate(325 140) rotate(180)'>
+          <use xlink:href="#vector" />
+        </g>
+        <text x="342" y="105" text-anchor="middle" fill="black">T</text>
+      </svg>
+      <p>
+        Tension is the pulling force from a chain, string, or rope. Tension is useful for transferring a force over a distance. In most situations, the tension is the same for both ends.
+      </p>
+    </div>
+
+    <div class='example'>
+      <strong>Example:</strong> A helium balloon is attached to a 0.5 g paper clip. If the balloon and paper clip are accelerating up at 0.023 m/s², what is the tension on the paper clip from the balloon in Newtons?
+      <details>
+        <summary>solution</summary>
+        <svg class="center" width="240" height="225">
+          <line x1="0" y1="150" x2="200" y2="150" stroke="#000" stroke-width="2" />
+          <rect x="60" y="70" width="80" height="80" style="stroke:black;stroke-width:2;fill:#f33 " />
+          <text x="100" y="110" fill="#fff" text-anchor="middle" dominant-baseline="middle">0.0005 kg</text>
+          <use xlink:href="#vector" transform='translate(100 70) rotate(-180)' />
+          <g fill="black" font-size="1.1em">
+            <text x="100" y="15" text-anchor="middle">T
+            </text>
+            <use xlink:href="#vector" transform='translate(100 150) rotate(0)' />
+            <text x="100" y="216" text-anchor="middle">F
+              <tspan font-size="0.7em" dy="5" dx="-5">g</tspan>
+            </text>
+          </g>
+        </svg>
+        <!-- $$a = 0.023 \, \mathrm{\tfrac{m}{s^{2}}}$$ $$m = 0.5\, \mathrm{g} = 0.0005 \, \mathrm{kg}$$ -->
+        $$\sum F=ma$$ $$-F_{g} + T = ma$$ $$T = ma + F_{g}$$
+        $$T = ma + mg$$
+        $$T = (0.0005\, \mathrm{kg})(0.023\, \mathrm{\tfrac{m}{s^2}})+ (0.0005\, \mathrm{kg}) (9.8\, \mathrm{\tfrac{m}{s^2}})$$
+        $$T = 0.0049115\, \mathrm{N}$$
+      </details>
+    </div>
+    <div class='example'>
+      <strong>Example:</strong> A 100 kg person is pulling a 10&nbsp;kg crate with a rope (ignore the mass of the rope). Both the person and the crate are accelerating to the left at 0.1&nbsp;m/s². What force is the person producing in order to accelerate to the left?
+      <details>
+        <summary>solution</summary>
+        <svg viewBox="-25 0 600 120">
+          <line x1="180" y1="70" x2="400" y2="70" stroke-width="2" stroke="#888" />
+          <g transform='translate(100 20) rotate(0)'>
+            <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="#ccc" />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>100 kg</text>
+          </g>
+          <use xlink:href="#vector" transform='translate(100 60) rotate(90)' />
+          <text x="10" y="65" fill="black">F
+            <tspan font-size="0.7em" dy="5" dx="-5">person</tspan>
+          </text>
+          <use xlink:href="#vector" transform='translate(180 60) rotate(-90)' />
+          <text x="185" y="50" fill="black">T
+            <!-- <tspan font-size="0.7em" dy="5" dx="-5">person</tspan> -->
+          </text>
+          <g transform='translate(400 20) rotate(0)'>
+            <rect x="0" y="0" width="80" height="80" stroke='black' stroke-width='2' fill="#a98" />
+            <text x="40" y="40" fill="black" text-anchor="middle" dominant-baseline="middle" font-size='20px'>10 kg</text>
+          </g>
+          <use xlink:href="#vector" transform='translate(400 60) rotate(90)' />
+          <text x="360" y="48" fill="black">T
+            <!-- <tspan font-size="0.7em" dy="5" dx="-5">box</tspan> -->
+          </text>
+        </svg>
+        <p>The tension force is equal and opposite for the person and crate.</p>
+        $$\text{crate on right}$$
+        $$\sum F=ma$$
+        $$T = 10 (-0.1)$$
+        $$T = \color{#f05}-1 \, \mathrm{N}$$
+        <br> $$\text{person on left}$$
+        $$\sum F=ma$$
+        $$F_{\mathrm{person}} + T = ma$$
+        $$F_{\mathrm{person}} {\color{#f05}+ 1 \, \mathrm{N}} = (100 \, \mathrm{kg})(-0.1\, \mathrm{\tfrac{m}{s^2}})$$
+        $$F_{\mathrm{person}} + 1\, \mathrm{N} = -10\, \mathrm{N}$$
+        $$F_{\mathrm{person}} = -11\,\mathrm{N}$$
+      </details>
+    </div>
+
+    <div class='example'>
+      <svg class='center' width="300" height="180">
+        <g transform='translate(100 120) rotate(90)'>
+          <line x1="0" y1="0" x2="0" y2="45" style="stroke:#999;stroke-width:2" />
+          <polygon points="0,0 -6,-12 0,-10 6,-12" transform='translate(0 50)' fill="#999" />
+        </g>
+        <text x="25" y="125" fill="#999">T
+          <tspan font-size="0.7em" dy="5" dx="-5">x</tspan>
+        </text>
+        <line x1="60" y1="80" x2="100" y2="120" style="stroke:#000;stroke-width:2" />
+        <polygon points="0,10 -6,-2 0,0 6,-2" transform='translate(60 80) rotate(135)' />
+        <g transform='translate(100 80) rotate(0)'>
+          <rect x="0.5" y="0.5" width="80" height="80" stroke='black' stroke-width='2.5' fill="var(--def-accent-color)" />
+          <text x="40" y="40" fill="#000" text-anchor="middle" dominant-baseline="middle" font-size='20px'>10 kg</text>
+        </g>
+        <text x="46" y="67" fill="black">T
+          <!-- <tspan font-size="0.7em" dy="5" dx="-5">Tension</tspan> -->
+        </text>
+
+        <use xlink:href="#vector" transform='translate(180 120) rotate(-90)' />
+        <text x="232" y="126" fill="black">F
+          <tspan font-size="0.7em" dy="5" dx="-5">dog</tspan>
+        </text>
+      </svg>
+      <strong>Example:</strong> You are walking your dog with the leash at a 45 degree angle down towards the dog. Neither your nor the dog are accelerating. The dog is pulling on the leash forward with a force of 100 N. Calculate the x part of the tension force on the leash. Then calculate the total tension force.
+      <details>
+        <summary>solution</summary>
+        $$\text{dog: horizontal}$$
+        $$\sum F=ma$$
+        $$-T_x + F_{\mathrm{dog}} = 0$$
+        $$-T_x + 100 \, \mathrm{N} = 0$$
+        $$T_x= 100 \,\mathrm{N}$$
+        <p>
+          The 100 N is only the x-part of the tension force vector. We can find the total tension force with the Pythagorean theorem. At 45° the x and y parts of the force are the same.
+        </p>
+        $$T^2 = 100^2+100^2$$ $$T^2 = 20\,000$$ $$T = 141 \, \mathrm{N}$$
+      </details>
+    </div>
+
+    <div class='example'>
+      <svg viewBox="20 0 500 120">
+        <line x1="180" y1="70" x2="400" y2="70" stroke-width="2" stroke="#000" />
+        <g transform='translate(100 20) rotate(0)'>
+          <rect x="20" y="10" width="60" height="60" stroke='#000' stroke-width='2' fill="#f45" />
+          <text x="50" y="40" fill="#fff" text-anchor="middle" dominant-baseline="middle" font-size='17px'>0.4 kg</text>
+        </g>
+        <use xlink:href="#vector" transform='translate(120 60) rotate(90)' />
+        <text x="55" y="65" fill="#000">F</text>
+        <use xlink:href="#vector" transform='translate(180 60) rotate(-90)' />
+        <!-- <text x="237" y="66" fill="#000">F</text> -->
+        <g transform='translate(400 20) rotate(0)'>
+          <rect x="0" y="-10" width="100" height="100" stroke='#000' stroke-width='2' fill="var(--def-accent-color)" />
+          <text x="50" y="40" fill="#000" text-anchor="middle" dominant-baseline="middle" font-size='25px'>10 kg</text>
+        </g>
+        <use xlink:href="#vector" transform='translate(400 60) rotate(90)' />
+        <!-- <text x="336" y="66" fill="#000">F</text> -->
+      </svg>
+
+      <strong>Example:</strong> A 0.4 kg squirrel is pulling a 10 kg box with a string. The squirrel and box are accelerating to the left at 0.5 m/s². What is the force of tension on the string? What force is the squirrel producing in order to accelerate to the left?
+      <details>
+        <summary>solution</summary>
+        $$ \text{box}$$ $$\sum F=ma$$ $$F_{\mathrm{tension}}=(10)(-0.5)$$ $$F_{\mathrm{tension}}=-5\, \mathrm{N}$$
+        <br>
+        <p>The tension force on the string is equal but opposite for the squirrel and box.</p>
+        $$ \text{squirrel}$$ $$\sum F=ma$$
+        $$F_{\mathrm{squirrel}} + F_{\mathrm{tension}}=ma$$
+        $$F_{\mathrm{squirrel}} + 5=(0.4)(-0.5)$$
+        $$F_{\mathrm{squirrel}}=-0.2-5$$ $$F_{\mathrm{squirrel}}=-5.2 \, \mathrm{N}$$
+        <p>The negative sign tells us that the squirrel's force is pointed left.</p>
+        $$F_{\mathrm{squirrel}}=5.2 \, \mathrm{N} \text{ left}$$
+      </details>
+    </div>
+
+    <div class='example'>
+      <svg viewBox="0 0 500 200">
+        <g font-size="19" stroke="#000" fill="#fff" stroke-width="2">
+          <rect x="0" y="60" width="300" height="140" fill="#abc" stroke="none" />
+          <path d="M0 60 h300 v140" fill="none" />
+          <path d="M100 35 h217 m8 8 v100" fill="none" />
+          <path d="M300 60 l 12 -12" fill="none" />
+          <circle cx="317" cy="43" r="8" fill="#abc" />
+
+          <rect x="50" y="10" width="50" height="50" />
+          <rect x="300" y="140" width="50" height="50" />
+        </g>
+
+        <g transform='translate(100 35) rotate(-90)'>
+          <use xlink:href="#vector" />
+        </g>
+        <g transform='translate(325 140) rotate(180)'>
+          <use xlink:href="#vector" />
+        </g>
+        <g fill="black" stroke="none">
+          <text x="75" y="35" dominant-baseline="middle" text-anchor="middle">20 kg</text>
+          <text x="325" y="165" dominant-baseline="middle" text-anchor="middle">10 kg</text>
+          <text x="143" y="24" text-anchor="middle">T</text>
+          <text x="342" y="105" text-anchor="middle">T</text>
+        </g>
+      </svg>
+      <strong>Example:</strong> Use the diagram to predict the acceleration of the masses.
+      <br>Assume no friction, no air resistance, Earth gravity, and a massless rope.
+      <details>
+        <summary>hint</summary>
+        <div class="center">
+          <svg width="200" height="200">
+            <g font-size="19" stroke="#000" fill="#fff" stroke-width="2">
+              <rect x="75" y="75" width="50" height="50" />
+            </g>
+            <g transform='translate(125 100) rotate(-90)'>
+              <use xlink:href="#vector" />
+            </g>
+            <g transform='translate(100 125) rotate(0)'>
+              <use xlink:href="#vector" />
+            </g>
+            <g transform='translate(100 75) rotate(180)'>
+              <use xlink:href="#vector" />
+            </g>
+            <g fill="black" stroke="none">
+              <text x="100" y="100" dominant-baseline="middle" text-anchor="middle">20 kg</text>
+              <text x="150" y="90">T = ?</text>
+              <text x="110" y="35">F
+                <tspan font-size="0.7em" dy="5" dx="-5">N</tspan>
+              </text>
+              <text x="110" y="173">F
+                <tspan font-size="0.7em" dy="5" dx="-5">g</tspan>
+              </text>
+            </g>
+          </svg>
+
+          <svg width="200" height="200">
+            <g font-size="19" stroke="#000" fill="#fff" stroke-width="2">
+              <rect x="75" y="75" width="50" height="50" />
+            </g>
+            <g transform='translate(100 125) rotate(0)'>
+              <use xlink:href="#vector" />
+            </g>
+            <g transform='translate(100 75) rotate(180)'>
+              <use xlink:href="#vector" />
+            </g>
+            <g fill="black" stroke="none">
+              <text x="100" y="100" dominant-baseline="middle" text-anchor="middle">10 kg</text>
+              <text x="110" y="35">T = ?</text>
+              <text x="110" y="173">F
+                <tspan font-size="0.7em" dy="5" dx="-5">g</tspan>
+                <tspan font-size="1em" dy="-5"> = ?</tspan>
+              </text>
+            </g>
+          </svg>
+        </div>
+        <p>
+          Both free body diagrams share the same tension and acceleration. Build two equations with Newton's second law and solve a system of equations for T and a. While T and a are the same magnitude they have different directions, so watch the sign of acceleration in particular.
+        </p>
+        <p>
+          This Khan academy <a href="https://www.khanacademy.org/science/physics/forces-newtons-laws/treating-systems/v/treating-systems-the-hard-way">video</a> covers this problem in more depth.
+        </p>
+      </details>
+
+      <details>
+        <summary>solution</summary>
+        $$\text{20kg box: horizontal}$$ $$\sum F=ma_x$$ $$T = ma_x$$ $$T = \color{#d3a}20a_x$$
+        <br> $$\text{10kg box: vertical}$$
+        $$\sum F=ma_y$$
+        $$T - F_g = ma_y$$
+        $$T - mg = ma_y$$
+        $$T - (10)(9.8) = 10a_y$$
+        <br> $${\color{#d3a}20a_x} - 98 = 10a_y$$
+        <br> $$a_x = -a_y$$
+        <br> $${\color{#d3a}-20a_y} - 98 = 10a_y$$
+        $$-98 = 10a_y + 20a_y$$
+        $$-98 = 30a_y$$
+        $$-3.2\overline{6} \, \mathrm{\tfrac{m}{s^2}} = a_y$$
+      </details>
+      <details>
+        <summary>solution (treating system as one mass)</summary>
+        $$\text{gravity only pulls on the 10kg part}$$
+        $$F_g = m g$$
+        $$F_g = (10 \, \mathrm{kg})(9.8\, \mathrm{\tfrac{m}{s^2}})$$
+        $$F_g = \color{#d3a}98 \, \mathrm{N}$$
+        <br> $$\text{use both masses to find acceleration in the vertical}$$ $$\sum F=ma$$ $$F_g = (10\, \mathrm{kg}+20\, \mathrm{kg}) a$$
+        $$F_g = (30\, \mathrm{kg}) a$$
+        $$98\, \mathrm{N} = (30\,\mathrm{kg}) a$$
+        $$-3.2\overline{6} \, \mathrm{\tfrac{m}{s^2}}= a$$
+      </details>
+    </div>
+
+    <div class='example'>
+      <svg viewBox="0 0 450 295">
+        <g transform='translate(148 -5) scale(0.135)'>
+          <path fill="#000000" d="
+          M386,128.9c-210.4,0-381,170.6-381,381s170.6,381,381,381c210.4,0,381-170.6,381-381C767,299.5,596.4,128.9,386,128.9z M682.5,686
+          l-149-79.2l-77-65l129.3,13.9l134,41C711.6,628.5,698.9,658.5,682.5,686z M662.7,715.8l-101.8-85.9l117.7,62.6
+          C673.6,700.5,668.3,708.2,662.7,715.8z M568.5,802.5l-40-75.3l53.5,66.5C577.5,796.7,573,799.7,568.5,802.5z M562,806.5
+          c-26.8,15.9-55.9,28.3-86.7,36.6c0,0,0-0.1,0-0.1l-55.1-180.2l-6.6-78.2L503.3,696L562,806.5z M468,844.9
+          c-10.5,2.6-21.1,4.6-31.9,6.2l-12.9-152.8L468,844.9z M412.4,571.1l-1.8-21.1l21.1,11.2l52.9,99.5L412.4,571.1z M326.8,849.7
+          c-6.6-1.1-13.2-2.5-19.7-4c0.1-0.2,0.2-0.3,0.2-0.5l30.8-100.6l-11.3,104.9C326.8,849.5,326.8,849.6,326.8,849.7z M300.1,842.9
+          c-0.1,0.3-0.1,0.7-0.1,1c-31-8-60.3-20.2-87.4-35.9L301,641.8l55.3-65.5l-13.8,128.4L300.1,842.9z M179.3,785.9l98.6-116.8
+          l-71.8,135.1C196.9,798.5,187.9,792.4,179.3,785.9z M94.5,694.2l75.2-40l-66.3,53.4C100.4,703.2,97.4,698.8,94.5,694.2z M90.5,687.8
+          c-16.6-27.5-29.5-57.6-37.9-89.4l160.3-49l97.2-8.2l-109.3,88L90.5,687.8z M45.3,563.5l132-11.1L50.8,591.1
+          C48.6,582,46.8,572.8,45.3,563.5z M41.2,509.9c0-17.1,1.3-34,3.7-50.4l138.9,15l124.2,38l-96.4,29.5L44.2,556
+          C42.2,540.9,41.2,525.5,41.2,509.9z M49.7,433.4l95.7,29.3L46,452C47.1,445.7,48.3,439.5,49.7,433.4z M88.2,335.9L225.7,409
+          l84.7,71.5L185.2,467L51.4,426.1C59.4,394,71.9,363.7,88.2,335.9z M106.3,308.1l92.1,77.8L92.1,329.4
+          C96.6,322.1,101.3,315,106.3,308.1z M203.7,217.2l54,101.6l-72.1-89.5C191.5,225,197.5,221,203.7,217.2z M210.1,213.2
+          c28.4-16.9,59.5-29.8,92.5-38l39.7,129.9l11.2,132.7L282.8,350L210.1,213.2z M310,173.5c6.9-1.6,13.9-2.9,20.9-4l8.5,100.1
+          L310,173.5z M463.2,173.7l-27.7,90.5l10.1-94.1C451.5,171.2,457.4,172.4,463.2,173.7z M470.5,175.5c32.9,8.3,63.9,21.3,92.2,38.2
+          l-63.9,120.2l-81.2,96.2l13.6-126.1L470.5,175.5z M586.9,229.6l-65,77l47.3-88.9C575.2,221.5,581.1,225.5,586.9,229.6z M679.9,329.4
+          l-101.7,54.1l89.7-72.3C672.1,317.2,676.1,323.2,679.9,329.4z M683.8,335.9c16.2,27.7,28.7,57.9,36.7,89.8l-150,45.9l-113.6,9.6
+          l90.1-72.5L683.8,335.9z M402.7,545.8l1.2,14.8L397,552l2.4-7.9L402.7,545.8z M366.7,549.6l4.1-2.2l-4.4,5.2L366.7,549.6z
+           M363.1,461.7l8.6,10.7l-1.5,4.8l-6.1-3.3L363.1,461.7z M349,474.5l8,4.3l0.6,6.8l-2.9-0.3L349,474.5z M349.9,492.3l3.3,6.2
+          l-7.1,2.2l-11.9-10.1L349.9,492.3z M347.1,511.4l-4.6,3.7l-8.8-2.7l10.7-3.3L347.1,511.4z M337.5,503.4l-16.7,5.1l-97.3-29.8
+          l97.2,10.5L337.5,503.4z M335.4,520.8l-14.7,11.9l-73.6,6.2l73.7-22.5L335.4,520.8z M344.1,523.5l9.6,2.9l-1.9,3.6l-17.7,1.5
+          L344.1,523.5z M356.5,537.2l4-0.3l-0.9,7.9l-9.9,5.3L356.5,537.2z M398.9,464.1l8.6-10.2l-2.3,21.6l-2.4,1.3L398.9,464.1z
+           M386,499.1c6,0,10.8,4.8,10.8,10.8c0,6-4.8,10.8-10.8,10.8c-6,0-10.8-4.8-10.8-10.8C375.2,503.9,380,499.1,386,499.1z M411.7,485
+          l0.5-4.7l12.4-6.6l-5.7,10.7L411.7,485z M423.7,498.3l-3.1-1l3.1-5.7l9.4-0.8L423.7,498.3z M446.4,489.6l89.9-7.6l-82.8,25.3
+          l-21.1-6.5L446.4,489.6z M425.3,506.6l15.3,4.7l-14.8,4.5l-5.9-4.9L425.3,506.6z M424.1,524.3l8.8,7.4l-8.9-1l-2.9-5.5L424.1,524.3z
+           M432.7,521.7l20.8-6.4l94.1,28.8l-101.3-10.9L432.7,521.7z M466.4,511.3L572,479l156.1-13.2c1.8,14.4,2.8,29.1,2.8,44
+          c0,18.2-1.4,36-4.1,53.5l-139.3-15L466.4,511.3z M727,458.4l-120.9,10.2l116.1-35.5C724.1,441.4,725.7,449.8,727,458.4z
+           M443.5,482.3l-15.6,1.3l8.7-16.3l75.1-39.9L443.5,482.3z M430.9,461.8l-17.7,9.4l3-27.6l65.9-78.1L430.9,461.8z M408.9,440.5
+          l-12.7,15l-5.7-18.6l28.9-94.5L408.9,440.5z M393.1,470.9l2.9,9.4l-1.6,0.8c-2.2-0.6-4.5-1-6.8-1.2l-1.1-1.3L393.1,470.9z
+           M381.7,472.7l-1.5-1.9l6.4-21.1l3.8,12.5L381.7,472.7z M374.5,463.8L362,448.3l-9.2-109l29.9,97.6L374.5,463.8z M354.7,451.2
+          l1.6,18.5l-13.6-7.2l-41-77.2L354.7,451.2z M345.6,484.3l-21.8-2.3l-66.6-56.2l79.8,42.4L345.6,484.3z M323.6,540l24-2l-9.8,18.4
+          l-101.6,54L323.6,540z M343.4,562l15.3-8.1l-1,9.1l-39.9,47.3L343.4,562z M365,566l13-15.4l5.8,19l-29.6,96.8L365,566z M388.6,553.6
+          l-0.9,3.1l-2.1-6.9L388.6,553.6z M394.3,560.7l10.7,13.3l4.6,54.5l-18-58.9L394.3,560.7z M409.5,536.8l9.8,1.1l6.1,11.5l-15.5-8.2
+          L409.5,536.8z M428.3,538.8l14.9,1.6l58.8,49.7l-64.8-34.4L428.3,538.8z M625.7,560.1l99.8,10.8c-1.1,6.3-2.4,12.5-3.9,18.6
+          L625.7,560.1z M663.5,305.1l-120.7,97.2l-100,53.1l62.3-117.3L593,234.1C619.8,254.2,643.6,278.2,663.5,305.1z M438.2,169
+          l-14.4,133.6L386.6,424l-36.8-120.3l-11.4-135.4c15.6-2.2,31.5-3.3,47.6-3.3C403.7,165,421.2,166.4,438.2,169z M179.5,233.7
+          l97,120.4l54.3,102.1L230,402.7L110.8,302.1C130.4,276.2,153.5,253.2,179.5,233.7z M107.9,713.8l97.2-78.3l126.4-67.2l-36.8,69.2
+          L173.3,781.3c0,0,0,0,0,0C148.5,761.9,126.5,739.2,107.9,713.8z M334.2,850.9c0.1-0.2,0.1-0.4,0.1-0.7l15.5-144l37.9-123.7l25,81.7
+          l15.9,188c-13.9,1.7-28.1,2.6-42.5,2.6C368.4,854.7,351.1,853.4,334.2,850.9z M588.1,789.3l-78.5-97.5l-66.1-124.3l85.8,45.6
+          l128.7,108.7C638.1,747.5,614.5,770.2,588.1,789.3z" />
+        </g>
+
+        <g stroke="#000" stroke-width="2">
+          <rect x="125" y="160" width="50" height="50" rx="2" ry="2" fill="var(--def-accent-color)" />
+          <rect x="210" y="210" width="80" height="80" rx="4" ry="4" fill="var(--def-accent-color)" />
+
+          <!-- <circle cx="200" cy="60" r="50" fill="none" stroke="#000" stroke-width="4" />
+          <path d="M200 10 l-3 50 M200 110 l3 -50
+          M150 60 l50 3 M250 60 l-50 -3
+          M165 25 l 33.5 36.5   M235 95 l -33.5 -36.5
+          M235 25 l -36.5 33.5 M165 95 l 36.5 -33.5"
+            fill="none" stroke="#333" stroke-width="1" />
+          <circle cx="200" cy="60" r="3" fill="#999" stroke="#000" stroke-width="1" /> -->
+          <path d="M150 60 v100 M 250 60 v150" fill="none" />
+        </g>
+        <g fill="black" fill="#000" stroke="none">
+          <text x="150" y="185" font-size="17" dominant-baseline="middle" text-anchor="middle">10 kg</text>
+          <text x="250" y="250" font-size="22" dominant-baseline="middle" text-anchor="middle">25 kg</text>
+        </g>
+      </svg>
+      <strong>Example:</strong> Two blocks are attached to each other with a rope hanging over a wheel. Find the acceleration of each body. Ignore friction, and assume the wheel and rope have a negligible mass.
+      <details>
+        <summary>solution</summary>
+        <div class="col-group">
+          <div>
+            $$\text{10 kg block}$$
+            $$\sum F = ma$$
+            $$T-mg = ma$$
+            $$T-(10)(9.8) = ma$$
+            $$T-98 = 10a$$
+            $$T = 10a+98$$
+          </div>
+          <div>
+            $$\text{25 kg block}$$
+            $$\sum F = ma$$
+            $$T-mg = ma$$
+            $$T-(25)(9.8) = 25a$$
+            $$T-245 = 25a$$
+            $$T = 25a+245$$
+          </div>
+        </div>
+        <p>
+          We have two variables and two equations, this means we can plug one equation into the other. The Tension is the same for each body. The accelerations are the same, but in opposite directions, so we need to make one acceleration negative.
+        </p>
+        <div class="col-group">
+          <div>
+            $$T = 10({\color{#f05}-a})+98$$
+          </div>
+          <div>
+            $$T = 25a+245$$
+          </div>
+        </div>
+        $$10({\color{#f05}-a})+98 = 25a+245 $$
+        $$-35a = 147$$
+        $$a = -4.2 \, \tfrac{m}{s^2}$$
+        <p>The 25kg object is falling down at 4.2 m/s². The 10kg is rising up at 4.2 m/s².</p>
+      </details>
+    </div>
+
+  </article>
+	<div class="listing-footer">
+		<ul class="listing listing-dark" id="footer">
+			<li>
+				<h2>Motion</h2>
+				<p>
+					<a href="../../motion/motion/index.html">Motion</a>
+					<br>
+					<a href="../../motion/kinematics/index.html">Kinematics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Force</h2>
+				<p>
+					<a href="../../force/laws/index.html">Newton's Laws</a>
+					<br>
+					<a href="../../force/forces/index.html">Forces</a>
+					<br>
+					<a href="../../force/friction/index.html">Friction</a>
+				</p>
+			</li>
+			<li>
+				<h2>Momentum</h2>
+				<p>
+					<a href="../../momentum/momentum/index.html">Momentum</a>
+					<br>
+					<a href="../../momentum/impulse/index.html">Impulse</a>
+				</p>
+			</li>
+			<li>
+				<h2>Energy</h2>
+				<p>
+					<a href="../../energy/energy/index.html">Energy</a>
+					<br>
+					<a href="../../energy/conservation/index.html">Conservation of Energy</a>
+					<br>
+					<a href="../../energy/thermo/index.html">Thermodynamics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Gravity</h2>
+				<p>
+					<a href="../../gravity/gravitation/index.html">Universal Gravitation</a>
+					<br>
+					<a href="../../gravity/circular/index.html">Orbits</a>
+				</p>
+			</li>
+			<li>
+				<h2>Electromagnetism</h2>
+				<p>
+					<a href="../../electromagnetism/charge/index.html">Electric Charge</a>
+					<br>
+					<a href="../../electromagnetism/electrostatics/index.html">Electrostatics</a>
+					<br>
+					<a href="../../electromagnetism/potential/index.html">Electric Potential</a>
+					<br>
+					<a href="../../electromagnetism/magnetism/index.html">Magnetism</a>
+				</p>
+			</li>
+			<li>
+				<h2>Circuits</h2>
+				<p>
+					<a href="../../circuits/electricity/index.html">Electricity</a>
+					<br>
+					<a href="../../circuits/power/index.html">Power</a>
+					<br>
+					<a href="../../circuits/kirchoff/index.html">Kirchhoff’s Laws</a>
+					<br>
+					<a href="../../circuits/components/index.html">Components</a>
+				</p>
+			</li>
+			<li>
+				<h2>Waves</h2>
+				<p>
+					<a href="../../waves/waves/index.html">Waves</a>
+					<br>
+					<a href="../../waves/waveproperties/index.html">Wave Properties</a>
+					<br>
+					<a href="../../waves/light/index.html">Light</a>
+					<br>
+					<a href="../../waves/photons/index.html">Photons</a>
+				</p>
+			</li>
+			<li>
+				<h2>Relativity</h2>
+				<p>
+					<a href="../../relativity/special/index.html">Special Relativity</a>
+					<br>
+					<a href="../../relativity/general/index.html">General Relativity</a>
+				</p>
+			</li>
+			<li>
+				<h2>Reference</h2>
+				<p>
+					<a href="../../review/units/index.html">Units</a>
+					<br>
+					<a href="../../review/vectors/index.html">Vectors & Scalars</a>
+					<br>
+					<a href="../../review/solving/index.html">Problem Solving</a>
+				</p>
+			</li>
+		</ul>
+	</div>
+  <script>
+    renderMathInElement(document.body);
+  </script>
+  <script src="wasd.js"></script>
+</body>
+
+</html>

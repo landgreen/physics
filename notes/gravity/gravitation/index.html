@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#222" />
+    <meta name="description" content="Interactive notes for algebra based physics.">
+    <meta name="author" content="Ross Landgreen">
+    <meta property="og:description" content="Interactive notes for algebra based physics.">
+    <meta property="og:title" content="Physics Notes">
+    <meta name="twitter:title" content="Physics Notes">
+    <meta name="twitter:description" content="Interactive notes for algebra based physics.">
+
+    <title>Universal Gravitation</title>
+    <link rel='shortcut icon' href='../../../media/favicon.ico' type='image/x-icon' />
+
+    <link rel="stylesheet" type="text/css" href="../../../lib/katex/katex.min.css">
+    <script src="../../../lib/katex/katex.min.js"></script>
+    <script src="../../../lib/katex/contrib/auto-render.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <script src='../../../lib/function-graph-SVG.js'></script>
+    <script defer src='../../../lib/randomColor.min.js'></script>
+    <script defer src='../../../lib/gravityClass.js'></script>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/three.js/98/three.min.js'></script>
+    <script defer src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/464612/orbitcontrols.js'></script>
+    <script>
+        function clickStart(id, color = "#012", colorBG = "#fff") {
+            let canvas = document.getElementById(id);
+            let ctx = canvas.getContext("2d");
+            ctx.lineJoin = "round"
+            ctx.lineCap = "round"
+            ctx.lineWidth = 1;
+            ctx.fillStyle = colorBG;
+            ctx.fillRect(0, 0, canvas.width, canvas.height)
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            let scale
+            if (canvas.width > canvas.height) {
+                scale = canvas.height / 10 + 7
+            } else {
+                scale = canvas.width / 10 + 7
+            }
+            ctx.strokeStyle = color;
+            ctx.beginPath()
+            ctx.arc(cx, cy, scale * 1.8, 0, Math.PI * 2);
+            ctx.moveTo(cx - scale * 0.8, cy - scale);
+            ctx.lineTo(cx + scale * 1.2, cy);
+            ctx.lineTo(cx - scale * 0.8, cy + scale);
+            ctx.lineTo(cx - scale * 0.8, cy - scale);
+            ctx.stroke();
+            ctx.lineJoin = "miter"
+            ctx.lineCap = "butt"
+            ctx.lineWidth = 1;
+        }
+    </script>
+    <script defer src="grav0.js "></script>
+    <script defer src="grav1.js "></script>
+    <script defer src="grav2.js "></script>
+    <script defer src="fabric.js "></script>
+    <!-- <script defer src="gravity3d.js "></script> -->
+</head>
+<style>
+    #myHeader {
+        background-color: #000;
+        padding: 2em 0em 2em 0em;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #myHeader a {
+        color: #fff;
+        margin: 0.4em;
+        /* font-size: 5em; */
+    }
+</style>
+
+<body>
+    <canvas id='grav0' height='250px' width='600px' style="position: absolute;top: 0px; left: 0px; padding: 0; margin:0; border-radius: 0px; box-shadow: none; z-index: 1;"> </canvas>
+    <header id="myHeader">
+        <h1> <a href=" ../../../index.html">Universal Gravitation</a> </h1>
+    </header>
+    <article>
+        <div class='center'>
+            masses =
+            <input id='masses-slider' type="range" step="0.001" value="1" min="0" max="3" style="width: 200px;">
+            <input id='masses' type="number" step="1" value="10" min="0" max="999" style="width: 42px;">
+        </div>
+        <p>
+            Things fall. Pencils, buildings, people, everything falls. The Earth is falling towards the Sun, but luckily it is falling in a way that doesn't hit the Sun.
+            <br>An orbit.
+        </p>
+        <p class='underlined'>Early Theories of Gravity</p>
+        <p>
+            The history of gravity tells the story of humanity realizing we aren't the center of the universe.
+        </p>
+        <p>
+            The Greek philosopher <a href="https://en.wikipedia.org/wiki/Aristotelian_physics">Aristotle</a> (384–322 BCE) believed that the
+            natural place for the element of earth and water was down. The natural place for the elements of air and fire was up. He also believed that heavier objects fell faster than light objects.
+        </p>
+        <p>
+            Like many early philosophers, Aristotle organized the sky into a geocentric model. Moving planetary spheres surrounded a stationary and spherical Earth.
+        </p>
+        <a href="https://en.wikipedia.org/wiki/Almagest#Ptolemy's_planetary_model">
+            <img src="..\..\..\media\Ptolemaicsystem-small.png" title="Ptolemaic geocentric planetary spheres model" style='height: 100%; width: 100%; object-fit: contain'>
+        </a>
+        <p>
+            The geocentric models showed flaws. Planets would inexplicably change in speed and direction. To correct these flaws several small circles called epicycles were added to the path of the planets. As telescopes and data collection methods improved, the number of epicycles grew to correct for flaws in the geocentric model.
+        </p>
+        <p>
+            In 1543, Polish astronomer, <a href="https://en.wikipedia.org/wiki/Nicolaus_Copernicus">Nicolaus Copernicus</a>
+            published a book on the heliocentric theory, the idea that the planets revolved around the Sun, not the Earth.
+            His heliocentric theory marks the beginning of the scientific revolution.
+        </p>
+        <a href="https://en.wikipedia.org/wiki/Copernican_Revolution">
+            <img src="..\..\..\media\Copernican_heliocentrism_theory_diagram.svg" title="Copernican heliocentric model">
+        </a>
+        <p>
+            In 1609, German <a href="https://www.youtube.com/watch?v=-FYvy3_egHw">astronomer</a>, Johannes Kepler published 3 laws
+            of planetary motion based on the heliocentric theory. In his <a href="http://galileoandeinstein.physics.virginia.edu/more_stuff/Applets/Kepler/kepler.html">model</a>
+            orbits moved in an <a href="https://en.wikipedia.org/wiki/Ellipse">ellipse</a>, not a circle.
+        </p>
+        <p>
+            Italian natural philosopher, Galileo Galilei, discovered that falling objects all accelerate at the same rate as long as air resistance isn't a significant factor.
+        </p>
+        <p>
+            Galileo also championed the heliocentric model even though it contradicted Catholic scripture.
+            The leaders of the church asked him not to publish information that supported the heliocentric model, but Galileo continued.
+            In response, the church forced him to recant his findings, they banned his work, and they sentenced him to house arrest from 1633 until his death in 1642.
+        </p>
+        <!-- <p>
+            Today, about 20% of Americans believe in the <a href="https://en.wikipedia.org/wiki/Geocentric_model#Polls">geocentric model</a>.
+        </p> -->
+        <div class='example'>
+            <strong>Question:</strong> What advantages did the heliocentric model have over the geocentric model?
+            <details>
+                <summary>solution</summary>
+                <p>
+                    The heliocentric model was able to predict the locations of planets more accurately than the geocentric model. The heliocentric model also didn't have any epicycles to calculate.
+                </p>
+            </details>
+        </div>
+
+        <h2 class="underlined" id="universal-gravitation">Universal Gravitation</h2>
+        <p>
+            In 1687 <a href='http://www.bbc.co.uk/timelines/zwwgcdm'>Isaac Newton</a> published his book, Mathematical
+            Principles of Natural Philosophy. The book contained his laws of motion and his law of universal gravitation.
+            His reasoning was based on geometric proofs and his new mathematical techniques which are now called calculus.
+        </p>
+        <p>
+            Universal gravitation states that every particle in the universe is attracted to every other particle.
+            It connects the heavens and the Earth with one equation.
+            The same force that makes apples fall also controls the motion of stars, planets, and moons.
+        </p>
+
+        <div class='definition'>
+            <svg class="center" width="330" height="165">
+                <circle cx="50" cy="100" r="40" fill='#fff' stroke-width="2" stroke="#222" />
+                <circle cx="250" cy="100" r="60" fill='var(--def-accent-color)' stroke-width="2" stroke="#222" />
+
+                <text x="50" y="90" fill="black" text-anchor="middle" font-size="25 ">M</text>
+                <text x="68" y="93" fill="black" text-anchor="middle" font-size="19 ">1</text>
+                <text x="250" y="90" fill="black" text-anchor="middle" font-size="25 ">M</text>
+                <text x="268" y="93" fill="black" text-anchor="middle" font-size="19 ">2</text>
+
+                <line x1="50" y1="100" x2="130" y2="100" style="stroke:#000;stroke-width:2" />
+                <polygon points="0,0 -8,5 -8,-5" transform="translate(135 100)" style="fill:#000;" />
+
+                <line x1="250" y1="100" x2="170" y2="100" style="stroke:#000;stroke-width:2" />
+                <polygon points="0,0 8,5 8,-5" transform="translate(165 100)" style="fill:#000;" />
+
+                <text x="150" y="100" fill="black" text-anchor="middle" dominant-baseline="central" font-size="25 ">F</text>
+
+                <line x1="50" y1="30" x2="250" y2="30" style="stroke:#000;stroke-width:2" />
+                <line x1="50" y1="25" x2="50" y2="35" style="stroke:#000;stroke-width:2" />
+                <line x1="250" y1="25" x2="250" y2="35" style="stroke:#000;stroke-width:2" />
+                <text x="150" y="25" fill="black" text-anchor="middle" font-size="25 ">r</text>
+            </svg>
+            <h2>$$ F = \frac{GM_{1}M_{2}}{r^{2}} $$</h2>
+            <p>\(F\) = force of gravity [N, Newtons, kg m/s²]
+                <em>vector</em>
+                <br>\(G\) = 6.67408 × 10<sup>-11</sup> = universal gravitation constant [N m²/kg²]
+                <br>\(M\) = mass [kg, kilograms]
+                <br>\(r\) = distance between the center of each mass [m, meters]
+            </p>
+            <svg viewBox="-50 0 600 350" class="on-edge" style="margin-bottom: -1.5em; border-radius: 1em;">
+                <circle cx="250" cy="35" r="5" fill='#fff' stroke-width="2" stroke="#222" />
+                <circle cx="250" cy="1167" r="1000" fill='var(--def-accent-color)' stroke-width="2" stroke="#222" />
+
+                <text x="250" y="22" fill="black" text-anchor="middle" font-size="25 ">M</text>
+                <text x="268" y="25" fill="black" text-anchor="middle" font-size="19 ">1</text>
+                <text x="250" y="340" fill="black" text-anchor="middle" font-size="25 ">M</text>
+                <text x="268" y="343" fill="black" text-anchor="middle" font-size="19 ">2</text>
+
+                <line x1="250" y1="40" x2="250" y2="100" style="stroke:#000;stroke-width:2" />
+                <polygon points="0,0 -8,5 -8,-5" transform="translate(250 104) rotate(90)" style="fill:#000;" />
+                <text x="250" y="116" fill="black" text-anchor="middle" dominant-baseline="central" font-size="25 ">F</text>
+                <!-- 
+                    <line x1="290" y1="35" x2="300" y2="35" style="stroke:#000;stroke-width:2" />
+                    <line x1="295" y1="35" x2="295" y2="500" style="stroke:#000;stroke-width:2" />
+                    <text x="310" y="130" fill="black" text-anchor="middle" font-size="25 ">r</text> -->
+            </svg>
+        </div>
+        <p>
+            In 1915 universal gravitation was improved on by Einstein's <a href="../../relativity/general/index.html">general relativity</a>,
+            but universal gravitation is still a useful model of gravity for most situations.
+        </p>
+
+        <!-- <div class="example-small">
+            Use the mouse to move the camera. Double click for full screen.
+            <canvas id='gravity3d-load' width='590' height='100' onclick="gravity3d('gravity3d')"></canvas>
+            <canvas id='gravity3d' width='590' height='0'></canvas>
+            You can get a feel for universal gravity from this 3-D simulation.
+        </div> -->
+
+        <div class='example'>
+            <p>
+                Each mass feels an equal but opposite force as predicted by Newton's 3rd law. This means that the same force of gravity you feel towards the Earth, the Earth feels towards you.
+            </p>
+            <strong>Question:</strong> Why don't we observe the Earth accelerating towards you?
+            <details>
+                <summary>solution</summary>
+                <p> The Earth and you both have the same force, but not the same acceleration.</p>
+                $$F=ma$$
+                $$a = \frac{F}{m}$$
+                <p>Acceleration equals force divided by mass. The Earth has a large mass, so the acceleration from you pulling on the Earth is small.</p>
+            </details>
+        </div>
+
+        <div class='example' id="data-table">
+            <style>
+                th {
+                    background: #fff;
+                    border: 0px solid #000;
+                    color: #000;
+                }
+
+                .black {
+                    background-color: #000;
+                    border: 0px solid #000;
+                    padding: 7px;
+                }
+
+                .planet {
+                    margin: auto;
+                    border-radius: 50%;
+                    padding: 0px;
+                    border: 0px solid #000;
+                }
+
+                .sun {
+                    width: 90px;
+                    height: 90px;
+                    background-color: #fff;
+                    top: -25px;
+                    left: -20px;
+                    position: relative;
+                }
+
+                .sun-div {
+                    /* margin: 0px; */
+                    width: 50px;
+                    height: 50px;
+                }
+
+                .mercury {
+                    width: 6px;
+                    height: 6px;
+                    background-color: rgb(199, 195, 192);
+                }
+
+                .venus {
+                    width: 11px;
+                    height: 11px;
+                    background-color: rgb(216, 209, 203);
+                }
+
+                .earth {
+                    width: 11.5px;
+                    height: 11.5px;
+                    background-color: rgb(130, 137, 179);
+                }
+
+                .moon {
+                    width: 4px;
+                    height: 4px;
+                    background-color: rgb(159, 155, 152);
+                }
+
+                .mars {
+                    width: 8px;
+                    height: 8px;
+                    background-color: rgb(207, 187, 137);
+                }
+
+                .jupiter {
+                    width: 35px;
+                    height: 35px;
+                    background-color: rgb(238, 236, 188);
+                }
+
+                .saturn {
+                    width: 30px;
+                    height: 30px;
+                    background-color: rgb(223, 229, 181);
+                }
+
+                .uranus {
+                    width: 18px;
+                    height: 18px;
+                    background-color: rgb(173, 200, 211);
+                }
+
+                .neptune {
+                    width: 17px;
+                    height: 17px;
+                    background-color: rgb(160, 183, 214);
+                }
+
+                .saturn-ring {
+                    border-radius: 50%;
+                    width: 44px;
+                    height: 44px;
+                    position: relative;
+                    top: -7px;
+                    left: -7px;
+                    border: 4px solid rgba(216, 218, 169, 0.7);
+                }
+
+                .uranus-ring {
+                    border-radius: 50%;
+                    width: 28px;
+                    height: 28px;
+                    position: relative;
+                    top: -5px;
+                    left: -5px;
+                    border: 1px solid rgba(255, 255, 230, 0.2);
+                }
+            </style>
+            <table>
+                <tr>
+                    <th class="black"></th>
+                    <th>name</th>
+                    <th>mass (kg)</th>
+                    <th>radius (km)</th>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Sun">
+                            <div class="planet sun-div">
+                                <div class="planet sun"></div>
+                            </div>
+                        </a>
+                    </td>
+                    <td>Sun</td>
+                    <td>2.00 × 10<sup>30</sup>
+                    </td>
+                    <td>695&#8239;700</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Mercury_(planet)">
+                            <div class="planet mercury"></div>
+                        </a>
+                    </td>
+                    <td>Mercury</td>
+                    <td>3.301 × 10<sup>23</sup>
+                    </td>
+                    <td>2440</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Venus">
+                            <div class="planet venus"></div>
+                        </a>
+                    </td>
+                    <td>Venus</td>
+                    <td>4.867 × 10<sup>24</sup>
+                    </td>
+                    <td>6052</td>
+                </tr>
+                <tr>
+
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Earth">
+                            <div class="planet earth"></div>
+                        </a>
+                    </td>
+                    <td>Earth</td>
+                    <td>5.972 × 10<sup>24</sup>
+                    </td>
+                    <td>6371</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Moon">
+                            <div class="planet moon"></div>
+                        </a>
+                    </td>
+                    <td>Moon</td>
+                    <td>7.346 × 10<sup>22</sup>
+                    </td>
+                    <td>1737</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Mars">
+                            <div class="planet mars"></div>
+                        </a>
+                    </td>
+                    <td>Mars</td>
+                    <td>6.417 × 10<sup>23</sup>
+                    </td>
+                    <td>3390</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Jupiter">
+                            <div class="planet jupiter"></div>
+                        </a>
+                    </td>
+                    <td>Jupiter</td>
+                    <td>1.899 × 10<sup>27</sup>
+                    </td>
+                    <td>70&#8239;000</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Saturn">
+                            <div class="planet saturn">
+                                <div class="saturn-ring"></div>
+                            </div>
+                        </a>
+                    </td>
+                    <td>Saturn</td>
+                    <td>5.685 × 10<sup>26</sup>
+                    </td>
+                    <td>58&#8239;232</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Uranus">
+                            <div class="planet uranus">
+                                <div class="uranus-ring"></div>
+                            </div>
+                        </a>
+                    </td>
+                    <td>Uranus</td>
+                    <td>8.68 × 10<sup>25</sup>
+                    </td>
+                    <td>25&#8239;362</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Neptune">
+                            <div class="planet neptune"></div>
+                        </a>
+                    </td>
+                    <td>Neptune</td>
+                    <td>1.024 × 10<sup>26</sup>
+                    </td>
+                    <td>24&#8239;622</td>
+                </tr>
+            </table>
+            <br>
+            <strong>Example:</strong> Find the force of gravity between the Earth and the Moon. The distance between them is 384&#8239;403 km.
+            <details>
+                <summary>solution</summary>
+                $$ F = \frac{GM_{1}M_{2}}{r^{2}} $$
+                $$ F = \frac{(6.674 \times 10^{-11})(5.972 \times 10^{24}) (7.346 \times 10^{22})}{(3.844 \times 10^{8})^{2}}$$
+                $$ F = \frac{(6.674 \times 10^{-11})(5.972 \times 10^{24}) (7.346 \times 10^{22})}{14.78 \times 10^{16}}$$
+                $$ F = \frac{6.674 \times 5.972 \times 7.346}{14.78} \times \frac{10^{-11}10^{24}10^{22}}{10^{16}}$$
+                $$ F = 19.798 \times 10^{19} \, \mathrm{N}$$
+            </details>
+        </div>
+        <div class='example'>
+            <strong>Example:</strong> Find the force of gravity between the Earth and the Sun. The distance between them is 149.6 billion m.
+            <details>
+                <summary>solution</summary>
+                $$ F = \frac{GM_{1}M_{2}}{r^{2}} $$
+                $$ F = \frac{(6.674 \times 10^{-11})(5.972 \times 10^{24}) (2.00 \times 10^{30})}{(149.6 \times 10^{9})^{2}}$$
+                $$ F = \frac{(6.674 \times 10^{-11})(5.972 \times 10^{24}) (2.00 \times 10^{30})}{22380 \times 10^{18}}$$
+                $$ F = 3.561 \times 10^{22} \, \mathrm{N}$$
+            </details>
+        </div>
+        <div class='example'>
+            <strong>Example:</strong> Find the force of gravity between the Earth and a 100 kg person that is 10&#8239;000&#8239;000 m from the center of the Earth.
+            <details>
+                <summary>solution</summary>
+                $$ F = \frac{GM_{1}M_{2}}{r^{2}} $$
+                $$ F = \frac{(6.674 \times 10^{-11})(5.972 \times 10^{24})(100)}{ 10\,000\,000^{2}}$$
+                $$ F = \frac{(6.674 \times 10^{-11})(5.972 \times 10^{24})(100)}{ 10^{14}}$$ $$ F = 398.57 \, \mathrm{N}$$
+            </details>
+        </div>
+        <div class='example'>
+            <strong>Example:</strong> How massive must an object be in order to feel a force of 100 N at a distance of 10&#8239;000&#8239;000 m from the center of the Earth?
+            <details>
+                <summary>solution</summary>
+                $$ F = \frac{GM_{1}M_{2}}{r^{2}} $$
+                $$ M_{1} = \frac{Fr^{2}}{GM_{2}}$$
+                $$ M_{1} = \frac{(100)(10\,000\,000)^{2}}{(6.674 \times 10^{-11})(5.972 \times 10^{24})}$$
+                $$ M_{1} = \frac{(100)(10^{14})}{(6.674 \times 10^{-11})(5.972 \times 10^{24})}$$
+                $$ M_{1} = 25.01 \, \mathrm{kg}$$
+            </details>
+        </div>
+        <div class='example'>
+            <a href="https://commons.wikimedia.org/wiki/File:Orbits_of_periodic_comets.svg">
+                <svg viewBox="-60 90 800 449">
+                    <g font-size="16px" font-family="Arial" fill="#999">
+                        <text x="50" y="210" fill="#000" font-size="22px">Halley</text>
+                        <!-- <text x="305.5" y="335.5">Sun</text> -->
+                        <text x="300" y="364.5">Jupiter</text>
+                        <text x="300" y="396">Saturn</text>
+                        <text x="300" y="458">Uranus</text>
+                        <text x="296" y="535">Neptune</text>
+                    </g>
+                    <g fill="none" stroke="#999" stroke-width="1">
+                        <path d="M 354.91071,314.28571 C 354.91871,333.57201 339.28631,349.2109 320,349.2109 C 300.71369,349.2109 285.08129,333.57201 285.08929,314.28571 C 285.08129,294.99941 300.71369,279.36052 320,279.36052 C 339.28631,279.36052 354.91871,294.99941 354.91071,314.28571 L 354.91071,314.28571 z" transform="translate(-1.1607143,-8.9285715e-2)" id="path3265" />
+                        <!-- <path d="M 321.58483,312.72321 C 321.58436,313.43806 321.00461,314.01724 320.28976,314.017 C 319.57492,314.01677 318.99554,313.43721 318.99554,312.72236 C 318.99554,312.00751 319.57492,311.42795 320.28976,311.42772 C 321.00461,311.42748 321.58436,312.00666 321.58483,312.72151 L 320.29019,312.72321 L 321.58483,312.72321 z" transform="matrix(1.2327586,0,0,1.2327586,-74.405217,-72.320275)" /> -->
+                        <circle cx="321.5" cy="312" r="3" fill='#000' />
+                        <path d="M 388.92856,313.39285 C 388.93736,348.40998 360.55283,376.80163 325.53571,376.80163 C 290.51858,376.80163 262.13405,348.40998 262.14285,313.39285 C 262.13405,278.37572 290.51858,249.98407 325.53571,249.98407 C 360.55283,249.98407 388.93736,278.37572 388.92856,313.39285 L 388.92856,313.39285 z" transform="translate(-3.5714286,2.8571428)" id="path3275" />
+                        <path d="M 467.49999,325.89285 C 467.49999,395.81604 410.81604,452.49999 340.89285,452.49999 C 270.96966,452.49999 214.28571,395.81604 214.28571,325.89285 C 214.28571,255.96966 270.96966,199.28571 340.89285,199.28571 C 410.81604,199.28571 467.49999,255.96966 467.49999,325.89285 L 467.49999,325.89285 z" transform="matrix(1.0195149,0,0,1.0195149,-23.081066,-21.359771)" />
+                        <path d="M 522.49998,314.28571 C 522.52475,426.33827 432.49475,517.18808 321.42856,517.18808 C 210.36236,517.18808 120.33236,426.33827 120.35713,314.28571 C 120.33236,202.23315 210.36236,111.38334 321.42855,111.38334 C 432.49475,111.38334 522.52475,202.23315 522.49998,314.28571 z" transform="translate(-5.7142857,0)" id="path3279" />
+                    </g>
+                    <g fill="none" stroke="#f45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 9">
+                        <path d="M 355.85045,268.21429 C 355.85045,287.84263 302.22355,303.75455 236.07143,303.75455 C 169.9193,303.75455 116.2924,287.84263 116.2924,268.21429 C 116.2924,248.58595 169.9193,232.67403 236.07142,232.67403 C 302.22355,232.67403 355.85045,248.58595 355.85045,268.21429 z" transform="matrix(0.8436153,0.4777538,-0.563225,0.6703217,173.96401,-33.361421)" />
+                    </g>
+                </svg>
+            </a>
+            <strong>Example:</strong> When it is closest to the Sun on its 75 year orbit, <a href="https://en.wikipedia.org/wiki/Halley%27s_Comet ">Halley's Comet</a> feels a force of gravity
+            from the Sun of 3.65 × 10<sup>12</sup> N. Calculate its distance from the Sun using the comet's mass of 2.2 × 10<sup>14</sup> kg.
+            <details>
+                <summary>solution</summary>
+                $$ F = \frac{GM_{1}M_{2}}{r^{2}} $$
+                $$ r^{2} = \frac{GM_{1}M_{2}}{F} $$
+                $$ r^{2} = \frac{(6.674 \times 10^{-11})(2.00 \times 10^{30})(2.2 \times 10^{14})}{3.65 \times 10^{12}} $$
+                $$ \sqrt{r^{2}} = \sqrt{8.04 \times 10^{21}} $$
+                $$ r = 8.97 \times 10^{10}\,\mathrm{m} $$
+            </details>
+        </div>
+
+        <div class='example'>
+            <strong>Question:</strong> Notice how small G is (6.674 × 10<sup>-11</sup>). Out of the four fundamental forces, gravity is by far the weakest. If gravity is so weak why do we notice its effects so easily?
+            <details>
+                <summary>solution</summary>
+                <p>
+                    The force of gravity is very weak. The force of gravity scales with distance and mass. The Earth is very close and very massive. If gravity were stronger we might notice the pull from human sized objects.
+                </p>
+            </details>
+        </div>
+
+        <h2 class="underlined ">Gravitational Acceleration</h2>
+        <p>It is useful to adapt the universal gravitation equation to predict acceleration. To find acceleration we just need to divide an object's gravitational force by its mass.</p>
+
+        <details class='derive'>
+            <summary>derivation of universal gravitational acceleration</summary>
+            $$ F = mg $$
+            $$ \frac{F}{m} = g $$
+            <p>Newton's second law tells us we can replace F/M with acceleration.</p>
+            $$ F = \frac{GM_{1}M_{2}}{r^{2}} $$
+            $$ \frac{F}{M_{2}} = \frac{GM_{1}}{r^{2}} $$
+            $$ g = \frac{GM_{1}}{r^{2}} $$
+        </details>
+
+        <div class='definition'>
+            <svg class="center" width="330" height="160">
+                <circle cx="50" cy="100" r="20" fill='#fff' stroke-width="2" stroke="#222" />
+                <circle cx="250" cy="100" r="50" fill='var(--def-accent-color)' stroke-width="2" stroke="#222" />
+
+                <text x="250" y="108" fill="black" text-anchor="middle" font-size="25 ">M</text>
+
+                <line x1="50" y1="100" x2="130" y2="100" style="stroke:#000;stroke-width:2" />
+                <polygon points="0,0 -8,5 -8,-5" transform="translate(135 100)" style="fill:#000;" />
+
+                <text x="150" y="100" fill="black" text-anchor="middle" dominant-baseline="central" font-size="25 ">g</text>
+
+                <line x1="50" y1="30" x2="250" y2="30" style="stroke:#000;stroke-width:2" />
+                <line x1="50" y1="25" x2="50" y2="35" style="stroke:#000;stroke-width:2" />
+                <line x1="250" y1="25" x2="250" y2="35" style="stroke:#000;stroke-width:2" />
+                <text x="150" y="25" fill="black" text-anchor="middle" font-size="25 ">r</text>
+            </svg>
+
+            <h2>$$ g = \frac{GM}{r^{2}} $$</h2>
+            <p>\(g\) = acceleration of gravity [m/s²]
+                <em>vector</em>
+                <br>\(G\) = \(\small 6.674 \times 10^{-11}\) = universal gravitation constant [m³/kg/s²]
+                <br>\(M\) = mass of the body pulling [kg, kilograms]
+                <br>(not the body experiencing the acceleration)
+                <br>\(r\) = distance between the center of each mass [m, meters]
+            </p>
+            <svg viewBox="-50 0 600 360" class="on-edge" style="margin-bottom: -1.5em; border-radius: 1em;">
+                <circle cx="250" cy="35" r="5" fill='#fff' stroke-width="2" stroke="#222" />
+                <circle cx="250" cy="1167" r="1000" fill='var(--def-accent-color)' stroke-width="2" stroke="#222" />
+
+                <text x="250" y="350" fill="black" text-anchor="middle" font-size="25 ">M</text>
+
+                <line x1="250" y1="40" x2="250" y2="100" style="stroke:#000;stroke-width:2" />
+                <polygon points="0,0 -8,5 -8,-5" transform="translate(250 104) rotate(90)" style="fill:#000;" />
+                <text x="250" y="116" fill="black" text-anchor="middle" dominant-baseline="central" font-size="25 ">g</text>
+
+                <!-- <line x1="290" y1="35" x2="300" y2="35" style="stroke:#000;stroke-width:2" />
+                    <line x1="295" y1="35" x2="295" y2="400" style="stroke:#000;stroke-width:2" />
+                    <text x="310" y="130" fill="black" text-anchor="middle" font-size="25 ">r</text> -->
+            </svg>
+        </div>
+        <br>
+        <p>
+            The acceleration vector is pointed towards the center of the mass producing the acceleration.
+        </p>
+        <p>
+            The mass of the body being accelerated isn't used in this equation. Use the mass of the body producing the acceleration. To find the acceleration of objects on Earth use Earth's mass.
+        </p>
+        <p>
+            The simulation below shows a vector <strong>field</strong>. Each vector shows the gravitational acceleration potentially felt at that location. These diagrams are helpful for predicting how a particle will accelerate.
+        </p>
+    </article>
+    <canvas class='center' id='grav1' height='400' width='600' onclick="grav1(this)"> </canvas>
+    <article>
+        <div class='center'>
+            masses =
+            <input id='num1-slider' type="range" step="0.001" value="1" min="0" max="2" style="width: 200px;">
+            <input id='num1' type="number" step="1" value="10" min="0" max="99" style="width: 42px;">
+        </div>
+
+        <!-- <input id='num1' type="number" step="1" min='1' max='200' value='6' style="width:60px;">
+        </p> -->
+
+        <div class='example'>
+            <strong>Example:</strong> Find the acceleration of gravity for an object on the surface of Earth.
+            <br>Is it really 9.8 m/s²?
+            <details>
+                <summary>Local Massive Objects Data Table</summary>
+                <table>
+                    <tr>
+                        <th class="black"></th>
+                        <th>name</th>
+                        <th>mass (kg)</th>
+                        <th>radius (km)</th>
+                    </tr>
+                    <tr>
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Sun">
+                                <div class="planet sun-div">
+                                    <div class="planet sun"></div>
+                                </div>
+                            </a>
+                        </td>
+                        <td>Sun</td>
+                        <td>2.00 × 10<sup>30</sup>
+                        </td>
+                        <td>695&#8239;700</td>
+                    </tr>
+                    <tr>
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Mercury_(planet)">
+                                <div class="planet mercury"></div>
+                            </a>
+                        </td>
+                        <td>Mercury</td>
+                        <td>3.301 × 10<sup>23</sup>
+                        </td>
+                        <td>2440</td>
+                    </tr>
+                    <tr>
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Venus">
+                                <div class="planet venus"></div>
+                            </a>
+                        </td>
+                        <td>Venus</td>
+                        <td>4.867 × 10<sup>24</sup>
+                        </td>
+                        <td>6052</td>
+                    </tr>
+                    <tr>
+
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Earth">
+                                <div class="planet earth"></div>
+                            </a>
+                        </td>
+                        <td>Earth</td>
+                        <td>5.972 × 10<sup>24</sup>
+                        </td>
+                        <td>6371</td>
+                    </tr>
+                    <tr>
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Moon">
+                                <div class="planet moon"></div>
+                            </a>
+                        </td>
+                        <td>Moon</td>
+                        <td>7.346 × 10<sup>22</sup>
+                        </td>
+                        <td>1737</td>
+                    </tr>
+                    <tr>
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Mars">
+                                <div class="planet mars"></div>
+                            </a>
+                        </td>
+                        <td>Mars</td>
+                        <td>6.417 × 10<sup>23</sup>
+                        </td>
+                        <td>3390</td>
+                    </tr>
+                    <tr>
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Jupiter">
+                                <div class="planet jupiter"></div>
+                            </a>
+                        </td>
+                        <td>Jupiter</td>
+                        <td>1.899 × 10<sup>27</sup>
+                        </td>
+                        <td>70&#8239;000</td>
+                    </tr>
+                    <tr>
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Saturn">
+                                <div class="planet saturn">
+                                    <div class="saturn-ring"></div>
+                                </div>
+                            </a>
+                        </td>
+                        <td>Saturn</td>
+                        <td>5.685 × 10<sup>26</sup>
+                        </td>
+                        <td>58&#8239;232</td>
+                    </tr>
+                    <tr>
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Uranus">
+                                <div class="planet uranus">
+                                    <div class="uranus-ring"></div>
+                                </div>
+                            </a>
+                        </td>
+                        <td>Uranus</td>
+                        <td>8.68 × 10<sup>25</sup>
+                        </td>
+                        <td>25&#8239;362</td>
+                    </tr>
+                    <tr>
+                        <td class="black">
+                            <a href="https://en.wikipedia.org/wiki/Neptune">
+                                <div class="planet neptune"></div>
+                            </a>
+                        </td>
+                        <td>Neptune</td>
+                        <td>1.024 × 10<sup>26</sup>
+                        </td>
+                        <td>24&#8239;622</td>
+                    </tr>
+                </table>
+            </details>
+            <details>
+                <summary>solution</summary>
+                $$ r = 6\,371\,000 \, \mathrm{m} $$
+                $$ g = \frac{GM}{r^{2}}$$
+                $$ g = \frac{(6.674\times 10^{-11})(5.972\times 10^{24})}{(6.371\times10^{6})^{2}}$$
+                $$ g = \frac{(6.674\times 10^{-11})(5.972\times 10^{24})}{40.590\times10^{12}} $$
+                $$ g =\frac{(6.674)(5.972)}{40.590}\times 10^{-11+24-12}$$
+                $$ g=0.981\,95 \times 10^{1}$$ $$ g=9.8195 \, \mathrm{\frac{m}{s^{2}}}$$
+            </details>
+        </div>
+        <div class='example'>
+            <strong>Example:</strong> Find how far away from the Earth you need to be to only accelerate at half of 9.8 m/s².
+            <details>
+                <summary>solution</summary>
+                $$ g = \frac{GM}{r^{2}} $$ $$ r^{2} = \frac{GM}{g} $$ $$ r^{2} = \frac{(6.674\times
+                10^{-11})(5.972\times 10^{24})}{9.8 \times
+                0.5} $$ $$ r = 9\,160\,226 \,\mathrm{m} = 9160 \,\mathrm{km} $$ $$\text{distance above Earth's
+                surface}$$
+                $$ 9160\, \mathrm{km} - 6371\,\mathrm{km} = 2789 \,\mathrm{km}$$
+            </details>
+        </div>
+        <div class='example'>
+            <strong>Example:</strong> Mars has two very small moons,
+            <a href='https://en.wikipedia.org/wiki/Phobos_(moon)'>Phobos</a> and <a href='https://en.wikipedia.org/wiki/Deimos_(moon)'>Deimos</a>. Phobos has a surface gravity of 0.0057
+            m/s² and a surface radius of 11&#8239;266 m. Calculate the mass of Phobos. (Does your answer agree with wikipedia?)
+            <details>
+                <summary>solution</summary>
+                $$ g = \frac{GM}{r^{2}} $$
+                $$ M = \frac{gr^2}{G}$$
+                $$ M = \frac{(0.0057)(11\,266)^2}{6.674\times 10^{-11}}$$
+                $$M = 1.08 \times 10^{16}\,\mathrm{kg}$$
+            </details>
+        </div>
+
+        <h2 class="underlined ">Inverse-Square Law (1/r²)</h2>
+        <!-- <h1>$$\frac{1}{r^2}$$</h1> -->
+        <p>
+            All particles are attracted to each other, but the attraction is divided by the distance squared. Physical laws that diminish at 1/r² are common in nature because of how signals spread out in 3 dimensions. If you threw darts in random directions, the chance of hitting your target would obey this rule.
+        </p>
+        <p>
+            As you can see in the graph below, a 1/r² function has some interesting results at radius = 0 and force = 0.
+        </p>
+        <svg id="SVG-graph-0" viewBox="0 0 600 400"></svg>
+        <script defer>
+            funGraphSVG("SVG-graph-0", x => 1 / x / x, {
+                x0: 20,
+                y0: 380,
+                fill: "rgba(30, 100, 140,0.3)",
+                stroke: "none",
+                strokeWidth: 2,
+                scale: 100,
+                positiveOnly: true,
+                gridSize: 100,
+                xLabel: "radius",
+                yLabel: "force",
+                showMouseCoords: true,
+            });
+        </script>
+        <p>What distance between masses produces a force of zero?</p>
+        <p>What happens to the force of gravity as the distance between masses approaches zero?</p>
+        <p>What else, besides gravity, might follow an inverse square law?</p>
+
+        <div class='example'>
+            <strong>Question:</strong> If you triple the distance between two massive objects, what happens to their force of gravity? What about ten times the distance?
+            <details>
+                <summary>answer</summary>
+                <p>This is easier to understand with some made up numbers. Set the masses and G to equal 1 since they aren't changing.
+                </p>
+                $$F = \frac{G M_1 M_2}{r^2} \quad \to \quad F = \frac{1}{r^2}$$
+                <div class="col-group ">
+                    <div class='center'>
+                        $$\text{\underline{triple}}$$
+                        $$r = 3$$
+                        $$ F = \frac{1}{r^2}$$
+                        $$ F = \frac{1}{3^2}$$
+                        $$ F = \frac{1}{9}$$
+                    </div>
+                    <div class='center'>
+                        $$\text{\underline{ten times}}$$
+                        $$r = 10$$ $$ F = \frac{1}{r^2}$$
+                        $$ F = \frac{1}{10^2}$$
+                        $$ F = \frac{1}{100}$$
+                    </div>
+                </div>
+                <p>As the distance between two masses increases, the force of gravity decreases.</p>
+            </details>
+        </div>
+
+        <div class='example'>
+            <div class="center">
+                <button id="random-mass" type="button">Randomize Planet</button>
+            </div>
+            <svg id="SVG-graph-1" viewBox="0 0 600 300"> </svg>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>name</th>
+                    <th>mass (kg)</th>
+                    <th>radius (km)</th>
+                    <th>g (m/s²)</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Mercury_(planet)">
+                            <div class="planet mercury"></div>
+                        </a>
+                    </td>
+                    <td>Mercury</td>
+                    <td>3.301 × 10<sup>23</sup></td>
+                    <td>2440</td>
+                    <td>3.7</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Venus">
+                            <div class="planet venus"></div>
+                        </a>
+                    </td>
+                    <td>Venus</td>
+                    <td>4.867 × 10<sup>24</sup>
+                    </td>
+                    <td>6052</td>
+                    <td>8.9</td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Earth">
+                            <div class="planet earth"></div>
+                        </a>
+                        </a>
+                    </td>
+                    <td>Earth</td>
+                    <td>5.972 × 10<sup>24</sup>
+                    </td>
+                    <td>6371</td>
+                    <td>9.8</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Mars">
+                            <div class="planet mars"></div>
+                        </a>
+                    </td>
+                    <td>Mars</td>
+                    <td>6.417 × 10<sup>23</sup>
+                    </td>
+                    <td>3390</td>
+                    <td>3.7</td>
+                </tr>
+            </table>
+
+            <strong>Question:</strong> Which terrestrial planet is being graphed?
+            <details>
+                <summary>strategy</summary>
+                <p>
+                    Hover your mouse over the graph. Move your mouse horizontally to check the radius for each planet in the chart above. If the acceleration and the radius match, it is the correct planet.
+                </p>
+            </details>
+            <details id="details-1">
+                <summary>answer</summary>
+                <h1 id="random-mass-name" class="center"></h1>
+            </details>
+            <script defer>
+                (function () {
+                    const GConst = 6.674e-11;
+                    const masses = [{
+                        mass: 3.301e23,
+                        name: "Mercury"
+                    }, {
+                        mass: 4.867e24,
+                        name: "Venus"
+                    }, {
+                        mass: 5.972e24,
+                        name: "Earth"
+                    }, {
+                        mass: 6.417e23,
+                        name: "Mars"
+                    }]; //{ mass: 7.346e22, name: "The Moon" },
+                    let currentPlanet = Math.floor(masses.length * Math.random());
+                    let Mass = masses[currentPlanet].mass;
+                    document.getElementById("random-mass-name").innerHTML = masses[currentPlanet].name;
+                    let settings = {
+                        x0: 20,
+                        y0: 280,
+                        // stroke: "rgba(0,100,120,1)",
+                        stroke: "none",
+                        fill: "rgba(200,50,0,0.3)",
+                        positiveOnly: true,
+                        strokeWidth: 4,
+                        xScale: 0.05,
+                        yScale: 10,
+                        gridSize: 100,
+                        xLabel: "distance (km)",
+                        yLabel: "gravity (m/s²)",
+                        showMouseCoords: true,
+                    }
+
+                    funGraphSVG("SVG-graph-1", x => GConst * Mass / x / x / 1000000, settings);
+                    document.getElementById("random-mass").addEventListener("click", event => {
+                        let newPlanet = Math.floor(masses.length * Math.random())
+                        while (newPlanet === currentPlanet) {
+                            newPlanet = Math.floor(masses.length * Math.random())
+                        }
+                        currentPlanet = newPlanet
+                        Mass = masses[currentPlanet].mass;
+                        document.getElementById("random-mass-name").innerHTML = masses[currentPlanet].name;
+                        settings.updatePath = true
+                        funGraphSVG("SVG-graph-1", x => GConst * Mass / x / x / 1000000, settings);
+                        document.getElementById("details-1").open = false;
+                    });
+                })()
+            </script>
+        </div>
+        <div class='example'>
+            <div class="center">
+                <button id="random-mass-2" type="button">Randomize Planet</button>
+            </div>
+            <svg id="SVG-graph-2" viewBox="0 0 600 300"> </svg>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>name</th>
+                    <th>mass (kg)</th>
+                    <th>radius (km)</th>
+                    <th>g (m/s²)</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Jupiter">
+                            <div class="planet jupiter"></div>
+                        </a>
+                    </td>
+                    <td>Jupiter</td>
+                    <td>1.899 × 10<sup>27</sup>
+                    </td>
+                    <td>70&#8239;000</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Saturn">
+                            <div class="planet saturn">
+                                <div class="saturn-ring"></div>
+                            </div>
+                        </a>
+                    </td>
+                    <td>Saturn</td>
+                    <td>5.685 × 10<sup>26</sup>
+                    </td>
+                    <td>58&#8239;232</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Uranus">
+                            <div class="planet uranus">
+                                <div class="uranus-ring"></div>
+                            </div>
+                        </a>
+                    </td>
+                    <td>Uranus</td>
+                    <td>8.68 × 10<sup>25</sup>
+                    </td>
+                    <td>25&#8239;362</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Neptune">
+                            <div class="planet neptune"></div>
+                        </a>
+                    </td>
+                    <td>Neptune</td>
+                    <td>1.024 × 10<sup>26</sup>
+                    </td>
+                    <td>24&#8239;622</td>
+                    <td>?</td>
+                </tr>
+            </table>
+            <!-- </div> -->
+            <strong>Question:</strong> Which gas giant is being graphed? You need to do math for this one.
+            <details id="details-2">
+                <summary>answer</summary>
+                <h1 id="random-mass-name-2" class="center"></h1>
+            </details>
+            <script defer>
+                (function () {
+                    const GConst = 6.674e-11;
+                    const masses = [{
+                        mass: 1.899e27,
+                        name: "Jupiter"
+                    }, {
+                        mass: 5.685e26,
+                        name: "Saturn"
+                    }, {
+                        mass: 8.68e25,
+                        name: "Uranus"
+                    }, {
+                        mass: 1.024e26,
+                        name: "Neptune"
+                    }]
+                    let currentPlanet = Math.floor(masses.length * Math.random())
+                    let Mass = masses[currentPlanet].mass;
+                    document.getElementById("random-mass-name-2").innerHTML = masses[currentPlanet].name;
+                    let settings = {
+                        x0: 20,
+                        y0: 280,
+                        stroke: "none",
+                        fill: "rgba(0,100,120,0.3)",
+                        positiveOnly: true,
+                        strokeWidth: 4,
+                        xScale: 0.005,
+                        yScale: 5,
+                        gridSize: 100,
+                        xLabel: "distance (km)",
+                        yLabel: "gravity (m/s²)",
+                        showMouseCoords: true,
+                    }
+                    funGraphSVG("SVG-graph-2", x => GConst * Mass / x / x / 1000000, settings);
+                    document.getElementById("random-mass-2").addEventListener("click", event => {
+                        let newPlanet = Math.floor(masses.length * Math.random())
+                        while (newPlanet === currentPlanet) {
+                            newPlanet = Math.floor(masses.length * Math.random())
+                        }
+                        currentPlanet = newPlanet
+                        Mass = masses[currentPlanet].mass;
+                        document.getElementById("random-mass-name-2").innerHTML = masses[currentPlanet].name;
+                        settings.updatePath = true
+                        funGraphSVG("SVG-graph-2", x => GConst * Mass / x / x / 1000000, settings);
+                        document.getElementById("details-2").open = false;
+                    });
+                })()
+            </script>
+        </div>
+
+        <div class='example'>
+            <strong>Questions:</strong>
+            Imagine you could to dig into the center of the Earth.
+            How would the acceleration of gravity change as you went deeper?
+            Would it increase, decrease, or stay the same?
+            <details>
+                <summary>answer</summary>
+                <p>
+                    As you go deeper into the Earth you fell <strong>less gravity</strong>.
+                    When there is mass above and below, they pull in opposite directions.
+                    You can't feel opposing forces of gravity, because gravity pulls on your whole body evenly.
+                </p>
+                <p>
+                    Using a model of the Earth with constant density the gravity decreases linearly.
+                    At 50% to the center of the Earth the gravity is 50% of 9.8&nbsp;m/s².
+                    At the center gravity is zero.
+                </p>
+                <a href="https://en.wikipedia.org/wiki/File:EarthGravityPREM.svg">
+                    <svg viewBox="-3000,-15000,27000,17600" font-family="Helvetica, Arial" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect x="-3990" y="-15415" width="28140" height="19195" fill="#fff" stroke-width="21" />
+                        <title>Gravity Acceleration of Earth</title>
+                        <desc>This svg graphic is to edit with an text editor.
+                            Please do not overwrite this file by saving with an image editor.
+                            ----------------
+                            Source of PREM: http://geophysics.ou.edu/solid_earth/prem.html
+                            Linear density: line with constant rise
+                            Source of constant density: copied from http://commons.wikimedia.org/wiki/File:EarthGravityPREM.jpg; the base source or calculation is not stated there
+                            Space: g1 * r1^2 = g0 * r0^2</desc>
+                        <style type="text/css">
+                            <![CDATA[
+                            .graphgeneral {
+                                /*-- general look of graphs and markers, e.g. in legend --*/
+                                stroke-width: 147;
+                                fill: none;
+                                stroke-linejoin: round;
+                                stroke-linecap: round;
+                            }
+
+                            .graphgeneralstretch {
+                                /*-- general look of graphs and markers on a stretched chart --*/
+                                stroke-width: 80;
+                                fill: none;
+                                stroke-linejoin: round;
+                                stroke-linecap: round;
+                            }
+
+                            .graph1lineblank {
+                                /*-- look of graph 1 --*/
+                                stroke: #000;
+                            }
+
+                            .graph1line {
+                                stroke: #000;
+                            }
+
+                            .graph2lineblank {
+                                /*-- look of graph 2 --*/
+                                stroke: #f40;
+                            }
+
+                            .graph2line {
+                                stroke: #f40;
+                            }
+
+                            .graph3lineblank {
+                                /*-- look of graph 3 --*/
+                                stroke: #0aa;
+                            }
+
+                            .graph3line {
+                                stroke: #0aa;
+                            }
+
+                            .graph4line {
+                                stroke: rgb(00%, 60%, 60%);
+                            }
+
+                            .axisline {
+                                stroke: black;
+                                stroke-width: 74;
+                                stroke-linecap: round;
+                            }
+
+                            .titletext {
+                                font-size: 900px;
+                            }
+
+                            .axistext {
+                                font-size: 800px;
+                            }
+
+                            .axistext-number {
+                                font-size: 700px;
+                            }
+
+                            .charttext {
+                                font-size: 650px;
+                                text-anchor: middle;
+                            }
+
+                            .axismark-main {
+                                stroke: black;
+                                stroke-width: 51;
+                            }
+
+                            .legendtext {
+                                font-size: 700px;
+                                text-anchor: start;
+                            }
+
+                            .gridline {
+                                stroke: #000;
+                                stroke-width: 37;
+                            }
+                            ]]>
+                        </style>
+                        <defs>
+                            <pattern id="f" width="3000" height="420" patternUnits="userSpaceOnUse">
+                                <line class="axismark-main" y1="-1" y2="420" />
+                            </pattern>
+                            <pattern id="e" width="3000" height="26000" patternUnits="userSpaceOnUse">
+                                <line class="gridline" y2="26000" />
+                            </pattern>
+                            <pattern id="c" width="28000" height="2000" patternUnits="userSpaceOnUse">
+                                <line class="gridline" x2="28000" />
+                            </pattern>
+                            <pattern id="d" width="420" height="2000" patternUnits="userSpaceOnUse">
+                                <line class="axismark-main" x1="-1" x2="420" />
+                            </pattern>
+                        </defs>
+                        <g transform="scale(1.5 -1)">
+                            <defs>
+                                <linearGradient id="g" y1="1" y2="1">
+                                    <stop stop-color="#fefefe" offset="0" />
+                                    <stop stop-color="#e9e9e9" offset="1" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="1221.5" height="13000" fill="#ffd47d" />
+                            <rect x="1221.5" width="2258.5" height="13000" fill="#ffe392" />
+                            <rect x="3480" width="2221" height="13000" fill="#ffefbb" />
+                            <rect x="5701" width="670" height="13000" fill="#fffad6" />
+                            <rect x="6371" width="7629" height="13000" fill="url(#g)" />
+                            <g class="axismark-main" stroke="#727272">
+                                <line x1="6371" x2="6371" y2="11100" />
+                                <line x1="6371" x2="6371" y1="11700" y2="12100" />
+                                <line x1="6371" x2="6371" y1="12700" y2="13000" />
+                            </g>
+                        </g>
+                        <g transform="scale(1 -1)">
+                            <!-- <rect x=".3" width="21420" height="13000" fill="url(#e)" /> -->
+                            <!-- <rect y=".3" width="21000" height="13260" fill="url(#c)" /> -->
+                            <rect x="-105" y="-367.5" width="21420" height="367.5" fill="url(#f)" />
+                            <line class="axisline" x2="21000" />
+                            <rect x="-367.5" y="-105" width="367.5" height="13001" fill="url(#d)" />
+                            <line class="axisline" y2="13000" />
+                        </g>
+                        <g class="axistext-number" transform="translate(0 1100)" text-anchor="middle">
+                            <text>0</text>
+                            <text x="3000">2</text>
+                            <text x="6000">4</text>
+                            <text x="9000">6</text>
+                            <text x="12000">8</text>
+                            <text x="15000">10</text>
+                            <text x="18000">12</text>
+                            <text x="21000">14</text>
+                            <text class="axistext" x="10500" y="1000">radius in 1000 km</text>
+                        </g>
+                        <g class="axistext-number" transform="translate(-630 315)" text-anchor="end">
+                            <text>0</text>
+                            <text y="-2000">2</text>
+                            <text y="-4000">4</text>
+                            <text y="-6000">6</text>
+                            <text y="-8000">8</text>
+                            <text y="-10000">10</text>
+                            <text y="-12000">12</text>
+                            <text class="axistext" transform="rotate(-90)" x="6500" y="-1400" text-anchor="middle">acceleration in m/s
+                                <tspan dy="-1ex" font-size="70%">2</tspan>
+                            </text>
+                        </g>
+                        <g class="legendtext" transform="translate(13650 -10270)">
+                            <g class="axismark-main">
+                                <rect width="9996" height="3830.4" fill="#fff" />
+                            </g>
+                            <g class="graphgeneral">
+                                <g class="graph1line">
+                                    <polyline points="420 776.16 1470 776.16" />
+                                </g>
+                            </g>
+                            <text x="1890" y="1075.54">PREM</text>
+                            <g class="graphgeneral">
+                                <g class="graph2line">
+                                    <polyline points="420 1885 1470 1885" />
+                                </g>
+                            </g>
+                            <text x="1890" y="2184.34">Linear density</text>
+                            <g class="graphgeneral">
+                                <g class="graph3line">
+                                    <polyline points="420 2993.8 1470 2993.8" />
+                                </g>
+                            </g>
+                            <text x="1890" y="3293.14">Constant density</text>
+                        </g>
+                        <text class="titletext" x="10500" y="-13910" text-anchor="middle">Free-fall acceleration of Earth</text>
+                        <defs>
+                            <polyline id="h" points="0 0 6371 9816" />
+                            <polyline id="a" points="0 0 127 454 255 898 382 1333 510 1758 637 2165 765 2553 892 2957 1019 3365 1147 3743 1274 4084 1402 4433 1529 4773 1656 5121 1784 5426 1911 5740 2039 6050 2166 6324 2294 6617 2421 6882 2548 7118 2676 7373 2803 7619 2931 7846 3058 8045 3186 8253 3313 8442 3440 8631 3568 8791 3695 8965 3823 9103 3950 9245 4077 9380 4205 9491 4332 9595 4460 9689 4587 9774 4715 9850 4842 9922 4969 9965 5097 10011 5224 10049 5352 10064 5479 10071 5606 10057 5734 10049 5861 10030 5989 9986 6116 9935 6244 9878 6371 9830" />
+                            <g id="b">
+                                <polyline points="0 0 200 731 400 1460 600 2186 800 2907 1e3 3620 1200 4325 1222 4400 1222 4400 1400 4941 1600 5555 1800 6167 2e3 6772 2200 7365 2400 7943 2600 8502 2800 9041 3e3 9557 3200 10046 3400 10507 3480 10682 3480 10682 3600 10520 3630 10484 3630 10484 3800 10310 4e3 10158 4200 10054 4400 9986 4600 9947 4800 9931 5e3 9933 5200 9947 5400 9970 5600 9999 5600 9999 5701 10014 5701 10014 5771 10004 5771 10004 5871 9988 5971 9969 5971 9969 6061 9936 6151 9905 6151 9905 6221 9878 6291 9855 6291 9855 6347 9839 6347 9839 6356 9833 6356 9833 6368 9822 6368 9822 6371 9816 6371 9816 6498 9434 6626 9075 6753 8736 6881 8415 7008 8112 7136 7825 7263 7553 7390 7295 7518 7049 7645 6816 7773 6595 7900 6384 8027 6183 8155 5991 8282 5808 8410 5633 8537 5466 8665 5307 8792 5154 8919 5008 9047 4868 9174 4734 9302 4605 9429 4481 9557 4362 9684 4248 9811 4139 9939 4033 10066 3932 10194 3834 10321 3740 10448 3649 10576 3562 10703 3478 10831 3396 10958 3318 11086 3242 11213 3169 11340 3098 11468 3030 11595 2963 11723 2899 11850 2837 11977 2777 12105 2719 12232 2663 12360 2608 12487 2555 12615 2504 12742 2454 12869 2406 12997 2359 13124 2313 13252 2269 13379 2226 13507 2184 13634 2143 13761 2104 13889 2065 14000 2033" stroke-width="98" />
+                            </g>
+                        </defs>
+                        <g class="graphgeneralstretch" transform="scale(1.5 -1) translate(0)">
+                            <use class="graph3line" transform="translate(0)" xlink:href="#h" />
+                            <use class="graph2lineblank" transform="translate(0 20)" xlink:href="#a" />
+                            <use class="graph2lineblank" transform="translate(0 -20)" xlink:href="#a" />
+                            <use class="graph1lineblank" transform="translate(0 20)" xlink:href="#b" />
+                            <use class="graph1lineblank" transform="translate(0 -20)" xlink:href="#b" />
+                        </g>
+                        <g class="charttext" transform="translate(0)">
+                            <text x="1050" y="-12200">Inner
+                                <tspan x="920" y="-11200">Core</tspan>
+                            </text>
+                            <text x="3650" y="-12200">Outer
+                                <tspan x="3526.1" y="-11200">Core</tspan>
+                            </text>
+                            <text x="6650" y="-12200">Lower
+                                <tspan x="6600" y="-11200">Mantle</tspan>
+                            </text>
+                            <text x="9300" y="-12200">Upper
+                                <tspan x="9300" y="-11200">Mantle</tspan>
+                            </text>
+                            <text x="15277.5" y="-12200">Space</text>
+                        </g>
+                    </svg>
+                </a>
+                <p>
+                    Earth's actual gravity according to the Preliminary Reference Earth Model (PREM) is more complex.
+                    This is because the density changes with each layer, and increases towards the center.
+                </p>
+            </details>
+        </div>
+
+        <p id='gpe' class='underlined'> Gravitational Potential Energy</p>
+        <p>
+            Our old gravitational potential energy equation, <a href="..\..\energy\energy\index.html#potential">U=mgh,</a> can be made more accurate if we replace g = 9.8 with
+            a calculated gravitational acceleration. This version of gravitational potential energy now works beyond Earth's surface.
+        </p>
+
+        <details class='derive'>
+            <summary>derivation of universal gravitational potential energy</summary>
+            $$U_{g} = mgh \quad g = \color{blue}{\frac{GM}{r^{2}}} $$
+            $$U_{g} = m{\color{blue}{\frac{GM}{r^{2}}}}h $$
+            <p>
+                If we define h to be zero when the two masses are zero distance apart, we can rename h to r.
+            </p>
+            $$U_{g} = \frac{GM_{1}M_{2}}{r^{2}}r$$
+            $$U_{g} = \frac{GM_{1}M_{2}}{r} $$
+            <br>When distance is very big the energy goes to zero, so it makes sense to choose the zero of this gravitational potential energy at an infinite distance away. This means that as we bring a mass closer to another mass we have negative potential energy.
+            $$U_{g} = -\frac{GM_{1}M_{2}}{r} $$
+        </details>
+
+        <div class='definition'>
+            <svg viewBox="-100 -40 500 240">
+                <circle cx="0" cy="100" r="98" fill='#fff' stroke-width="2" stroke="#222" />
+                <circle cx="300" cy="100" r="30" fill='var(--def-accent-color)' stroke-width="2" stroke="#222" />
+                <text x="0" y="105" fill="black" text-anchor="middle" font-size="25 ">M</text>
+                <text x="18" y="108" fill="black" text-anchor="middle" font-size="19 ">1</text>
+                <text x="298" y="108" fill="black" text-anchor="middle" font-size="25 ">M</text>
+                <text x="316" y="111" fill="black" text-anchor="middle" font-size="19 ">2</text>
+                <g transform='translate(0,-10)'>
+                    <line x1="0" y1="0" x2="300" y2="0" style="stroke:#000;stroke-width:2" />
+                    <line x1="0" y1="-5" x2="0" y2="5" style="stroke:#000;stroke-width:2" />
+                    <line x1="300" y1="-5" x2="300" y2="5" style="stroke:#000;stroke-width:2" />
+                    <text x="150" y="-5" fill="black" text-anchor="middle" font-size="25 ">r</text>
+                </g>
+            </svg>
+            <h1>$$U_{g} = -\frac{GM_{1}M_{2}}{r} $$</h1>
+            <p>\(U_g\) = gravitational potential energy [J, Joules]
+                <br>\(G\) = 6.67408 × 10<sup>-11</sup> = universal gravitation constant [N(m/kg)²]
+                <br>\(M\) = mass [kg, kilograms]
+                <br>\(r\) = distance between the center of each mass [m, meters]
+            </p>
+            <svg viewBox="-50 0 600 350" class="on-edge" style="margin-bottom: -1.5em; border-radius: 1em;">
+                <circle cx="250" cy="35" r="5" fill='#fff' stroke-width="2" stroke="#222" />
+                <circle cx="250" cy="1167" r="1000" fill='var(--def-accent-color)' stroke-width="2" stroke="#222" />
+
+                <text x="250" y="70" fill="black" text-anchor="middle" font-size="25 ">M</text>
+                <text x="268" y="73" fill="black" text-anchor="middle" font-size="19 ">1</text>
+                <text x="250" y="340" fill="black" text-anchor="middle" font-size="25 ">M</text>
+                <text x="268" y="343" fill="black" text-anchor="middle" font-size="19 ">2</text>
+
+                <!-- <line x1="290" y1="35" x2="300" y2="35" style="stroke:#000;stroke-width:2" />
+                <line x1="295" y1="35" x2="295" y2="400" style="stroke:#000;stroke-width:2" />
+                <text x="310" y="130" fill="black" text-anchor="middle" font-size="25 ">r</text> -->
+            </svg>
+        </div>
+        <p>What is the gravitational potential energy when two masses are at zero distance away?</p>
+        <p>What is the gravitational potential energy when two masses are at an infinite distance away?</p>
+
+        <div class="example-small" id="gravity-potential-sim">
+            <div class='center'>
+                masses =
+                <input id='num2-slider' type="range" step="0.001" value="1" min="0" max="2" style="width: 200px;">
+                <input id='num2' type="number" step="1" value="10" min="0" max="99" style="width: 42px;">
+            </div>
+            <canvas class='center' id='grav2' height='400' width='600' onclick="grav2(this)"> </canvas>
+            <p>
+                Energy is a scalar, not a vector. This means that when we calculate gravitational potential energy it has no direction. You can see the potential energy in the simulation below as a scalar field. Think of the reddish regions as being deeper into the <a href='https://xkcd.com/681/'>gravity well</a>.
+            </p>
+        </div>
+
+        <div class='example'>
+            <strong>Example:</strong> Calculate the gravitational potential energy between two 100&#8239;000 kg masses when there is only 2 m between the center of each mass.
+            <details>
+                <summary>solution</summary>
+                $$U_{g} = -\frac{GM_{1}M_{2}}{r}$$
+                $$U_{g} = -\frac{(6.674 \times 10^{-11}) (100\,000)(100\,000)}{2}$$
+                $$U_{g} = -0.33\,\mathrm{J}$$
+                <p>The energy is negative because it would take positive work to separate the masses.</p>
+            </details>
+        </div>
+
+        <div class='example'>
+            <strong>Example:</strong> Two 100&#8239;000 kg masses are 2 meters apart. How much work would it take to bring them to 10&nbsp;m apart?
+            <details>
+                <summary>strategy</summary>
+                <p>Calculate the gravitational potential energy at each distance. The change in energy is the work.</p>
+            </details>
+            <details>
+                <summary>solution</summary>
+                $$U_{i} = -\frac{GM_{1}M_{2}}{r}$$
+                $$U_{i} = -\frac{(6.674 \times 10^{-11})(100\,000)(100\,000)}{2}$$
+                $$U_{i} = -0.33\,\mathrm{J}$$
+                <br>
+                $$U_{f} = -\frac{(6.674 \times 10^{-11})(100\,000)(100\,000)}{10}$$
+                $$U_{f} = -0.068\,\mathrm{J}$$
+                <br>
+                <p>Work is a change in energy, so we can subtract the final energy from the initial.</p>
+                $$W = \Delta U = U_{f} - U_{i} $$
+                $$W = (-0.068) - (-0.33)$$
+                $$W = 0.262 \, \mathrm{J}$$
+            </details>
+        </div>
+
+        <div class='example'>
+            <!-- <svg viewBox="0 0 600 400">
+                <path d="M300 0 v264" stroke="#000" stroke-width="3" />
+                <circle cx="300" cy="670" r="400" fill='rgb(130,137,179)' stroke-width="2" stroke="#222" />
+            </svg> -->
+            <strong>Example:</strong> A 2000 kg spaceship starts at rest 20&#8239;000&nbsp;km from the surface of Earth. How much kinetic energy will the ship have after it falls down to 10&#8239;000&nbsp;km from the surface of Earth?
+            <details>
+                <summary>strategy</summary>
+                <p>
+                    Use conservation of energy. Set the initial kinetic and gravitational potential equal to the final kinetic and gravitational potential.
+                </p>
+            </details>
+            <details>
+                <summary>solution</summary>
+                $$E_{i} = E_{f}$$
+                $$U_{gi} = U_{gf} + K$$
+                $$ K = U_{gi} - U_{gf}$$
+                $$K = -\frac{GM_{1}M_{2}}{r}+\frac{GM_{1}M_{2}}{r}$$
+                $$K = -\frac{(6.674\times 10^{-11})(5.972\times 10^{24})(2000)}{6\,371\,000 + 20\,000\,000}$$
+                $$+\frac{(6.674\times 10^{-11})(5.972\times 10^{24})(2000)}{6\,371\,000 + 10\,000\,000}$$
+                $$K = -3.02 \times 10^{10}+4.86 \times 10^{10} $$
+                $$K = 1.85 \times 10^{10} \, \mathrm{J}$$
+            </details>
+        </div>
+        <div class='example'>
+            <strong>Example:</strong> Find the minimum escape velocity for a 100&nbsp;kg person on Earth.
+            <details>
+                <summary>strategy</summary>
+                <p>
+                    Use conservation of energy to find the energy needed to bring both the kinetic and potential energy to zero.
+                </p>
+            </details>
+            <details>
+                <summary>solution</summary>
+                $$E_{i} = E_{f}$$
+                $$U_{gi} + K = U_{gf} + K$$
+                $$U_{gi} + K = 0$$
+                $$K = -U_{gi}$$
+                $$(1/2)M_{2}v^2 = \frac{GM_{1}M_{2}}{r}$$
+                $$(1/2)v^2 = \frac{GM_{1}}{r}$$
+                $$\boxed{v^2 = \frac{2GM_{1}}{r}}$$
+                $$v = \sqrt{\frac{2(6.674\times 10^{-11}) (5.972 \times 10 ^{24})}{6\,371\,000}}$$
+                $$v = 11\,183 \, \mathrm{\tfrac{m}{s}}$$
+            </details>
+            <br>
+            <strong>Example:</strong> Find the minimum escape velocity on <a href="https://en.wikipedia.org/wiki/Phobos_(moon)">Phobos</a>.
+            <details>
+                <summary>solution</summary>
+                $$v^2 = \frac{2GM_{1}}{r}$$
+                $$v^2 = \frac{2(6.674\times 10^{-11})(1.1 \times 10^{16})}{11200}$$
+                $$v = \sqrt{\frac{2(6.674\times 10^{-11})(1.1 \times 10^{16})}{11200}}$$
+                $$v = 11.45\, \mathrm{\tfrac{m}{s}}$$
+            </details>
+        </div>
+
+        <div class="example-small" style="min-height: 498px;">
+            <style>
+                .full-page {
+                    position: fixed;
+                    top: -5px;
+                    left: -5px;
+                    z-index: 0;
+                    margin: 0;
+                    padding: 0;
+                }
+            </style>
+            Use the mouse to move the camera. Double click for full screen.
+            <canvas id='three-fabric-load' width='600' height='400' onclick="fabric('three-fabric')"></canvas>
+            <canvas id='three-fabric' width='600' height='0'></canvas>
+            In the simulation above, gravitational potential energy is represented as warping a 2-D fabric into a 3rd dimension.
+            This is similar to how gravity is thought of in <a href="..\..\relativity\general\index.html">general relativity</a>.
+        </div>
+
+    </article>
+    <div class="listing-footer">
+        <ul class="listing listing-dark" id="footer">
+            <li>
+                <h2>Motion</h2>
+                <p>
+                    <a href="../../motion/motion/index.html">Motion</a>
+                    <br>
+                    <a href="../../motion/kinematics/index.html">Kinematics</a>
+                </p>
+            </li>
+            <li>
+                <h2>Force</h2>
+                <p>
+                    <a href="../../force/laws/index.html">Newton's Laws</a>
+                    <br>
+                    <a href="../../force/forces/index.html">Forces</a>
+                    <br>
+                    <a href="../../force/friction/index.html">Friction</a>
+                </p>
+            </li>
+            <li>
+                <h2>Momentum</h2>
+                <p>
+                    <a href="../../momentum/momentum/index.html">Momentum</a>
+                    <br>
+                    <a href="../../momentum/impulse/index.html">Impulse</a>
+                </p>
+            </li>
+            <li>
+                <h2>Energy</h2>
+                <p>
+                    <a href="../../energy/energy/index.html">Energy</a>
+                    <br>
+                    <a href="../../energy/conservation/index.html">Conservation of Energy</a>
+                    <br>
+                    <a href="../../energy/thermo/index.html">Thermodynamics</a>
+                </p>
+            </li>
+            <li>
+                <h2>Gravity</h2>
+                <p>
+                    <a href="../../gravity/gravitation/index.html">Universal Gravitation</a>
+                    <br>
+                    <a href="../../gravity/circular/index.html">Orbits</a>
+                </p>
+            </li>
+            <li>
+                <h2>Electromagnetism</h2>
+                <p>
+                    <a href="../../electromagnetism/charge/index.html">Electric Charge</a>
+                    <br>
+                    <a href="../../electromagnetism/electrostatics/index.html">Electrostatics</a>
+                    <br>
+                    <a href="../../electromagnetism/potential/index.html">Electric Potential</a>
+                    <br>
+                    <a href="../../electromagnetism/magnetism/index.html">Magnetism</a>
+                </p>
+            </li>
+            <li>
+                <h2>Circuits</h2>
+                <p>
+                    <a href="../../circuits/electricity/index.html">Electricity</a>
+                    <br>
+                    <a href="../../circuits/power/index.html">Power</a>
+                    <br>
+                    <a href="../../circuits/kirchoff/index.html">Kirchhoff’s Laws</a>
+                    <br>
+                    <a href="../../circuits/components/index.html">Components</a>
+                </p>
+            </li>
+            <li>
+                <h2>Waves</h2>
+                <p>
+                    <a href="../../waves/waves/index.html">Waves</a>
+                    <br>
+                    <a href="../../waves/waveproperties/index.html">Wave Properties</a>
+                    <br>
+                    <a href="../../waves/light/index.html">Light</a>
+                    <br>
+                    <a href="../../waves/photons/index.html">Photons</a>
+                </p>
+            </li>
+            <li>
+                <h2>Relativity</h2>
+                <p>
+                    <a href="../../relativity/special/index.html">Special Relativity</a>
+                    <br>
+                    <a href="../../relativity/general/index.html">General Relativity</a>
+                </p>
+            </li>
+            <li>
+                <h2>Reference</h2>
+                <p>
+                    <a href="../../review/units/index.html">Units</a>
+                    <br>
+                    <a href="../../review/vectors/index.html">Vectors & Scalars</a>
+                    <br>
+                    <a href="../../review/solving/index.html">Problem Solving</a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        renderMathInElement(document.body);
+    </script>
+</body>
+
+</html>

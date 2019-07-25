@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="theme-color" content="#222" />
+	<meta name="description" content="Interactive notes for algebra based physics.">
+	<meta name="author" content="Ross Landgreen">
+	<meta property="og:description" content="Interactive notes for algebra based physics.">
+	<meta property="og:title" content="Physics Notes">
+	<meta name="twitter:title" content="High School Physics Notes">
+	<meta name="twitter:description" content="Interactive notes for algebra based physics.">
+
+	<title>Power</title>
+	<link rel='shortcut icon' href='../../../media/favicon.ico' type='image/x-icon' />
+
+	<link rel="stylesheet" type="text/css" href="../../../lib/katex/katex.min.css">
+	<script src="../../../lib/katex/katex.min.js"></script>
+	<script src="../../../lib/katex/contrib/auto-render.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+
+<body>
+	<header>
+		<h1>
+			<a href="../../../index.html">Power</a>
+		</h1>
+	</header>
+	<article>
+		<p>
+			Power is defined as work done over time. Power measures the rate that voltage sources, like batteries, convert energy into electrical energy. Power could also measure the rate that electrical components convert electrical energy in other forms.
+		</p>
+		<div class='definition'>
+			<h1>$$P = \frac{W}{\Delta t}$$</h1> \(P\) = power [W, J/s, watt]
+			<br> \(W\) = work, change in energy [J, joules]
+			<br> \(\Delta t\) = time period [s, second]
+		</div>
+		<p>
+			Power is analogous to velocity. Velocity measures how position changes over time. Power measures how energy changes over time.
+		</p>
+
+		<div class='example'>
+			<strong>Example:</strong> The label on my electric space heater says 1500&nbsp;Watts. It can convert 1500 Joules of electrical energy into heat energy in a second. How many joules of heat can it add to a room in an hour?
+			<details>
+				<summary>solution</summary>
+				$$P = \frac{W}{\Delta t}$$
+				$$W = P\Delta t$$
+				$$W = (1500\,\mathrm{W})(3600\,\mathrm{s})$$
+				$$W = (1500\,\mathrm{\tfrac{J}{s}})(3600\,\mathrm{s})$$
+				$$W = 5\,400\,000 \, \mathrm{J}$$
+			</details>
+		</div>
+		<div class='example'>
+			<p>
+				Power bills in America use a unit called kiloWatt hour. This is actually a unit of energy, not power.
+			</p>
+			$$\text{(kilo)(watt)(hour)}$$
+			$$(1000) \left(\mathrm{\frac{J}{s}}\right)(3600\, \mathrm{s})$$ $$3\,600\,000\, \left(\mathrm{\frac{J}{s}}\right)(\mathrm{s})$$
+			$$1\, \mathrm{kWh} = 3\,600\,000\, \mathrm{J}$$
+			<strong>Example:</strong> How many kiloWatt hours of energy would I consume if I ran my 1500&nbsp;W electric heat at full power for 4&nbsp;weeks?
+			<details>
+				<summary>solution</summary>
+				$$\Delta t = 4 \, {\color{#f54}\mathrm{week} } \left(\frac{7 {\color{#28b}\,\mathrm{day}} }{1 \, {\color{#f54}\mathrm{week}} }\right) \left(\frac{24 \, {\color{#f08}\mathrm{hour}}}{1 \, {\color{#28b}\mathrm{day}}}\right) \left(\frac{3600 \,\mathrm{s}}{1 \, {\color{#f08}\mathrm{hour}}}\right)$$
+				$$\Delta t = 2\,419\,200 \, \mathrm{s}$$
+				<br>
+				$$P = \frac{W}{\Delta t}$$
+				$$W = P\Delta t$$
+				$$W = (1500 \, \mathrm{\tfrac{J}{s}})(2\,419\,200\,\mathrm{s})$$
+				$$W = 3\,628\,800\,000 \, \mathrm{J} \left( \frac{1\, \mathrm{kWh}}{3\,600\,000\, \mathrm{J}} \right) = 1008 \, \mathrm{kWh}$$
+			</details>
+			<br>
+			<strong>Example:</strong> The average price in the United States for 1 kiloWatt hour is $0.12. How much would the kiloWatt hours from the previous problem cost in dollars?
+			<details>
+				<summary>solution</summary>
+				$$W = 1008 \, \mathrm{kWh}$$
+				$$W = 1008 \, \mathrm{kWh} \left( \frac{\$0.12}{1\, \mathrm{kWh}} \right) = \$120.96$$
+			</details>
+		</div>
+
+		<div class='example'>
+				<p>
+					A friend of mine installed <a href="https://www.youtube.com/watch?v=xKxrkht7CpY">solar panels</a> on their roof in 2019.
+					The solar panels are connected to the shared power grid.
+					The power company reduces their bill by the amount of energy they add back into the grid.
+					I wrote down the data from the panel's readout below.
+				</p>
+				<table class="table-2d">
+					<tr>
+						<th>Time</th>
+						<th>Current Power</th>
+						<th>Energy Today</th>
+						<th>Energy Yesterday</th>
+					</tr>
+					<tr>
+						<td> 8:45 am</td>
+						<td> 583.36 W</td>
+						<td> 513 Wh </td>
+						<td> 20 kWh </td>
+					</tr>
+				</table>
+				<strong>Example:</strong>				
+				Use the energy produced yesterday to estimate the total energy production in kWh for one year.
+				They used 5500 kWh of energy last year.
+				Will the energy produced by the solar panels be enough to reduce their power bill to zero?
+				<details>
+					<summary>solution</summary>
+					$$\mathrm{\frac{ 20 \, kwh}{day} \left( \frac{365.25 \, day}{1 \, year}  \right) } = \mathrm{\frac{ 7305  \, kwh}{year}}$$
+					$$ 7305  \, \mathrm{kwh} > 5500  \, \mathrm{kwh}$$
+					<p>
+						They shouldn't have a bill.
+						Although the data we used was from a sunny summer day.
+						They might get behind in the winter.
+					</p>
+				</details>
+				<br>
+				<p>
+					The rules in California let you use solar panels to reduce your power bill down to zero, but you can't reduce your bill below zero.
+				</p>
+				<strong>Example:</strong> How much money could they save each year?
+				Use the California rate of $0.25 per kiloWatt hour and their yearly energy usage.
+				<details>
+					<summary>solution</summary>
+					$$5500 \, \mathrm{kWh}    \left( \mathrm{\frac{\$ 0.25}{kWh}}    \right) = \$ 1375$$
+				</details>
+				<br>
+				<strong>Example:</strong>
+				The solar panels were $14&nbsp;000, including installation.
+				How long will it take to pay back the cost through reduced power bills?
+				<details>
+					<summary>solution</summary>
+					$$ \$ 14\,000 \left( \frac{1 \, \mathrm{yr}}{ \$ 1375} \right) = 10.1 \, \mathrm{years}$$
+					<p>
+						They also received a tax break for 1/3 the price of the panels.
+						They hope to pay it off in 6.8 years based on the reduced price.
+					</p>
+				</details>
+			</div>
+
+
+		<h2 class='underlined'>DC Electric Power </h2>
+		<p>
+			<a href="https://www.youtube.com/watch?v=u4FpbaMW5sk">Circuit</a> components get their energy to do work from dropping voltage.
+			When the voltage decreases it converts electrical energy into heat. <strong>Heat</strong> is defined as energy exiting a system. Heat could exit the system in many different forms: light, sound, thermal energy, ...
+		</p>
+		<style type="text/css">
+			@keyframes marching_ants {
+				0% {
+					stroke-dashoffset: 0;
+				}
+
+				100% {
+					stroke-dashoffset: 20;
+				}
+			}
+
+			.ants {
+				animation: marching_ants 1s linear infinite reverse;
+				stroke-dasharray: 0.1 19.9;
+			}
+		</style>
+		<svg viewBox="0 0 600 160">
+			<defs>
+				<linearGradient id="Gradient2" x1="0" x2="1">
+					<stop offset="36%" stop-color="#0ff" />
+					<stop offset="64%" stop-color="#999" />
+				</linearGradient>
+				<linearGradient id="fade-in" x1="0" x2="1" y1="0" y2="0">
+					<stop offset="0%" stop-color="#fff" stop-opacity="1" />
+					<stop offset="100%" stop-color="#fff" stop-opacity="0" />
+				</linearGradient>
+				<linearGradient id="fade-out" x1="1" x2="0" y1="0" y2="0">
+					<stop offset="0%" stop-color="#fff" stop-opacity="1" />
+					<stop offset="100%" stop-color="#fff" stop-opacity="0" />
+				</linearGradient>
+			</defs>
+			<text x="300" y="15" text-anchor="middle" font-size="22" fill='#333' font-family="arial">Heat</text>
+			<g fill="#f30" stroke-width="2.5" stroke="#f30">
+				<g transform="translate(240 27) rotate(90)">
+					<line x1="5" y1="0" x2="45" y2="0" fill="none" />
+					<polygon points="0,0 16,6 14,0  16,-6" stroke="none" />
+				</g>
+				<g transform="translate(280 27) rotate(90)">
+					<line x1="5" y1="0" x2="45" y2="0" fill="none" />
+					<polygon points="0,0 16,6 14,0  16,-6" stroke="none" />
+				</g>
+				<g transform="translate(320 27) rotate(90)">
+					<line x1="5" y1="0" x2="45" y2="0" fill="none" />
+					<polygon points="0,0 16,6 14,0  16,-6" stroke="none" />
+				</g>
+				<g transform="translate(360 27) rotate(90)">
+					<line x1="5" y1="0" x2="45" y2="0" fill="none" />
+					<polygon points="0,0 16,6 14,0  16,-6" stroke="none" />
+				</g>
+			</g>
+			<path d="M 0 120 h 220  l20 30 l20 -60 l20 60 l20 -60 l20 60 l20 -60 l20 60 l20 -30 h 220" fill='none' stroke="#333" stroke-width="11" stroke-linejoin="round" />
+			<path d="M 0 120 h 220  l20 30 l20 -60 l20 60 l20 -60 l20 60 l20 -60 l20 60 l20 -30 h 220" fill='none' stroke="url(#Gradient2)" stroke-width="6" stroke-linecap="round" class="ants" />
+			<rect x="0" y="0" width="50" height="160" fill="url(#fade-in)" stroke="none" />
+			<rect x="550" y="0" width="50" height="160" fill="url(#fade-out)" stroke="none" />
+		</svg>
+		<p>
+			The rate of the heat output is equal to the voltage multiplied by the current going through the element.
+		</p>
+		<details class='derive'>
+			<summary>derivation of electrical power</summary>
+			<p>
+				We can convert power into electrical terms with some substitution.
+			</p>
+			$$P = \frac{W}{\Delta t} \quad \quad \quad W = {\color{#07c}Vq} \quad \quad \quad I = \color{#f53} \frac{q}{\Delta t}$$
+			$$P = \frac{{\color{#07c}Vq}}{\Delta t}$$
+			$$P = {\color{#f53}\frac{q}{\Delta t}}V$$
+			$$P = IV$$
+		</details>
+		<div class='definition'>
+			<h1> $$P = IV$$</h1>
+			\(P\) = power [W, watt, J/s]
+			<br> \(I\) = current [A, amp]
+			<br> \(V\) = voltage [V, volt]
+		</div>
+		<p>
+			Watt is the unit of power. The wattage of an electrical appliance gives you an idea of how much electrical energy the appliance converts. An 800 W microwave uses 800 J per second. A 1600 W microwave will heat food much faster because it converts twice the electrical energy into heat each second.
+		</p>
+		<p>
+			When used properly electricity is safe, but a circuit with both high voltage and high current can be <a href="https://www.youtube.com/watch?v=XDf2nhfxVzg">dangerous</a>. Be careful.
+		</p>
+
+		<div class='example'>
+			<svg viewBox="-125 0 550 193">
+				<path d="M 50 10 h 200
+				v 50 l10 10 l-20 10 l20 10 l-20 10 l20 10 l-20 10 l20 10 l-10 10 v50
+				h -200
+				v-80 m-40 0 h 80 m-20 -15 h-40 m20 0 v -87" fill='none' stroke="#333" stroke-width="4" stroke-linejoin="round" />
+				<text x="60" y="85" text-anchor="start" font-size="20" fill='#333'>9 V</text>
+				<text x="150" y="172" text-anchor="middle" font-size="20" fill='#333'>0.095 A</text>
+				<g transform="translate(195 180) rotate(180)">
+					<line x1="5" y1="0" x2="80" y2="0" style="stroke:#333;stroke-width:2" />
+					<polygon points="0,0 12,5 12,-5" style="fill:#333;" />
+				</g>
+			</svg>
+			<strong>Example:</strong> Find the power output of the battery.
+			<details>
+				<summary>solution</summary>
+				$$P=IV$$
+				$$P=(0.095)(9)$$
+				$$P=0.855\, \mathrm{W}$$
+			</details>
+		</div>
+		<div class='example'>
+			<svg viewBox="0 0 400 220">
+				<path transform="translate(0 0) rotate(90 200 85)" d="M 165 10 h 60
+					 h 90 v 30 l10 10 l-20 10 l20 10 l-20 10 l20 10 l-20 10 l20 10 l-10 10 v30
+					h -90 h -60 v-57 m-40 0 h 80 m-20 -15 h-40 m20 0 v -70" fill='none' stroke="#333" stroke-width="3" stroke-linejoin="round" />
+			</svg>
+			<strong>Question:</strong> A battery and a resistor in a simple looping circuit will drain the chemical energy of the battery. Energy can't be created or destroyed, but it can change forms. What form does the battery's energy change into?
+			<details>
+				<summary>answer</summary>
+				<p>
+					The battery converts chemical energy into electric potential energy.
+				</p>
+				<p>
+					The resistor converts the electric potential energy into thermal energy.
+				</p>
+			</details>
+		</div>
+
+
+		<div class='example'>
+			$$P=IV \quad \quad V=IR$$
+			<p>Combine the electric power equation with ohm's law to derive two more relationships.</p>
+			<strong>Derive:</strong> What is the relationship between Power, Current, and Resistance?
+			What is the relationship between Power, Voltage, and Resistance?
+			<details>
+				<summary>strategy</summary>
+				<p>Use substitution.</p>
+				<p>
+					V=IR means we can substitute V with IR in the power equation.
+				</p>
+				<p>
+					V=IR also means that I = V/R. Substitute I for V/R in the power equation.
+				</p>
+			</details>
+			<details>
+				<summary>derivation</summary>
+				<div class="col-group">
+					<div><br>
+						$$V={\color{#2aa}IR}$$
+						$$P=IV$$
+						$$P=I({\color{#2aa}IR})$$
+						$$\boxed{P=I^2R}$$</div>
+					<div>
+						$$V=IR \quad I = {\color{#f30}\frac{V}{R}}$$
+
+						$$P=IV$$
+						$$P={\color{#f30}\frac{V}{R}}V$$
+						$$\boxed{P=\frac{V^2}{R}}$$</div>
+				</div>
+			</details>
+		</div>
+
+		<div class='example'>
+			<svg viewBox="-30 0 600 300">
+				<path d="M 100 50 h 110
+				l10 10 l10 -20 l10 20 l10 -20 l10 20 l10 -20 l10 20 l 10 -10 h 110
+				v 60 l10 10 l-20 10 l20 10 l-20 10 l20 10 l-20 10 l20 10 l-10 10 v60
+				h -110 l-10 10 l-10 -20 l-10 20 l-10 -20 l-10 20 l-10 -20 l-10 20 l-10 -10
+				h -110 v-87 m-40 0 h 80 m-20 -15 h-40 m20 0 v -100" fill='none' stroke="#333" stroke-width="4" stroke-linejoin="round" />
+				<text x="250" y="30" text-anchor="middle" font-size="20" fill='#333'>6 kΩ</text>
+				<text x="415" y="160" text-anchor="start" font-size="20" fill='#333'>20 kΩ</text>
+				<text x="250" y="283" text-anchor="middle" font-size="20" fill='#333'>5 kΩ</text>
+				<text x="250" y="225" text-anchor="middle" font-size="20" fill='#333'>20 mA</text>
+				<g transform="translate(290 200) rotate(180)">
+					<line x1="5" y1="0" x2="75" y2="0" style="stroke:#333;stroke-width:2" />
+					<polygon points="0,0 12,5 12,-5" style="fill:#333;" />
+				</g>
+			</svg>
+			<strong>Example:</strong> Calculate the power dissipated by each resistor.
+			<details>
+				<summary>solution</summary>
+				$$I = 0.02\, \mathrm{A}$$ $$P=(0.02)^2 (6000)$$ $$P=2.4 \, \mathrm{W}$$
+				<br> $$P=(0.02)^2 (20\,000)$$ $$P=8.0\, \mathrm{W}$$
+				<br> $$P=(0.02)^2 (5000)$$ $$P=2.0\, \mathrm{W}$$
+
+				<svg viewBox="-30 0 600 300">
+					<path d="M 100 50 h 110
+					l10 10 l10 -20 l10 20 l10 -20 l10 20 l10 -20 l10 20 l 10 -10 h 110
+					v 60 l10 10 l-20 10 l20 10 l-20 10 l20 10 l-20 10 l20 10 l-10 10 v60
+					h -110 l-10 10 l-10 -20 l-10 20 l-10 -20 l-10 20 l-10 -20 l-10 20 l-10 -10
+					h -110 v-87 m-40 0 h 80 m-20 -15 h-40 m20 0 v -100" fill='none' stroke="#333" stroke-width="4" stroke-linejoin="round" />
+					<text x="250" y="30" text-anchor="middle" font-size="20" fill='#333'>2.4 W</text>
+					<text x="415" y="160" text-anchor="start" font-size="20" fill='#333'>8.0 W</text>
+					<text x="250" y="283" text-anchor="middle" font-size="20" fill='#333'>2.0 W</text>
+					<text x="250" y="225" text-anchor="middle" font-size="20" fill='#333'>20 mA</text>
+					<g transform="translate(290 200) rotate(180)">
+						<line x1="5" y1="0" x2="75" y2="0" style="stroke:#333;stroke-width:2" />
+						<polygon points="0,0 12,5 12,-5" style="fill:#333;" />
+					</g>
+				</svg>
+			</details>
+		</div>
+		<div class='example'>
+			<svg viewBox="-125 0 550 193">
+				<path d="M 50 10 h 200
+			v 50 l10 10 l-20 10 l20 10 l-20 10 l20 10 l-20 10 l20 10 l-10 10 v50
+			h -200
+			v-80 m-40 0 h 80 m-20 -15 h-40 m20 0 v -87" fill='none' stroke="#333" stroke-width="4" stroke-linejoin="round" />
+				<text x="230" y="85" text-anchor="end" font-size="20" fill='#333'>P = ?</text>
+				<text x="230" y="125" text-anchor="end" font-size="20" fill='#333'>300 Ω </text>
+				<text x="150" y="172" text-anchor="middle" font-size="20" fill='#333'>0.05 A</text>
+				<g transform="translate(195 180) rotate(180)">
+					<line x1="5" y1="0" x2="80" y2="0" style="stroke:#333;stroke-width:2" />
+					<polygon points="0,0 12,5 12,-5" style="fill:#333;" />
+				</g>
+			</svg>
+			<strong>Example:</strong> Find the power output of the resistor.
+			<details>
+				<summary>solution</summary>
+				$$P=I^2R$$ $$P=(0.05)^2(300)$$ $$P=0.75\, \mathrm{W}$$
+			</details>
+			<br>Find the heat dissipated by the resistor over 10 seconds.
+			<details>
+				<summary>solution</summary>
+				$$P=0.75\, \mathrm{W}$$
+				<br> $$P = \frac{W}{\Delta t}$$ $$W = P \Delta t$$ $$W = (0.75\, \mathrm{W})(10\, \mathrm{s})$$ $$W = 7.5\, \mathrm{J}$$
+			</details>
+		</div>
+
+		<div class='example'>
+			<svg viewBox="-125 0 550 170">
+				<path d="M 50 10 h 200
+			v 25 l10 10 l-20 10 l20 10 l-20 10 l20 10 l-20 10 l20 10 l-10 10 v50
+			h -200
+			v-80 m-40 0 h 80 m-20 -15 h-40 m20 0 v -62" fill='none' stroke="#333" stroke-width="4" stroke-linejoin="round" />
+				<text x="60" y="60" text-anchor="start" font-size="20" fill='#333'>1.5 V</text>
+				<text x="150" y="147" text-anchor="middle" font-size="20" fill='#333'>0.024 A</text>
+				<g transform="translate(195 155) rotate(180)">
+					<line x1="5" y1="0" x2="80" y2="0" style="stroke:#333;stroke-width:2" />
+					<polygon points="0,0 12,5 12,-5" style="fill:#333;" />
+				</g>
+			</svg>
+			<strong>Example:</strong> How much chemical energy does the battery convert into electrical energy over 5 minutes?
+			<details>
+				<summary>solution</summary>
+				$$P=IV$$ $$P=(0.024)(1.5)$$ $$P=0.036\, \mathrm{W}$$
+				<br> $$P = \frac{W}{\Delta t}$$ $$W = P\Delta t$$
+				$$W = (0.036 \, \mathrm{\frac{J}{s}})(5\, \mathrm{min})\left(\frac{60\, \mathrm{s}}{1\, \mathrm{min}}\right)$$
+				$$W = (0.036 \frac{J}{s})(300s)$$
+				$$W = 10.8\, \mathrm{J}$$
+			</details>
+		</div>
+	</article>
+	<div class="listing-footer">
+		<ul class="listing listing-dark" id="footer">
+			<li>
+				<h2>Motion</h2>
+				<p>
+					<a href="../../motion/motion/index.html">Motion</a>
+					<br>
+					<a href="../../motion/kinematics/index.html">Kinematics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Force</h2>
+				<p>
+					<a href="../../force/laws/index.html">Newton's Laws</a>
+					<br>
+					<a href="../../force/forces/index.html">Forces</a>
+					<br>
+					<a href="../../force/friction/index.html">Friction</a>
+				</p>
+			</li>
+			<li>
+				<h2>Momentum</h2>
+				<p>
+					<a href="../../momentum/momentum/index.html">Momentum</a>
+					<br>
+					<a href="../../momentum/impulse/index.html">Impulse</a>
+				</p>
+			</li>
+			<li>
+				<h2>Energy</h2>
+				<p>
+					<a href="../../energy/energy/index.html">Energy</a>
+					<br>
+					<a href="../../energy/conservation/index.html">Conservation of Energy</a>
+					<br>
+					<a href="../../energy/thermo/index.html">Thermodynamics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Gravity</h2>
+				<p>
+					<a href="../../gravity/gravitation/index.html">Universal Gravitation</a>
+					<br>
+					<a href="../../gravity/circular/index.html">Orbits</a>
+				</p>
+			</li>
+			<li>
+				<h2>Electromagnetism</h2>
+				<p>
+					<a href="../../electromagnetism/charge/index.html">Electric Charge</a>
+					<br>
+					<a href="../../electromagnetism/electrostatics/index.html">Electrostatics</a>
+					<br>
+					<a href="../../electromagnetism/potential/index.html">Electric Potential</a>
+					<br>
+					<a href="../../electromagnetism/magnetism/index.html">Magnetism</a>
+				</p>
+			</li>
+			<li>
+				<h2>Circuits</h2>
+				<p>
+					<a href="../../circuits/electricity/index.html">Electricity</a>
+					<br>
+					<a href="../../circuits/power/index.html">Power</a>
+					<br>
+					<a href="../../circuits/kirchoff/index.html">Kirchhoff’s Laws</a>
+					<br>
+					<a href="../../circuits/components/index.html">Components</a>
+				</p>
+			</li>
+			<li>
+				<h2>Waves</h2>
+				<p>
+					<a href="../../waves/waves/index.html">Waves</a>
+					<br>
+					<a href="../../waves/waveproperties/index.html">Wave Properties</a>
+					<br>
+					<a href="../../waves/light/index.html">Light</a>
+					<br>
+					<a href="../../waves/photons/index.html">Photons</a>
+				</p>
+			</li>
+			<li>
+				<h2>Relativity</h2>
+				<p>
+					<a href="../../relativity/special/index.html">Special Relativity</a>
+					<br>
+					<a href="../../relativity/general/index.html">General Relativity</a>
+				</p>
+			</li>
+			<li>
+				<h2>Reference</h2>
+				<p>
+					<a href="../../review/units/index.html">Units</a>
+					<br>
+					<a href="../../review/vectors/index.html">Vectors & Scalars</a>
+					<br>
+					<a href="../../review/solving/index.html">Problem Solving</a>
+				</p>
+			</li>
+		</ul>
+	</div>
+	<script>
+		renderMathInElement(document.body);
+	</script>
+</body>
+
+</html>

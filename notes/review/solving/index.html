@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="theme-color" content="#222" />
+	<meta name="description" content="Interactive notes for algebra based physics.">
+	<meta name="author" content="Ross Landgreen">
+	<meta property="og:description" content="Interactive notes for algebra based physics.">
+	<meta property="og:title" content="Physics Notes">
+	<meta name="twitter:title" content="Physics Notes">
+	<meta name="twitter:description" content="Interactive notes for algebra based physics.">
+
+	<title>Problem Solving</title>
+	<link rel='shortcut icon' href='../../../media/favicon.ico' type='image/x-icon' />
+	<link rel="stylesheet" type="text/css" href="../../../lib/katex/katex.min.css">
+	<script src="../../../lib/katex/katex.min.js"></script>
+	<script src="../../../lib/katex/contrib/auto-render.min.js"></script>
+	<link rel="stylesheet" href="../../../style.css">
+</head>
+
+<body>
+	<header>
+		<h1>
+			<a href="../../../index.html">Problem Solving</a>
+		</h1>
+	</header>
+	<article>
+		<h1 class='underlined' id="proportions">Using Proportions</h1>
+
+		<p>If you change a variable we can predict whether other variables in the same equation will increase or decrease. The first
+			step is to decide if the relationship between the variables is directly proportional or inversely proportional.</p>
+		<div class="definition">
+			<!-- $$\frac{y}{x} = k$$ $$y=kx$$ -->
+			$$ {\color{#09e}{\Uparrow} \atop y} {\atop = k } {\color{#09e}{\Uparrow} \atop x} \quad\quad\quad {\color{#f00}{\Downarrow}
+			\atop y} {\atop = k } {\color{#f00}{\Downarrow} \atop x} \quad\quad\quad \frac{ y \color{#f00}{\Downarrow}}{x \color{#f00}{\Downarrow}}
+			= k$$
+			<p>
+				<strong>directly proportional</strong> = a constant ratio, k, between two variables. Both variables increase and decrease together.
+			</p>
+			<br>
+			<!-- $$y=\frac{k}{x} $$ $$ yx = k$$  -->
+			$$ {\color{#09e}{\Uparrow} \atop y} {\color{#f00}{\Downarrow} \atop x} {\atop = k } \quad\quad\quad {\color{#f00}{\Downarrow}
+			\atop y} {\color{#09e}{\Uparrow} \atop x} {\atop = k } \quad\quad\quad y {\color{#f00}{\Downarrow}} = \frac{k}{x \color{#09e}{\Uparrow}}
+			$$
+
+			<p>
+				<strong>inversely proportional</strong> = a constant ratio, k, between a variable and the inverse of a variable. Variables increase
+				and decrease
+				<strong>opposite</strong> to each other.
+			</p>
+		</div>
+		<p>You can use proportions when everything else in an equation is constant except two variables. Then you predict how one
+			will change when the other changes.</p>
+
+		<div class='example'>
+			<h3>$$F = ma$$</h3>
+			<strong>Example:</strong> A force of 100 N produces an acceleration of 10 m/s² for a 10 kg mass. How should you change the force
+			to reduce the acceleration?
+			<details>
+				<summary>solution</summary>
+				$$ \text{m is constant}$$ $$F = ma$$ $$ \text{F and a are directly proportional}$$ $${\color{#f00}{\Downarrow} \atop F} {\atop
+				=} { \atop m} {\color{#f00}{\Downarrow} \atop a} $$ $$ \text{Decreasing F will decrease a}$$
+			</details>
+		</div>
+
+		<div class='example'>
+			<h3>$$v = \frac{\Delta x}{\Delta t}$$</h3>
+			<strong>Example:</strong> You can run 100 m in about 15 s. If you want to decrease your time, should you increase or decrease
+			your velocity?
+			<details>
+				<summary>solution</summary>
+				$$ \text{Δx is constant}$$ $$v = \frac{\Delta x}{\Delta t}$$ $$v \Delta t = \Delta x$$ $$ \text{v and Δt are inversely proportional}$$
+				$${\color{#09e}{\Uparrow} \atop v} {\color{#f00}{\Downarrow} \atop \Delta t} {\atop =} { \atop \Delta x}$$ $$ \text{increasing
+				v will decrease Δt}$$
+			</details>
+		</div>
+
+		<h1 class='underlined' id="actual-vs-goal">Actual vs. Goal</h1>
+		<br>
+		<ul class="listing">
+			<li>
+				Is 10 N enough force?
+				<br> Is 10 N too much force?
+				<br>Is this almost the same as 100 J?
+				<br>Is this different from 100 J?
+				<br> Am I over the 10 kg limit?
+				<br> Am I below the 10 kg limit?
+			</li>
+			<li>
+				Is 100 W enough power for 2 hours?
+				<br>Is 100 W too much power for 2 hours?
+				<br> Will it happen in time?
+				<br> Will it be too late?
+				<br>Is my speed above the speed limit?
+				<br>Is my speed below the speed limit?
+			</li>
+		</ul>
+		<p>You might be able to answer these goal-based questions with this technique:
+			<ol class="definition">
+				<li>1. Identify the goal value, but don't use it.</li>
+				<li>2. Calculate the actual value, without using the goal value.</li>
+				<li>3. Compare the actual to the goal, and see which is bigger.</li>
+			</ol>
+		</p>
+
+		<div class='example'>
+			<p>
+				<h3>$$v = \frac{\Delta x}{\Delta t}$$</h3>
+				<strong>Example:</strong> We are driving to a friend's house in the country. I know the house is on this road in about 67 miles.
+				If we drove at an average speed of 35 mph for 2 hours, will we pass the house?
+			</p>
+			<details>
+				<summary>1. Identify the goal value, but don't use it.</summary>
+				$$\text{The goal is 67 miles.}$$
+			</details>
+			<details>
+				<summary>2. Calculate the actual value, without using the goal value.</summary>
+				$$v=\frac{\Delta x}{\Delta t}$$ $$v\Delta t=\Delta x$$ $$(35 \, \mathrm{\tfrac{mile}{hour}} )(2 \,\mathrm{hour})=\Delta x$$
+				$$70 \,\mathrm{mile}=\Delta x$$
+			</details>
+			<details>
+				<summary>3. Compare the actual to the goal, and see which is bigger.</summary>
+				$$70 \,\mathrm{mile} > 67 \,\mathrm{mile}$$ $$\text{actual > goal}$$ $$\text{We will pass the house.}$$
+			</details>
+		</div>
+
+
+
+		<div class='example'>
+			<h3>$$v = \frac{\Delta x}{\Delta t}$$</h3>
+			<strong>Example:</strong> I claimed that I could run above a speed of 10 meters per second for 100 meters. When I actually ran
+			100 meters, it took me 15 seconds.
+			<br>Did I exaggerate?
+			<details>
+				<summary>strategy</summary>
+				<p>The goal is a velocity of 10 m/s. Don't use it.
+					<br>Solve for the actual velocity using the 100 m and 15 s.
+					<br>Compare the goal value to the actual value.</p>
+			</details>
+			<details>
+				<summary>solution</summary>
+				$$v=\frac{\Delta x}{\Delta t}$$ $$v=\frac{100\,\mathrm{m}}{15 \,\mathrm{s}}$$ $$v=6.\overline{66} \,\mathrm{ \tfrac{m}{s}}$$
+				$$6.\overline{66} \,\mathrm{ \tfrac{m}{s}}
+				< 10 \,\mathrm{ \tfrac{m}{s}}$$ $$\text{actual < goal}$$ $$\text{I exaggerated :( }$$
+			</details>
+		</div>
+	</article>
+	<div class="listing-footer">
+		<ul class="listing listing-dark" id="footer">
+			<li>
+				<h2>Motion</h2>
+				<p>
+					<a href="../../motion/motion/index.html">Motion</a>
+					<br>
+					<a href="../../motion/kinematics/index.html">Kinematics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Force</h2>
+				<p>
+					<a href="../../force/laws/index.html">Newton's Laws</a>
+					<br>
+					<a href="../../force/forces/index.html">Forces</a>
+					<br>
+					<a href="../../force/friction/index.html">Friction</a>
+				</p>
+			</li>
+			<li>
+				<h2>Momentum</h2>
+				<p>
+					<a href="../../momentum/momentum/index.html">Momentum</a>
+					<br>
+					<a href="../../momentum/impulse/index.html">Impulse</a>
+				</p>
+			</li>
+			<li>
+				<h2>Energy</h2>
+				<p>
+					<a href="../../energy/energy/index.html">Energy</a>
+					<br>
+					<a href="../../energy/conservation/index.html">Conservation of Energy</a>
+					<br>
+					<a href="../../energy/thermo/index.html">Thermodynamics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Gravity</h2>
+				<p>
+					<a href="../../gravity/gravitation/index.html">Universal Gravitation</a>
+					<br>
+					<a href="../../gravity/circular/index.html">Orbits</a>
+				</p>
+			</li>
+			<li>
+				<h2>Electromagnetism</h2>
+				<p>
+					<a href="../../electromagnetism/charge/index.html">Electric Charge</a>
+					<br>
+					<a href="../../electromagnetism/electrostatics/index.html">Electrostatics</a>
+					<br>
+					<a href="../../electromagnetism/potential/index.html">Electric Potential</a>
+					<br>
+					<a href="../../electromagnetism/magnetism/index.html">Magnetism</a>
+				</p>
+			</li>
+			<li>
+				<h2>Circuits</h2>
+				<p>
+					<a href="../../circuits/electricity/index.html">Electricity</a>
+					<br>
+					<a href="../../circuits/power/index.html">Power</a>
+					<br>
+					<a href="../../circuits/kirchoff/index.html">Kirchhoff’s Laws</a>
+					<br>
+					<a href="../../circuits/components/index.html">Components</a>
+				</p>
+			</li>
+			<li>
+				<h2>Waves</h2>
+				<p>
+					<a href="../../waves/waves/index.html">Waves</a>
+					<br>
+					<a href="../../waves/waveproperties/index.html">Wave Properties</a>
+					<br>
+					<a href="../../waves/light/index.html">Light</a>
+					<br>
+					<a href="../../waves/photons/index.html">Photons</a>
+				</p>
+			</li>
+			<li>
+				<h2>Relativity</h2>
+				<p>
+					<a href="../../relativity/special/index.html">Special Relativity</a>
+					<br>
+					<a href="../../relativity/general/index.html">General Relativity</a>
+				</p>
+			</li>
+			<li>
+				<h2>Reference</h2>
+				<p>
+					<a href="../../review/units/index.html">Units</a>
+					<br>
+					<a href="../../review/vectors/index.html">Vectors & Scalars</a>
+					<br>
+					<a href="../../review/solving/index.html">Problem Solving</a>
+				</p>
+			</li>
+		</ul>
+	</div>
+		<script>
+			renderMathInElement(document.body);
+		</script>
+</body>
+
+</html>

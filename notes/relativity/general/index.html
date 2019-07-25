@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="theme-color" content="#222" />
+	<meta name="description" content="Interactive notes for algebra based physics.">
+	<meta name="author" content="Ross Landgreen">
+	<meta property="og:description" content="Interactive notes for algebra based physics.">
+	<meta property="og:title" content="Physics Notes">
+	<meta name="twitter:title" content="Physics Notes">
+	<meta name="twitter:description" content="Interactive notes for algebra based physics.">
+
+	<title>General Relativity</title>
+	<link rel='shortcut icon' href='../../../media/favicon.ico' type='image/x-icon' />
+
+	<link rel="stylesheet" type="text/css" href="../../../lib/katex/katex.min.css">
+	<script src="../../../lib/katex/katex.min.js"></script>
+	<script src="../../../lib/katex/contrib/auto-render.min.js"></script>
+
+	<script defer src='../../../lib/gravityClass.js'></script>
+	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/three.js/98/three.min.js'></script>
+	<script defer src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/464612/orbitcontrols.js'></script>
+	<script defer src="fabric.js "></script>
+
+	<link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+
+<body>
+	<header>
+		<h1>
+			<a href="../../../index.html">General Relativity</a>
+		</h1>
+
+	</header>
+	<article>
+
+		<p>
+			General relativity, published by Einstein in 1915, extended the scope of special relativity to acceleration, specifically gravitational acceleration.
+		</p>
+		<p>
+			The theory of general relativity proposed a unified description of gravity as a geometric property of space and time, or spacetime.
+			Energy curves spacetime. <a href="..\special\index.html#mass-energy">Mass</a> is a type of potential energy so it also curves spacetime.
+
+		</p>
+		<h3 class="definition">
+			Spacetime is <a href="https://www.youtube.com/watch?v=DdC0QN6f3G4">curved</a> by energy.
+			Gravitation occurs when a body tries to move in a straight line through curved spacetime.
+		</h3>
+		<div class="example-small" style="min-height: 498px;">
+			<style>
+				.full-page {
+					position: fixed;
+					top: -5px;
+					left: -5px;
+					z-index: 0;
+					margin: 0;
+					padding: 0;
+				}
+			</style>
+			<canvas id='three-fabric-load' width='600' height='400' onclick="fabric('three-fabric')"></canvas>
+			<canvas id='three-fabric' width='600' height='0'></canvas>
+			In the simulation above, gravitational potential energy is represented as warping a 2-D surface into a 3rd dimension.
+			This is similar to how our higher dimensional universe is curved in space and time.
+			<p>
+				As bodies travel through curved space they follow the shortest distance between two points, a straight line.
+				The pull of gravity is what a straight line through curved spacetime looks like.
+				Another example of a straight line through a curved space is the <a href="https://www.greatcirclemap.com/roadmap?routes=%20LAX-SIN%2C%20LAX-ATL%2C%20ATL-LON">great circle routes</a> around a sphere.
+			</p>
+		</div>
+		<p>
+			A full mathematical explanation of general relativity is beyond the scope of this page, but we will explore some of the predictions:
+			<li>
+				<strong> <a href="https://en.wikipedia.org/wiki/Gravitational_lens">Gravitational lensing:</a> </strong>
+				gravity bends the path of light
+			</li>
+			<li>
+				<strong> <a href="https://www.youtube.com/watch?v=4GbWfNHtHRg">Gravity</a> <a href="https://www.youtube.com/watch?v=YHS9g72npqA">waves:</a> </strong>
+				moving sources of gravity make
+				<a href="https://www.youtube.com/watch?v=dw7U3BYMs4U">waves</a> in spacetime
+			</li>
+			<li>
+				<strong> <a href="#time">Gravitational Time Dilation:</a> </strong>
+				gravity slows time
+			</li>
+			<li>
+				<strong> <a href="https://www.youtube.com/watch?v=e-P5IFTqB98">Black holes:</a> </strong>
+				a massive body with gravity so strong that light can't escape
+			</li>
+		</p>
+		<p>
+			The theory of general relativity suggests a significant change to fundamental aspects of physics, but there is overwhelming <a href="https://en.wikipedia.org/wiki/Tests_of_general_relativity">evidence</a> in its favor.
+		</p>
+		<!-- <p>
+			General relativity is currently the best description of gravity, but it doesn't include any quantum mechanical ideas, like wave particle duality.
+			This isn't normally a problem because each theory operates at different scales.
+			Quantum mechanics explains small and isolated bodies. General relativity explains very massive bodies.
+		</p>
+		<p>
+			Some extreme situations do require both.
+			For example, black holes are both very small and very massive.
+			Neither quantum mechanics or relativity alone can explain how they work.
+			We hope that one day theoretical physicists will develop a "Grand Unified Theory" that combines both theories.
+		</p> -->
+
+		<h2 class='underlined' id="time">Gravitational Time Dilation</h2>
+		<p> General relativity explains that gravity slows down time. </p>
+		<p> Time dilation from gravity is less complex than special relativity because both observers agree that time is slower deeper in a gravity well. </p>
+		<div class="definition">
+			<h3>$$ \Delta t_0 = \Delta t_f \sqrt{1 - \left( \frac{2GM}{rc^2} \right) } $$ </h3>
+			\(\Delta t_0\) = slow-ticking time for an observer inside the gravitational field at distance r from the center of the mass
+			<br>\(\Delta t_f\) = fast-ticking time for an observer outside the influence of the gravitational field
+			<br>\(G\) = 6.67408 × 10<sup>-11</sup> = universal gravitation constant [N m²/kg²]
+			<br>\(M\) = mass of gravity well [kg, kilograms]
+			<br>\(r\) = distance to the center of the mass [m, meters]
+			<br>\(c\) = speed of light, 3 × 10⁸ [m/s]
+		</div>
+		<p>
+			Didn't we learn that mass is a type of energy. Why does the time dilation not have an energy component?
+			It technically should include energy, but most of the energy in stars and planets is in the form of mass.
+			The contribution from other energy types is generally too small to be significant.
+		</p>
+
+		<div class='example'>
+			<strong>Example:</strong> If one second passes outside the influence of the star's gravity, how much time passes on the surface of the star? Let's use the mass and radius of a super dense neutron star, like <a href="https://en.wikipedia.org/wiki/PSR_J0348%2B0432">PSR J0348+0432</a>.
+			<br>
+			<span class='center'>\( M = 4.02 \times 10^{30} \, \mathrm{ kg} \quad \quad r = 13 \, \mathrm{km}\)</span>
+			<details>
+				<summary>solution</summary>
+				$$ \Delta t_0 = \Delta t_f \sqrt{1 - \left( \frac{2GM}{rc^2} \right) } $$
+				$$ \Delta t_0 = 1 \sqrt{1 - \left( \frac{2(6.674 \times 10^{-11})(4.02\times 10^{30})}{(13000)(3 \times 10^8)^2} \right) } $$
+				$$ \Delta t_0 = 1 \sqrt{1 - 0.4586 } $$
+				$$ \Delta t_0 = 0.7358 \, \mathrm{s} $$
+			</details>
+		</div>
+
+		<div class='example'>
+			<strong>Example:</strong> If 10 seconds pass on the surface of the sun, how much time passes far from the sun's gravity?
+			<details>
+				<summary>Local Massive Objects Data Table</summary>
+				<style>
+					th {
+						background: #fff;
+						border: 0px solid #000;
+						color: #000;
+					}
+
+					.black {
+						background-color: #000;
+						border: 0px solid #000;
+						padding: 7px;
+					}
+
+					.planet {
+						margin: auto;
+						border-radius: 50%;
+					}
+
+					.sun {
+						width: 90px;
+						height: 90px;
+						background-color: #fff;
+						top: -25px;
+						left: -20px;
+						position: relative;
+					}
+
+					.sun-div {
+						/* margin: 0px; */
+						width: 50px;
+						height: 50px;
+					}
+
+					.mercury {
+						width: 6px;
+						height: 6px;
+						background-color: rgb(199, 195, 192);
+					}
+
+					.venus {
+						width: 11px;
+						height: 11px;
+						background-color: rgb(216, 209, 203);
+					}
+
+					.earth {
+						width: 11.5px;
+						height: 11.5px;
+						background-color: rgb(130, 137, 179);
+					}
+
+					.moon {
+						width: 4px;
+						height: 4px;
+						background-color: rgb(159, 155, 152);
+					}
+
+					.mars {
+						width: 8px;
+						height: 8px;
+						background-color: rgb(207, 187, 137);
+					}
+
+					.jupiter {
+						width: 35px;
+						height: 35px;
+						background-color: rgb(238, 236, 188);
+					}
+
+					.saturn {
+						width: 30px;
+						height: 30px;
+						background-color: rgb(223, 229, 181);
+					}
+
+					.uranus {
+						width: 18px;
+						height: 18px;
+						background-color: rgb(173, 200, 211);
+					}
+
+					.neptune {
+						width: 17px;
+						height: 17px;
+						background-color: rgb(160, 183, 214);
+					}
+
+					.saturn-ring {
+						border-radius: 50%;
+						width: 44px;
+						height: 44px;
+						position: relative;
+						top: -7px;
+						left: -7px;
+						border: 4px solid rgba(216, 218, 169, 0.7);
+					}
+
+					.uranus-ring {
+						border-radius: 50%;
+						width: 28px;
+						height: 28px;
+						position: relative;
+						top: -5px;
+						left: -5px;
+						border: 1px solid rgba(255, 255, 230, 0.2);
+					}
+				</style>
+				<table>
+					<tr>
+						<th class="black"></th>
+						<th>Planet</th>
+						<th>mass (kg)</th>
+						<th>radius (km)</th>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Sun">
+								<div class="planet sun-div">
+									<div class="planet sun"></div>
+								</div>
+							</a>
+						</td>
+						<td>Sun</td>
+						<td>2.00 × 10<sup>30</sup>
+						</td>
+						<td>695&#8239;700</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Mercury_(planet)">
+								<div class="planet mercury"></div>
+							</a>
+						</td>
+						<td>Mercury</td>
+						<td>3.301 × 10<sup>23</sup>
+						</td>
+						<td>2440</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Venus">
+								<div class="planet venus"></div>
+							</a>
+						</td>
+						<td>Venus</td>
+						<td>4.867 × 10<sup>24</sup>
+						</td>
+						<td>6052</td>
+					</tr>
+					<tr>
+
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Earth">
+								<div class="planet earth"></div>
+							</a>
+							</a>
+						</td>
+						<td>Earth</td>
+						<td>5.972 × 10<sup>24</sup>
+						</td>
+						<td>6371</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Moon">
+								<div class="planet moon"></div>
+							</a>
+						</td>
+						<td>Moon</td>
+						<td>7.346 × 10<sup>22</sup>
+						</td>
+						<td>1737</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Mars">
+								<div class="planet mars"></div>
+							</a>
+						</td>
+						<td>Mars</td>
+						<td>6.417 × 10<sup>23</sup>
+						</td>
+						<td>3390</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Jupiter">
+								<div class="planet jupiter"></div>
+							</a>
+						</td>
+						<td>Jupiter</td>
+						<td>1.899 × 10<sup>27</sup>
+						</td>
+						<td>70&#8239;000</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Saturn">
+								<div class="planet saturn">
+									<div class="saturn-ring"></div>
+								</div>
+							</a>
+						</td>
+						<td>Saturn</td>
+						<td>5.685 × 10<sup>26</sup>
+						</td>
+						<td>58&#8239;232</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Uranus">
+								<div class="planet uranus">
+									<div class="uranus-ring"></div>
+								</div>
+							</a>
+						</td>
+						<td>Uranus</td>
+						<td>8.68 × 10<sup>25</sup>
+						</td>
+						<td>25&#8239;362</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Neptune">
+								<div class="planet neptune"></div>
+							</a>
+						</td>
+						<td>Neptune</td>
+						<td>1.024 × 10<sup>26</sup>
+						</td>
+						<td>24&#8239;622</td>
+					</tr>
+				</table>
+			</details>
+			<details>
+				<summary>solution</summary>
+				$$ \Delta t_0 = \Delta t_f \sqrt{1 - \left( \frac{2GM}{rc^2} \right) } $$
+				$$ 10 = \Delta t_f \sqrt{1 - \left( \frac{2(6.67408 \times 10^{-11})(2\times 10^{30})}{(6.957 \times 10^{8})(3 \times 10^8)^2} \right) } $$
+				$$ 10 = \Delta t_f \sqrt{1 - 4.2637 \times 10^{-6}} $$
+				$$ 10 = \Delta t_f (0.999997868) $$
+				$$ \Delta t = 10.00002132 \, \mathrm{ s} $$
+			</details>
+		</div>
+
+		<div class='example'>
+			<strong>Example:</strong> How much does the passage of time slow due to Earth's gravitational field. If year passes on Earth, how much time will pass far from Earth's gravity?
+			<details>
+				<summary>Local Massive Objects Data Table</summary>
+				<table>
+					<tr>
+						<th class="black"></th>
+						<th>Planet</th>
+						<th>mass (kg)</th>
+						<th>radius (km)</th>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Sun">
+								<div class="planet sun-div">
+									<div class="planet sun"></div>
+								</div>
+							</a>
+						</td>
+						<td>Sun</td>
+						<td>2.00 × 10<sup>30</sup>
+						</td>
+						<td>695&#8239;700</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Mercury_(planet)">
+								<div class="planet mercury"></div>
+							</a>
+						</td>
+						<td>Mercury</td>
+						<td>3.301 × 10<sup>23</sup>
+						</td>
+						<td>2440</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Venus">
+								<div class="planet venus"></div>
+							</a>
+						</td>
+						<td>Venus</td>
+						<td>4.867 × 10<sup>24</sup>
+						</td>
+						<td>6052</td>
+					</tr>
+					<tr>
+
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Earth">
+								<div class="planet earth"></div>
+							</a>
+							</a>
+						</td>
+						<td>Earth</td>
+						<td>5.972 × 10<sup>24</sup>
+						</td>
+						<td>6371</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Moon">
+								<div class="planet moon"></div>
+							</a>
+						</td>
+						<td>Moon</td>
+						<td>7.346 × 10<sup>22</sup>
+						</td>
+						<td>1737</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Mars">
+								<div class="planet mars"></div>
+							</a>
+						</td>
+						<td>Mars</td>
+						<td>6.417 × 10<sup>23</sup>
+						</td>
+						<td>3390</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Jupiter">
+								<div class="planet jupiter"></div>
+							</a>
+						</td>
+						<td>Jupiter</td>
+						<td>1.899 × 10<sup>27</sup>
+						</td>
+						<td>70&#8239;000</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Saturn">
+								<div class="planet saturn">
+									<div class="saturn-ring"></div>
+								</div>
+							</a>
+						</td>
+						<td>Saturn</td>
+						<td>5.685 × 10<sup>26</sup>
+						</td>
+						<td>58&#8239;232</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Uranus">
+								<div class="planet uranus">
+									<div class="uranus-ring"></div>
+								</div>
+							</a>
+						</td>
+						<td>Uranus</td>
+						<td>8.68 × 10<sup>25</sup>
+						</td>
+						<td>25&#8239;362</td>
+					</tr>
+					<tr>
+						<td class="black">
+							<a href="https://en.wikipedia.org/wiki/Neptune">
+								<div class="planet neptune"></div>
+							</a>
+						</td>
+						<td>Neptune</td>
+						<td>1.024 × 10<sup>26</sup>
+						</td>
+						<td>24&#8239;622</td>
+					</tr>
+				</table>
+			</details>
+			<details>
+				<summary>solution</summary>
+				$$ \Delta t_0 = \Delta t_f \sqrt{1 - \left( \frac{2GM}{rc^2} \right) } $$
+				$$ 1 = \Delta t_f \sqrt{1 - \left( \frac{2(6.67408 \times 10^{-11})(5.972 \times 10^{24})}{(6.371 \times 10^6)(3 \times 10^8)^2} \right) } $$
+				$$ 1 = \Delta t_f \sqrt{1 - \left( 1.39 \times 10 ^{-9} \right) } $$
+				$$ 1 = \Delta t_f (0.999999999 \dots ) $$
+				<p>The time dilation effect is too low for my calculator to display the result. To see the effect I subtracted one from the result in the calculator.</p>
+				$$\Delta t_f - \Delta t = 6.951 \times 10^{-10} \, \mathrm{year}$$
+				<p>The number above represents the difference between a year in Earth and time far from Earth's gravity.</p>
+				$$\Delta t_f - \Delta t = 21.923 \, \mathrm{ms}$$
+			</details>
+		</div>
+
+		<h2 class='underlined'>Black Holes</h2>
+		<p>
+			Extremely dense masses can push the gravitational time dilation equation to the point of breaking when you have to take the square root of a negative number. We can find where the equation breaks down by solving for the radius where the time dilation approaches zero.
+		</p>
+		<p>
+			This radius is called the Schwarzschild radius, or the <strong>event horizon</strong>.
+		</p>
+		<details class='derive'>
+			<summary>derivation of event horizon</summary>
+			$$ \Delta t_0 = \Delta t_f \sqrt{1 - \left( \frac{2GM}{rc^2} \right) } $$
+			$$\text{undefined for square roots at or below zero} $$
+			$$\sqrt{1 - \left( \frac{2GM}{rc^2} \right) } = 0 $$
+			$$1 - \left( \frac{2GM}{rc^2} \right) = 0 $$
+			$$1 = \frac{2GM}{rc^2} $$
+			$$r = \frac{2GM}{c^2} $$
+		</details>
+
+		<div class="definition">
+			<h1>$$r = \frac{2GM}{c^2} $$ </h1>
+			<br>\(G\) = 6.67408 × 10<sup>-11</sup> = universal gravitation constant [N m²/kg²]
+			<br>\(M\) = mass of black hole [kg, kilograms]
+			<br>\(r\) = radius of event horizon [m, meters]
+			<br>\(c\) = speed of light, 3 × 10⁸ [m/s]
+			<p>The behavior of spacetime at distances below r is undefined.</p>
+		</div>
+		<p>
+			Objects that achieve the high density needed to reach this point are called <strong>black holes</strong>. We can only speculate how black holes might behave, but the time dilation equation suggests very extreme outcomes. At the event horizon time stops. Objects fall into black holes and never get out, frozen in time.
+		</p>
+		<p>
+			<a href="http://rantonels.github.io/starless/">Black holes</a> are a possible outcome at the end of the <a href="https://en.wikipedia.org/wiki/Stellar_evolution">life</a> of a very massive star. Stars convert mass to energy from nuclear fusion. This energy balances the force of gravity and prevents stars from becoming black holes. When stars runs out of nuclear fuel, gravity will dominate and a black hole may form.
+		</p>
+		<p>
+			At the center of most galaxies there is a <a href="https://www.youtube.com/watch?v=S_GVbuddri8">super massive black hole</a>. Even our galaxy, the Milky Way, has <a href="https://www.youtube.com/watch?v=TF8THY5spmo">one</a> with a mass of 4 million suns.</p>
+		<p>
+			An accurate model of black holes probably needs a unified theory of physics that combines general relativity with quantum mechanics. A grand unified theory of physics doesn't exist yet, but many physicists are actively looking for one.
+		</p>
+
+		<div class='example'>
+			<strong>Example:</strong> Black holes are rare and sometimes hard to see because they trap light. A possible candidate is <a href="https://en.wikipedia.org/wiki/XTE_J1118%2B480">XTE J1118+480</a>. It has a mass of 6 solar masses. How large is its event horizon?
+			<br>
+			<span class='center'>\( M _{\bigodot} = M_{sun} = 2 \times 10^{30} \, \mathrm{ kg}\)</span>
+			<details>
+				<summary>solution</summary>
+				$$M = 6 \ M _{\bigodot} $$
+				$$M = 6 (2 \times 10^{30} \, \mathrm{kg}) $$
+				$$M = 12 \times 10^{30} \, \mathrm{kg} $$
+				<br> $$r = \frac{2GM}{c^2} $$
+				$$r = \frac{2 (6.67 \times 10^{-11}) (12 \times 10^{30})}{(3 \times 10^8) ^2} $$
+				$$r = 17\,786.6 \, \mathrm{m} $$
+			</details>
+		</div>
+
+		<div class='example'>
+			<strong>Example:</strong> At the center of most massive galaxies exists a supermassive black hole. Our galaxy, The Milky Way, has one with the mass of
+			<a href="https://en.wikipedia.org/wiki/Galactic_Center#Supermassive_black_hole">4.3 million solar masses</a>. Find the radius of its event horizon.
+			<details>
+				<summary>solution</summary>
+				$$M = (4.3 \times 10^{6}) \ M _{\bigodot} $$
+				$$M = (4.3 \times 10^{6}) (2 \times 10^{30} \, \mathrm{kg}) $$
+				$$M = 8.6 \times 10^{36} \, \mathrm{kg} $$
+				<br> $$r = \frac{2GM}{c^2} $$
+				$$r = \frac{2 (6.67 \times 10^{-11}) (8.6 \times 10^{36})}{(3 \times 10^8) ^2} $$
+				$$r = 1.27 \times 10^{10} \, \mathrm{m} $$
+				<br>$$\text{radius of the sun = } 6.95 \times 10^{9} \, \mathrm{m} $$
+			</details>
+		</div>
+
+	</article>
+	<div class="listing-footer">
+		<ul class="listing listing-dark" id="footer">
+			<li>
+				<h2>Motion</h2>
+				<p>
+					<a href="../../motion/motion/index.html">Motion</a>
+					<br>
+					<a href="../../motion/kinematics/index.html">Kinematics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Force</h2>
+				<p>
+					<a href="../../force/laws/index.html">Newton's Laws</a>
+					<br>
+					<a href="../../force/forces/index.html">Forces</a>
+					<br>
+					<a href="../../force/friction/index.html">Friction</a>
+				</p>
+			</li>
+			<li>
+				<h2>Momentum</h2>
+				<p>
+					<a href="../../momentum/momentum/index.html">Momentum</a>
+					<br>
+					<a href="../../momentum/impulse/index.html">Impulse</a>
+				</p>
+			</li>
+			<li>
+				<h2>Energy</h2>
+				<p>
+					<a href="../../energy/energy/index.html">Energy</a>
+					<br>
+					<a href="../../energy/conservation/index.html">Conservation of Energy</a>
+					<br>
+					<a href="../../energy/thermo/index.html">Thermodynamics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Gravity</h2>
+				<p>
+					<a href="../../gravity/gravitation/index.html">Universal Gravitation</a>
+					<br>
+					<a href="../../gravity/circular/index.html">Orbits</a>
+				</p>
+			</li>
+			<li>
+				<h2>Electromagnetism</h2>
+				<p>
+					<a href="../../electromagnetism/charge/index.html">Electric Charge</a>
+					<br>
+					<a href="../../electromagnetism/electrostatics/index.html">Electrostatics</a>
+					<br>
+					<a href="../../electromagnetism/potential/index.html">Electric Potential</a>
+					<br>
+					<a href="../../electromagnetism/magnetism/index.html">Magnetism</a>
+				</p>
+			</li>
+			<li>
+				<h2>Circuits</h2>
+				<p>
+					<a href="../../circuits/electricity/index.html">Electricity</a>
+					<br>
+					<a href="../../circuits/power/index.html">Power</a>
+					<br>
+					<a href="../../circuits/kirchoff/index.html">Kirchhoff’s Laws</a>
+					<br>
+					<a href="../../circuits/components/index.html">Components</a>
+				</p>
+			</li>
+			<li>
+				<h2>Waves</h2>
+				<p>
+					<a href="../../waves/waves/index.html">Waves</a>
+					<br>
+					<a href="../../waves/waveproperties/index.html">Wave Properties</a>
+					<br>
+					<a href="../../waves/light/index.html">Light</a>
+					<br>
+					<a href="../../waves/photons/index.html">Photons</a>
+				</p>
+			</li>
+			<li>
+				<h2>Relativity</h2>
+				<p>
+					<a href="../../relativity/special/index.html">Special Relativity</a>
+					<br>
+					<a href="../../relativity/general/index.html">General Relativity</a>
+				</p>
+			</li>
+			<li>
+				<h2>Reference</h2>
+				<p>
+					<a href="../../review/units/index.html">Units</a>
+					<br>
+					<a href="../../review/vectors/index.html">Vectors & Scalars</a>
+					<br>
+					<a href="../../review/solving/index.html">Problem Solving</a>
+				</p>
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		renderMathInElement(document.body);
+	</script>
+</body>
+
+</html>

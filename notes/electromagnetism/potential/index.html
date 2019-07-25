@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="theme-color" content="#222" />
+	<meta name="description" content="Interactive notes for algebra based physics.">
+	<meta name="author" content="Ross Landgreen">
+	<meta property="og:description" content="Interactive notes for algebra based physics.">
+	<meta property="og:title" content="Physics Notes">
+	<meta name="twitter:title" content="High School Physics Notes">
+	<meta name="twitter:description" content="Interactive notes for algebra based physics.">
+
+	<title>Electric Potential</title>
+	<link rel='shortcut icon' href='../../../media/favicon.ico' type='image/x-icon' />
+
+	<link rel="stylesheet" type="text/css" href="../../../lib/katex/katex.min.css">
+	<script src="../../../lib/katex/katex.min.js"></script>
+	<script src="../../../lib/katex/contrib/auto-render.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+
+<body>
+	<header>
+		<h1> <a href="../../../index.html">Electric Potential Energy</a> </h1>
+	</header>
+	<article>
+		<!-- <h2 class='underlined'>Electrostatic Potential Energy</h2> -->
+		<p>
+			Electrostatic potential energy has a similar form to <a href='../../gravity/gravitation/index.html#gpe'>gravitational potential energy</a>.
+			It is Coulomb's law, but the radius is not squared.
+		</p>
+		<div class='definition'>
+			<p>You can think of the electrostatic energy as the work to move two charges to a distance, r, from each other.</p>
+			<svg viewBox="0 0 400 110">
+				<defs>
+					<linearGradient id="hor_shadow" x1="0" x2="1" y1="0" y2="0">
+						<stop offset="0%" stop-color="#000" stop-opacity="1" />
+						<stop offset="100%" stop-color="#000" stop-opacity="0" />
+					</linearGradient>
+				</defs>
+				<g transform='translate(23,50)'>
+					<circle cx="0" cy="0" r="20" fill='#fff' stroke-width="2" stroke="#222" />
+					<text x="-2" y="-2" fill="black" text-anchor="middle" dominant-baseline="central" font-size="20px">q</text>
+					<text x="5" y="10" font-size="10px">1</text>
+				</g>
+				<g transform='translate(123,50)'>
+					<circle cx="0" cy="0" r="20" fill='#fff' stroke-width="2" stroke="#222" />
+					<text x="-2" y="-2" fill="black" text-anchor="middle" dominant-baseline="central" font-size="20px">q</text>
+					<text x="5" y="10" font-size="10px">2</text>
+				</g>
+				<g transform='translate(375,50)' opacity='0.5'>
+					<circle cx="0" cy="0" r="20" fill='transparent' stroke-width="2" stroke="#222" stroke-dasharray="5, 5.5" />
+					<text x="-2" y="-2" fill="black" text-anchor="middle" dominant-baseline="central" font-size="20px">q</text>
+					<text x="5" y="10" font-size="10px">2</text>
+				</g>
+				<g transform='translate(23,85)'>
+					<line x1="0" y1="0" x2="100" y2="0" style="stroke:#000;stroke-width:2" />
+					<line x1="0" y1="-5" x2="0" y2="5" style="stroke:#000;stroke-width:2" />
+					<line x1="100" y1="-5" x2="100" y2="5" style="stroke:#000;stroke-width:2" />
+					<text x="50" y="20" fill="black" text-anchor="middle" font-size="20px">r</text>
+					<rect x="100" y="-1" width="300" height="2" fill='url(#hor_shadow)' />
+					<text x="350" y="20" fill="black" text-anchor="middle" font-size="25px" opacity='0.3'>∞</text>
+				</g>
+			</svg>
+			<h2>$$ U_{e} = \frac{k_{e}q_{1}q_{2}}{r} $$</h2>
+			<p>\(U_e\) = electrostatic potential energy [J, Joules, kg m²/s²]
+				<br>\(k_e\) = 8.987 × 10<sup>9</sup> = Coulomb's constant [N m²/C²]
+				<br>\(q\) = charge [C, Coulomb]
+				<br>\(r\) = distance between the center of each charge [m, meters]
+				<p>Only valid for stationary point charges.</p>
+		</div>
+
+		<p>Like all energy, electrostatic potential energy is a scalar, but it can go negative.</p>
+		<div class='example'>
+			<strong>Question:</strong> How far apart do you need to bring two charges for there to be zero electric potential energy between them?
+			<details>
+				<summary>answer</summary>
+				<p>When the distance increases the energy decreases. As the distance approaches infinity the energy approaches zero.</p>
+			</details>
+		</div>
+		<div class='example'>
+			<svg viewBox="90 0 600 200">
+				<g transform="translate(180 190) scale(0.014 -0.014)" fill="#bfe" stroke="#000" stroke-width="120">
+					<path d="M4430 12789 c-921 -59 -1769 -370 -2480 -908 -1067 -807 -1758 -2084
+								-1914 -3536 -69 -641 -34 -1378 100 -2105 192 -1039 624 -2084 1222 -2955 536
+								-781 1225 -1439 1919 -1834 140 -79 424 -214 558 -264 215 -80 439 -136 648
+								-162 60 -7 111 -16 115 -19 8 -9 -15 -237 -34 -326 -35 -167 -134 -411 -198
+								-487 -33 -40 -33 -73 2 -105 59 -57 173 -82 372 -83 213 0 331 25 393 83 36
+								34 34 62 -7 116 -114 150 -225 522 -226 758 0 54 -15 47 150 68 889 116 1919
+								814 2751 1865 480 607 892 1332 1182 2085 466 1210 624 2521 441 3659 -214
+								1337 -881 2491 -1874 3242 -876 663 -1971 982 -3120 908z" />
+				</g>
+				<rect x="320" y="2" width="246" height="194" fill="#fff" stroke-width="2" stroke="#000" />
+				<path d="M318 196 h 250" fill="none" stroke-width="4.5" stroke="#000" stroke-linecap="round" />
+				<path d="M520 187.5 h 25 v6 h -25 v-1.5 l-5 1 v-5 l5 1" fill="#000" stroke="none" stroke-linecap="round" stroke-linejoin="round" />
+				<g fill="none" stroke="#000" stroke-width="2">
+					<path d="M294 80 h 10" />
+					<path d="M284 90 h 10" />
+					<path d="M294 102 h 10" />
+					<path d="M279 110 h 10" />
+					<path d="M292 116 h 10" />
+					<path d="M341 80 h 10 m -5 -5 v 10" />
+					<path d="M326 90 h 10 m -5 -5 v 10" />
+					<path d="M330 104 h 10 m -5 -5 v 10" />
+					<path d="M345 110 h 10 m -5 -5 v 10" />
+					<path d="M328 120 h 10 m -5 -5 v 10" />
+				</g>
+			</svg>
+			<strong>Example:</strong> You rub a balloon on a dry erase board and pull -200 nC off the board onto the balloon. How much energy does it take to pull the balloon horizontally off a dry erase board if the centers of the charges are 5 mm apart?
+			<details>
+				<summary>solution</summary>
+				$$\text{n = nano} = 10^{-9} \quad \quad \text{m = milli} = 10^{-3}$$ $$ U_{e} = \frac{k_{e}q_{1}q_{2}}{r} $$
+				$$ U_{e} = \frac{(8.987 \times 10^{9}) (200 \times 10^{-9})(-200 \times 10^{-9})}{5 \times 10^{-3}} $$
+				$$ U_{e} = -0.0719 \, \mathrm{J}$$
+				<p>The system has -0.0719J of energy. To separate the objects we will have to cancel out that energy, so it will take <strong>0.0719J</strong>.</p>
+			</details>
+		</div>
+		<div class='example'>
+			<strong>Example:</strong> You use 200 J of energy to move a +1 mC charge towards another +1 mC charge. How close are they when you run out of energy?
+			<details>
+				<summary>solution</summary>
+				$$ U_{e} = \frac{k_{e}q_{1}q_{2}}{r} $$ $$ r = \frac{k_{e}q_{1}q_{2}}{U_{e}} $$ $$ r = \frac{(8.987 \times 10^{9})(1 \times 10^{-3})(1 \times 10^{-3})}{200} $$
+				$$ r = \frac{8.987 \times 10^{3}}{200} $$
+				$$ r = 44.935 \, \mathrm{m} $$
+			</details>
+		</div>
+		<div class='example'>
+			<strong>Example:</strong> Which will take more work/energy?
+			<br>Moving two 1 C charges from 4 meters to 2 meters apart?
+			<br>Moving a 1 C and a -1 C charge from 5 meters to 100 meters apart?
+			<details>
+				<summary>solution</summary>
+				$$ U_{e} = \frac{k_{e}q_{1}q_{2}}{r} $$
+				<br> $$ \Delta U_{e} = \text{final - initial} $$
+				$$ \Delta U_{e} = \frac{k_{e}(1)(1)}{2} - \frac{k_{e}(1)(1)}{4} $$
+				$$ \Delta U_{e} = 0.5k_{e} - 0.25k_{e} $$
+				$$ \Delta U_{e} = 0.25k_{e} $$
+				<br> $$ \Delta U_{e} = \text{final - initial} $$
+				$$ \Delta U_{e} = \frac{k_{e}(1)(-1)}{100} - \frac{k_{e}(1)(-1)}{5} $$ $$
+				\Delta U_{e} = -0.01k_{e} + 0.20k_{e} $$
+				$$ \Delta U_{e} = 0.19k_{e}$$
+				<br> $$\text{4 m to 2 m takes slightly more energy}$$
+			</details>
+		</div>
+		<div class='example'>
+			<!-- <h2 class='underlined'>Chemistry and Coulomb's Law</h2> -->
+			<p>
+				Chemistry is most accurately described by quantum mechanics, but chemical <a href="http://www.testtubegames.com/bondbreaker.html">bonds</a> and chemical reactions can be loosely explained with electrostatic potential energy. Let's see how far classical physics will take us.
+			</p>
+			<div class="col-group center">
+				<div>
+					<svg class="center" width="110" height="110">
+						<g transform='translate(55,55)'>
+							<circle cx="0" cy="0" r="50" fill='#fff' stroke-width="2" stroke="#222" />
+							<text x="0" y="0" fill="black" text-anchor="middle" dominant-baseline="central" font-size="25px">Na</text>
+						</g>
+					</svg>
+					<p>
+						<strong>Na: Sodium</strong>
+						<br>1 valence electron
+						<br>mass = 3.8 × 10<sup>-26</sup> kg
+						<br>ionic radius = 227 × 10<sup>-12</sup> m</p>
+				</div>
+				<div>
+					<svg class="center" width="110" height="110">
+						<g transform='translate(55,55)'>
+							<circle cx="0" cy="0" r="35" fill='#fff' stroke-width="2" stroke="#222" />
+							<text x="0" y="0" fill="black" text-anchor="middle" dominant-baseline="central" font-size="25px">Cl</text>
+						</g>
+					</svg>
+					<p>
+						<strong>Cl: Chlorine</strong>
+						<br>7 valence electrons
+						<br>mass = 5.9 × 10<sup>-26</sup> kg
+						<br>ionic radius = 175 × 10<sup>-12</sup> m</p>
+				</div>
+			</div>
+			<strong>Example</strong>: Calculate what Coulomb's law predicts for the energy holding together an atom of sodium and chlorine, NaCl.
+			<details>
+				<summary>strategy</summary>
+				<svg class="center" width="210" height="105">
+					<g transform='translate(105,52)'>
+						<circle cx="-50" cy="0" r="50" fill='#f8a					' stroke-width="2" stroke="#222" />
+						<text x="-55" y="0" fill="black" text-anchor="middle" dominant-baseline="central" font-size="25px">Na</text>
+						<text x="-30" y="-5" fill="black" text-anchor="middle" dominant-baseline="central" font-size="15px">+1</text>
+						<circle cx="35" cy="0" r="35" fill='#abc' stroke-width="2" stroke="#222" />
+						<text x="35" y="0" fill="black" text-anchor="middle" dominant-baseline="central" font-size="25px">Cl</text>
+						<text x="55" y="-5" fill="black" text-anchor="middle" dominant-baseline="central" font-size="15px">-1</text>
+					</g>
+				</svg>
+				<p>In nonionic atoms the numbers of electrons and protons are equal so the electrostatic forces are balanced to zero. When NaCl ionically bond one electron leaves Na and joins Cl. Na gains a +1 charge and Cl gains a -1 charge. The unbalanced charges produce an attractive force.</p>
+			</details>
+			<details>
+				<summary>solution</summary>
+				$$ U_{e} = \frac{k_{e}q_{1}q_{2}}{r} $$
+				$$ U_{e} = \frac{(8.987 \times 10^{9})(1.602 \times 10^{-19})(-1.602 \times 10^{-19})}{402 \times 10^{-12}} $$
+				$$ U_{e} = -5.737 \times 10^{-19} \, \mathrm{J}$$
+				<p>Our answer is negative because it would take added positive energy to get the ions to separate.</p>
+				<p> The measured NaCl dissociation energy is slightly higher at -6.82 × 10<sup>-19</sup> J. Coulomb's law isn't perfect, but it is a close approximation.</p>
+		</div>
+
+
+		<div class='example'>
+			<strong>Example:</strong> Two protons are fired at each other. Both protons have a velocity of 1&nbsp;m/s, but in opposite directions. What is the minimum distance the protons could reach before they stop?
+			(mass of a proton = 1.6726219 × 10<sup>-27</sup> kg)
+			<details>
+				<summary>strategy</summary>
+				<p>
+					We can use conservation of energy. The sum of both kinetic energies is equal to the electric potential energy. We can then solve for the radius in the potential energy.
+				</p>
+			</details>
+			<details>
+				<summary>solution</summary>
+				$$E_i = E_f $$
+				$$K_1 + K_2 = U_e$$
+				$$\tfrac{1}{2}mv^2 + \tfrac{1}{2}mv^2 = \frac{k_{e}q_{1}q_{2}}{r}$$
+				$$mv^2 = \frac{k_{e} q^2}{r}$$
+				$$r = \frac{k_{e} q^2}{mv^2}$$
+				$$r = \frac{(8.987 \times 10^{9})(1.602 \times 10^{-19})^2}{(1.67 \times 10^{-27})(1)^2}$$
+				$$r = 0.138 \, \mathrm{m}$$
+			</details>
+		</div>
+
+		<div class='example'>
+			<strong>Example:</strong> How close could the protons from the previous example get if they were both moving at 800&nbsp;000 m/s towards each other?
+			<details>
+				<summary>solution</summary>
+				$$r = \frac{k_{e} q^2}{mv^2}$$
+				$$r = \frac{(8.987 \times 10^{9})(1.602 \times 10^{-19})^2}{(1.67 \times 10^{-27})(800\,000)^2}$$
+				$$r = 2.158 \times 10 ^{-11} \, \mathrm{m}$$
+			</details>
+		</div>
+
+		<h2 class='underlined' id="potential">Electric Potential</h2>
+		<p>Electric potential is mathematically similar to electric fields. Electric fields are the force per unit charge, and electric potential is the energy per unit charge.</p>
+		$$ V = \frac{U_e}{q}$$
+		<div class='definition'>
+			<p>
+				You can think of electric potential as the energy needed to bring a +1C test charge from very far away to a distance, r, from the other charge.
+			</p>
+			<svg viewBox="0 0 400 110">
+				<defs>
+					<linearGradient id="hor_shadow" x1="0" x2="1" y1="0" y2="0">
+						<stop offset="0%" stop-color="#000" stop-opacity="1" />
+						<stop offset="100%" stop-color="#000" stop-opacity="0" />
+					</linearGradient>
+				</defs>
+				<g transform='translate(23,50)'>
+					<circle cx="0" cy="0" r="20" fill='#fff' stroke-width="2" stroke="#222" />
+					<text x="0" y="-2" fill="black" text-anchor="middle" dominant-baseline="central" font-size="20px">q</text>
+				</g>
+				<g transform='translate(123,50)'>
+					<circle cx="0" cy="0" r="3" fill='#000' stroke-width="2" stroke="transparent" />
+					<text x="0" y="-20" fill="#888" text-anchor="middle" dominant-baseline="central" font-size="16px">+1C</text>
+				</g>
+				<g transform='translate(375,50)' opacity='0.3'>
+					<circle cx="0" cy="0" r="3" fill='#000' stroke-width="2" stroke="transparent" />
+					<text x="0" y="-20" fill="#888" text-anchor="middle" dominant-baseline="central" font-size="16px">+1C</text>
+				</g>
+				<g transform='translate(23,85)'>
+					<line x1="0" y1="0" x2="100" y2="0" style="stroke:#000;stroke-width:2" />
+					<line x1="0" y1="-5" x2="0" y2="5" style="stroke:#000;stroke-width:2" />
+					<line x1="100" y1="-5" x2="100" y2="5" style="stroke:#000;stroke-width:2" />
+					<text x="50" y="20" fill="black" text-anchor="middle" font-size="20px">r</text>
+					<rect x="100" y="-1" width="300" height="2" fill='url(#hor_shadow)' />
+					<text x="350" y="20" fill="black" text-anchor="middle" font-size="25px" opacity='0.3'>∞</text>
+				</g>
+			</svg>
+			<h2>$$V = \frac{k_{e}q}{r} $$</h2>
+			<p>\(V\) = electric potential [V, volts, J/C]
+				<br>\(k_e\) = 8.987 × 10<sup>9</sup> = Coulomb's constant [N m²/C²]
+				<br>\(q\) = charge [C, Coulomb]
+				<br>\(r\) = distance between the center of each charge [m, meters]
+		</div>
+		<p>Electric potential has units of volts, a unit that shows up again when dealing with electric circuits.</p>
+
+		<div class="example-small" id="three-potential-example">
+			<style>
+				.full-page {
+					position: fixed;
+					top: -5px;
+					left: -5px;
+					z-index: 0;
+					margin: 0;
+					padding: 0;
+				}
+			</style>
+			Use the mouse to move the camera. Double click for full screen.
+			<br>charges ≈ <input id="three-spawn" type="range" min="1" max="125" value="25" step="1" style="width: 200px;">
+			<select id="three-preset" style="float: right;">
+				<option value="square">square</option>
+				<option value="hexagon">hexagon</option>
+				<option value="random">random</option>
+				<option value="clear">clear</option>
+			</select>
+			<canvas id='three-potential-1-load' width='600' height='400' onclick="potential1('three-potential-1')"></canvas>
+			<canvas id='three-potential-1' width='600' height='0'></canvas>
+			Here is a Coulomb's law simulation of electric potential as a scalar field. The mountains indicate positive potential, and the valleys indicate negative potential.
+		</div>
+		<div class="example" id="charge5-example">
+			This 2D simulation uses color to show electric potential. Right click adds positive charge, middle mouse adds negative charge.
+			<select id="charge-preset" style="float: right;">
+				<option value="triangle">triangle</option>
+				<option value="square">square</option>
+				<option value="hexagon">hexagon</option>
+				<option value="random">random</option>
+				<option value="clear">clear</option>
+			</select>
+			<canvas class='center' id='charge5' height='250' onclick="charges5(this)"></canvas>
+			<p>Click the simulations a few times to push the charges around. These simulations help develop a vague intuition for electric potential, but they don't capture the nuances of quantum mechanics.
+			</p>
+		</div>
+		<!-- <p>These 2D simulations use color to show electric potential. </p>
+		<canvas class='center' id='charge6' height='300' onclick="charges6(this)"> </canvas>
+		<p>Click the simulations a few times to push the charges around. Right click adds positive charge, middle mouse adds negative charge.</p>
+		<canvas class='center' id='charge7' height='250' onclick="charges7(this)"> </canvas> -->
+
+		<div class='example'>
+			<strong>Example:</strong> A <a href="https://en.wikipedia.org/wiki/Scanning_electron_microscope">scanning electron microscope</a> can achieve resolution better than 1 nanometer. It produces <a href="https://www.youtube.com/watch?v=2bZoR3z-R6I">images</a> by scanning with a focused beam of electrons. The electrons are propelled at a sample target with a voltage between 5&nbsp;000 V and 25&nbsp;000 V. Generally the higher voltage gives better resolution.
+			<br>
+			<br>Let's estimate the voltage needed for a 1 nanometer resolution. We can start by finding the energy to potentially bring an electron very close to another electron. What is the potential at 1 nanometer from an electron?
+			<details>
+				<summary>solution</summary>
+				$$ V = \frac{k_{e}q}{r} $$
+				$$ V = \frac{(8.987 \times 10^{9})(-1.6 \times 10^{-19})}{10^{-9}} $$
+				$$ V = -1.440\, \mathrm{volts}$$
+			</details>
+			<p>What is the potential at 0.001 nm from a single electron?</p>
+			<details>
+				<summary>solution</summary>
+				$$ V = \frac{(8.987 \times 10^{9})(-1.6 \times 10^{-19})}{10^{-12}} $$
+				$$ V = -1440 \, \mathrm{volts}$$
+			</details>
+		</div>
+		<div class='example'>
+			<strong>Example:</strong> The electric potential at 0.1 m from a charge is 10 J/C. If I were to bring another 4 μC charge to 0.1 m away from the original charge how much energy would that take?
+			<details>
+				<summary>solution</summary>
+				$$ V = \frac{\color{red}{k_{e}q_{1}}}{\color{red}{r}} $$
+				$$ U_{e} = \frac{ {\color{red}{k_{e}q_{1} } }{q_2}}{\color{red}{r}} $$
+				$$ U_{e} = V q $$ $$ U_{e} = (10)(4 \times 10^{-6}) $$
+				$$ U_{e} = 40 \times 10^{-6} \, \mathrm{J} $$
+			</details>
+		</div>
+		<!-- <h2 class='underlined'>Electric Potential Difference, Voltage</h2>
+		<p>
+			<a href="https://codepen.io/lilgreenland/full/xprGvr/">Electric potential difference</a> is often just called voltage. It plays a significant role in electronics. Voltage is simply a change in electric potential. It can be thought of as the work it would take to move a +1C test charge between two points.
+		</p>
+		<div class='definition'>
+			<svg viewBox="-15 0 400 150">
+				<defs>
+					<linearGradient id="hor_shadow" x1="0" x2="1" y1="0" y2="0">
+						<stop offset="0%" stop-color="#000" stop-opacity="1" />
+						<stop offset="100%" stop-color="#000" stop-opacity="0" />
+					</linearGradient>
+				</defs>
+				<line x1="123" y1="50" x2="343" y2="50" stroke='#999' stroke-width="2" stroke-dasharray="2, 15" />
+
+				<g transform='translate(23,50)'>
+					<circle cx="0" cy="0" r="20" fill='#fff' stroke-width="2" stroke="#222" />
+					<text x="0" y="-2" fill="black" text-anchor="middle" dominant-baseline="central" font-size="20px">q</text>
+				</g>
+				<g transform='translate(123,50)'>
+					<circle cx="0" cy="0" r="3" fill='#000' stroke-width="2" stroke="transparent" />
+					<text x="0" y="-20" fill="#888" text-anchor="middle" dominant-baseline="central" font-size="16px">+1C</text>
+				</g>
+				<g transform='translate(343,50)'>
+					<circle cx="0" cy="0" r="3" fill='#000' stroke-width="2" stroke="transparent" />
+					<text x="0" y="-20" fill="#888" text-anchor="middle" dominant-baseline="central" font-size="16px">+1C</text>
+				</g>
+				<g transform='translate(23,80)'>
+					<line x1="0" y1="0" x2="100" y2="0" style="stroke:#000;stroke-width:2" />
+					<line x1="0" y1="-5" x2="0" y2="5" style="stroke:#000;stroke-width:2" />
+					<line x1="100" y1="-5" x2="100" y2="5" style="stroke:#000;stroke-width:2" />
+					<text x="50" y="20" fill="black" text-anchor="middle" font-size="20px">r</text>
+				</g>
+				<g transform='translate(23,105)'>
+					<line x1="0" y1="0" x2="320" y2="0" style="stroke:#000;stroke-width:2" />
+					<line x1="0" y1="-5" x2="0" y2="5" style="stroke:#000;stroke-width:2" />
+					<line x1="320" y1="-5" x2="320" y2="5" style="stroke:#000;stroke-width:2" />
+					<text x="160" y="20" fill="black" text-anchor="middle" font-size="20px">r</text>
+				</g>
+			</svg>
+			<h2>$$ \Delta V = V_{f} - V_{i}$$ $$ \Delta V = \frac{k_{e}q}{r_{f}} - \frac{k_{e}q}{r_{i}}$$
+			</h2>
+			<p>\(\Delta V\) = electric potential difference, voltage [V, volts, J/C]
+				<br>\(V_f\) = final voltage [V, volts]
+				<br>\(V_i\) = initial voltage [V, volts]
+		</div>
+		<p>A voltage applied to a wire will cause the electrons to flow, possibly doing something useful.</p>
+		<p>Voltage increases can be produced by: batteries and electrical sockets.
+			<br>Voltage drops can be caused by: resistors, processors, lights, motors, speakers.</p>
+		<div class='example'>
+			<strong>Example:</strong> What is the electric potential difference between 1 m and 4 m away from a 2 C charge?
+			<details>
+				<summary>solution</summary>
+				$$ V = \frac{k_{e}q}{r} $$
+				<br> $$\Delta V = V_{f} - V_{i} $$ $$\Delta V = \frac{k_{e}2}{1} - \frac{k_{e}2}{4} $$
+				$$\Delta V = k_{e} \left(\frac{2}{1} - \frac{2}{4} \right) $$
+				$$\Delta V = 1.5k_{e} $$
+				$$\Delta V = 1.348 \times 10^{10} \, \mathrm{volts} $$
+			</details>
+		</div> -->
+
+		<div class='example'>
+			<strong>Example:</strong> A <a href="https://en.wikipedia.org/wiki/Van_de_Graaff_generator">Van de Graaff generator</a> produces an electric potential difference of 40&nbsp;000 V. If an electron started from rest, what is the maximum speed it could gain from the potential difference?
+			<details>
+				<summary>strategy</summary>
+				<p>
+					Use conservation of energy. The electron will start with only potential energy (U = Vq). It will end with only kinetic energy.
+				</p>
+			</details>
+			<details>
+				<summary>solution</summary>
+				$$E_i = E_f$$
+				$$U_e = K$$
+				$$qV = \tfrac{1}{2}mv^2$$
+				$$v^2 = \frac{2qV}{m}$$
+				$$v = \sqrt{\frac{2qV}{m}}$$
+				$$v = \sqrt{\frac{2(1.6 \times 10^{-19})(40\,000)}{9.1 \times 10^{-31}}}$$
+				$$v = 1.19 \times 10^{8} \, \mathrm{\tfrac{m}{s}}$$
+				<p>This result is near the speed of light. We need to use <a href="../../relativity/special/index.html#kinetic-energy">relativistic kinetic energy</a> to improve the accuracy.</p>
+			</details>
+		</div>
+
+		<div class="example" id="three-potential-sims">
+			Use the mouse to move the camera. Double click for full screen.
+			<canvas id='three-potential-2-load' width='590' height='300' onclick="potential2('three-potential-2')"></canvas>
+			<canvas id='three-potential-2' width='590' height='0'></canvas>
+			<p>These are Coulomb's law based simulation of the flow of charges with electric potential shown as height.</p>
+			<canvas id='three-potential-3-load' width='590' height='300' onclick="potential3('three-potential-3')"></canvas>
+			<canvas id='three-potential-3' width='590' height='0'></canvas>
+		</div>
+
+	</article>
+	<div class="listing-footer">
+		<ul class="listing listing-dark" id="footer">
+			<li>
+				<h2>Motion</h2>
+				<p>
+					<a href="../../motion/motion/index.html">Motion</a>
+					<br>
+					<a href="../../motion/kinematics/index.html">Kinematics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Force</h2>
+				<p>
+					<a href="../../force/laws/index.html">Newton's Laws</a>
+					<br>
+					<a href="../../force/forces/index.html">Forces</a>
+					<br>
+					<a href="../../force/friction/index.html">Friction</a>
+				</p>
+			</li>
+			<li>
+				<h2>Momentum</h2>
+				<p>
+					<a href="../../momentum/momentum/index.html">Momentum</a>
+					<br>
+					<a href="../../momentum/impulse/index.html">Impulse</a>
+				</p>
+			</li>
+			<li>
+				<h2>Energy</h2>
+				<p>
+					<a href="../../energy/energy/index.html">Energy</a>
+					<br>
+					<a href="../../energy/conservation/index.html">Conservation of Energy</a>
+					<br>
+					<a href="../../energy/thermo/index.html">Thermodynamics</a>
+				</p>
+			</li>
+			<li>
+				<h2>Gravity</h2>
+				<p>
+					<a href="../../gravity/gravitation/index.html">Universal Gravitation</a>
+					<br>
+					<a href="../../gravity/circular/index.html">Orbits</a>
+				</p>
+			</li>
+			<li>
+				<h2>Electromagnetism</h2>
+				<p>
+					<a href="../../electromagnetism/charge/index.html">Electric Charge</a>
+					<br>
+					<a href="../../electromagnetism/electrostatics/index.html">Electrostatics</a>
+					<br>
+					<a href="../../electromagnetism/potential/index.html">Electric Potential</a>
+					<br>
+					<a href="../../electromagnetism/magnetism/index.html">Magnetism</a>
+				</p>
+			</li>
+			<li>
+				<h2>Circuits</h2>
+				<p>
+					<a href="../../circuits/electricity/index.html">Electricity</a>
+					<br>
+					<a href="../../circuits/power/index.html">Power</a>
+					<br>
+					<a href="../../circuits/kirchoff/index.html">Kirchhoff’s Laws</a>
+					<br>
+					<a href="../../circuits/components/index.html">Components</a>
+				</p>
+			</li>
+			<li>
+				<h2>Waves</h2>
+				<p>
+					<a href="../../waves/waves/index.html">Waves</a>
+					<br>
+					<a href="../../waves/waveproperties/index.html">Wave Properties</a>
+					<br>
+					<a href="../../waves/light/index.html">Light</a>
+					<br>
+					<a href="../../waves/photons/index.html">Photons</a>
+				</p>
+			</li>
+			<li>
+				<h2>Relativity</h2>
+				<p>
+					<a href="../../relativity/special/index.html">Special Relativity</a>
+					<br>
+					<a href="../../relativity/general/index.html">General Relativity</a>
+				</p>
+			</li>
+			<li>
+				<h2>Reference</h2>
+				<p>
+					<a href="../../review/units/index.html">Units</a>
+					<br>
+					<a href="../../review/vectors/index.html">Vectors & Scalars</a>
+					<br>
+					<a href="../../review/solving/index.html">Problem Solving</a>
+				</p>
+			</li>
+		</ul>
+	</div>
+	<script>
+		renderMathInElement(document.body);
+	</script>
+	<script defer src='../../../lib/chargeclass.js'></script>
+	<script defer src="charge5.js"></script>
+	<!-- <script defer src="charge6.js"></script>
+	<script defer src="charge7.js"></script> -->
+
+	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/three.js/98/three.min.js'></script>
+	<script defer src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/464612/orbitcontrols.js'></script>
+	<script defer src="potential1.js"></script>
+	<script defer src="potential2.js"></script>
+	<script defer src="potential3.js"></script>
+</body>
+
+</html>
