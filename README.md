@@ -1,4 +1,4 @@
-# physics
+# Explorable Physics
 
 This site contains course notes for algebra based physics. It combines <a href="https://explorabl.es/">explorable</a> <a href="http://worrydream.com/ExplorableExplanations/">explanations</a> with traditional methods of teaching physics. The explorables attempt to instill an intuitive understanding of physics and how it connects to our everyday experience. Also, they are just fun to play with.
 
