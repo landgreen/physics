@@ -1,4 +1,4 @@
-# Explorable Physics
+# Physics
 This <a href="https://landgreen.github.io/physics/index.html">site</a> contains course notes for algebra based physics with <a href="https://explorabl.es/">explorable</a> <a href="http://worrydream.com/ExplorableExplanations/">explanations</a>.The explorables attempt to instill an intuitive understanding of physics, and they are also fun to play with.
 
 I wrote it for my students, but it might be useful if you are learning or teaching physics.
