@@ -30,22 +30,104 @@
 
 <body>
 	<header>
-		<h1 class="title">
-			<a href="../index.html">Physics</a>
+		<h1>
+			<a href="../index.html">Explorable Physics</a>
 		</h1>
 	</header>
-	<br>
-	<ul class="listing listing-style" id="units">
+	<style>
+		.SVG-title {
+			/* border: #eee solid 1px; */
+			margin: auto;
+		}
+
+		:root {
+			--svg-color: #333;
+		}
+
+		.wrapper {
+			margin: -2px auto;
+			list-style: none;
+			display: grid;
+			max-width: 1700px;
+			grid-template: "a a a a a""b b b b b";
+			grid-gap: 0px;
+			line-height: 1.6;
+			border-bottom: var(--bg-color) solid 4px;
+			border-right: var(--bg-color) solid 4px;
+		}
+
+		.wrapper a {
+			color: #333;
+		}
+
+		.wrapper a:hover {
+			color: var(--link-color);
+		}
+
+		.wrapper li {
+			padding: 20px 0px 20px 0px;
+			display: flex;
+			flex-direction: column;
+			border-top: var(--bg-color) solid 4px;
+			border-left: var(--bg-color) solid 4px;
+		}
+
+		.wrapper li p {
+			margin: auto;
+		}
+
+		@media screen and (max-width: 850px) {
+			.wrapper {
+				grid-template: "a a""b b""c c""d d""e e";
+			}
+		}
+
+		@media screen and (max-width: 365px) {
+			.wrapper {
+				font-size: 100%;
+				grid-template: "a""b""c""d""e""f""g""h""i""j""k";
+			}
+		}
+	</style>
+	<ul class="wrapper" id="units">
 		<li>
-			<h2>Motion</h2>
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(40,13)" stroke-linecap="round">
+					<g fill="none">
+						<path d="M5.5 1.5 v57 m3 3 h57"></path>
+						<path d="M12 24 Q41 0, 58 52"></path>
+					</g>
+					<g stroke="#fff" stroke-width="3.5">
+						<circle cx="12" cy="24" r="3.5" />
+						<circle cx="58" cy="52" r="3.5" />
+					</g>
+				</g>
+			</svg>
+			<!-- <h2>Motion</h2> -->
 			<p>
 				<a href="notes/motion/motion/index.html">Motion</a>
 				<br>
 				<a href="notes/motion/kinematics/index.html">Kinematics</a>
+				<br> <br>
 			</p>
 		</li>
 		<li>
-			<h2>Force</h2>
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(42,15)" stroke-linecap="round">
+					<g fill="none">
+						<path d="M20.5 2.5 h30 m4 4 v30 m-4 4 h-30 m-4 -4 v-30
+								 M35.5 43 v 20"></path>
+					</g>
+					<g stroke="none">
+						<path d="M35.5 65 h2.5 l-2.5 5 l-2.5 -5"></path>
+						<circle cx="16.5" cy="2.5" r="1.5" />
+						<circle cx="54.5" cy="2.5" r="1.5" />
+						<circle cx="54.5" cy="40.5" r="1.5" />
+						<circle cx="16.5" cy="40.5" r="1.5" />
+					</g>
+				</g>
+			</svg>
+			<!-- <h2>Force</h2> -->
 			<p>
 				<a href="notes/force/laws/index.html">Newton's Laws</a>
 				<br>
@@ -55,33 +137,126 @@
 			</p>
 		</li>
 		<li>
-			<h2>Momentum</h2>
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(65,35)" stroke-linecap="round">
+					<g fill="none">
+						<path d="M20.5 2.5 h20 m4 4 v20 m-4 4 h-20 m-4 -4 v-20
+								 M12 5.5 h-25
+								 M12 12.5 h-50
+								 M12 20.5 h-37
+								 M12 27.5 h-19
+								 "></path>
+					</g>
+					<g stroke="none">
+						<circle cx="16.5" cy="2.5" r="1.5" />
+						<circle cx="44.5" cy="2.5" r="1.5" />
+						<circle cx="44.5" cy="30.5" r="1.5" />
+						<circle cx="16.5" cy="30.5" r="1.5" />
+					</g>
+				</g>
+			</svg>
+			<!-- <h2>Momentum</h2> -->
 			<p>
 				<a href="notes/momentum/momentum/index.html">Momentum</a>
 				<br>
 				<a href="notes/momentum/impulse/index.html">Impulse</a>
+				<br> <br>
 			</p>
 		</li>
 		<li>
-			<h2>Energy</h2>
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(33,30)" stroke-linecap="round">
+					<g fill="none">
+						<path d="M-7.5 4 V54
+								 M2.5 4 V54
+								 M12.5 4 V54
+								 M22.5 10 V54
+								 M32.5 34 V54
+								 M42.5 42 V54
+								 M52.5 43 V54
+								 M62.5 37 V54
+								 M72.5 29 V54
+								 M82.5 28 V54
+								 M92.5 28 V54
+								 "></path>
+						<path d="M-10 0 h20 c15 0, 16 10, 20 20
+									  c4 15, 10 20, 20 20
+									  c5 0, 7 0, 15 -10
+									  c3 -5, 15 -5, 15 -5
+									  h15"></path>
+						<circle cx="10" cy="-4.5" r="4" />
+					</g>
+					<g stroke="none">
+					</g>
+				</g>
+			</svg>
+			<!-- <h2>Energy</h2> -->
 			<p>
 				<a href="notes/energy/energy/index.html">Energy</a>
 				<br>
-				<a href="notes/energy/conservation/index.html">Conservation of Energy</a>
+				<a href="notes/energy/conservation/index.html">Conservation</a>
 				<br>
 				<a href="notes/energy/thermo/index.html">Thermodynamics</a>
 			</p>
 		</li>
 		<li>
-			<h2>Gravity</h2>
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(20,55)" stroke-linecap="round">
+					<g fill="none">
+						<circle cx="0.5" cy="0.5" r="10" />
+						<circle cx="90.5" cy="0.5" r="25" />
+					</g>
+					<g stroke="#fff" stroke-width="6">
+						<path d="M5 0.5 h25   M86 0.5 h-25"></path>
+					</g>
+					<g fill="none">
+						<path d="M5 0.5 h25  M86 0.5 h-25"></path>
+					</g>
+					<g stroke="none">
+						<path d="M32.5 0.5 v2.5 l5 -2.5  l-5 -2.5"></path>
+						<path d="M58.5 0.5 v2.5 l-5 -2.5  l5 -2.5"></path>
+						<circle cx="0.5" cy="0.5" r="1.5" />
+						<circle cx="90.5" cy="0.5" r="1.5" />
+					</g>
+				</g>
+			</svg>
+			<!-- <h2>Gravity</h2> -->
 			<p>
 				<a href="notes/gravity/gravitation/index.html">Universal Gravitation</a>
 				<br>
 				<a href="notes/gravity/circular/index.html">Orbits</a>
+				<br>
+				<br>
 			</p>
 		</li>
 		<li>
-			<h2>Electromagnetism</h2>
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(55,50)" stroke-linecap="round">
+					<g fill="none">
+						<path d="
+						M0 0 c14 5.5, 36 5.5, 50 0
+						M0 0 c14 -5.5, 36 -5.5, 50 0
+
+						M0 0 C10 18, 40 18, 50 0
+						M0 0 C10 -18, 40 -18, 50 0
+
+						M0 0 C0 45, 50 45, 50 0
+						M0 0 C0 -45, 50 -45, 50 0
+
+						M0 0 C-70 85, 120 85, 50 0
+						M0 0 C-70 -85, 120 -85, 50 0
+
+						M0 0 C-350 130, 400 130, 50 0
+						M0 0 C-350 -130, 400 -130, 50 0
+						"></path>
+					</g>
+					<g stroke="none" fill="#fff">
+						<circle cx="0" cy="0" r="2.25" />
+						<circle cx="50" cy="0" r="2.25" />
+					</g>
+				</g>
+			</svg>
+			<!-- <h2>Electromagnetism</h2> -->
 			<p>
 				<a href="notes/electromagnetism/charge/index.html">Electric Charge</a>
 				<br>
@@ -93,7 +268,21 @@
 			</p>
 		</li>
 		<li>
-			<h2>Circuits</h2>
+			<!-- <h2>Circuits</h2> -->
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(45,13)" stroke-linecap="round">
+					<path fill="none" stroke-linejoin="round" d="M5.5 5.5 h50 m4 4
+					v9 l4 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l -4 4	v9 m-4 4 
+					h-50 m-4 -4
+					v-23 m-12 0 h24 m-6 -4 h-12 m6 0 v-23"></path>
+					<g stroke="none">
+						<circle cx="1.5" cy="5.5" r="1.5" />
+						<circle cx="59.5" cy="5.5" r="1.5" />
+						<circle cx="59.5" cy="63.5" r="1.5" />
+						<circle cx="1.5" cy="63.5" r="1.5" />
+					</g>
+				</g>
+			</svg>
 			<p>
 				<a href="notes/circuits/electricity/index.html">Electricity</a>
 				<br>
@@ -105,11 +294,33 @@
 			</p>
 		</li>
 		<li>
-			<h2>Waves</h2>
+			<!-- <h2>Waves</h2> -->
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(25,53)" stroke-linecap="round">
+					<g fill="none">
+						<path d="M3 2.5 h44 M55 2.5 h44
+								 M0.5 -2 s25.5 -70, 49 0
+								 M52.5 6.5 s25.5 70, 49 0"></path>
+						<!-- <path d="M2.5 0.5 s22.5 -15, 45 0
+								 M54.5 4.5 s22.5 15, 45 0"></path>
+						<path d="M1 -1 s24 -42, 48 0
+								 M53 5.5 s24 42, 48 0"></path>
+						<path d="M-0.5 -2 s25.5 -80, 51 0
+								 M51.5 6.5 s25.5 80, 51 0"></path> -->
+						<!-- <path d="M0 -2 s25 -85, 50 0
+								 M52 4.5 s25 85, 50 0"></path> -->
+					</g>
+					<g stroke="none" stroke-width="2.5">
+						<circle cx="-1" cy="2.5" r="1.5" />
+						<circle cx="51" cy="2.5" r="1.5" />
+						<circle cx="103" cy="2.5" r="1.5" />
+					</g>
+				</g>
+			</svg>
 			<p>
 				<a href="notes/waves/waves/index.html">Waves</a>
 				<br>
-				<a href="notes/waves/waveproperties/index.html">Wave Properties</a>
+				<a href="notes/waves/waveproperties/index.html">Interference</a>
 				<br>
 				<a href="notes/waves/light/index.html">Light</a>
 				<br>
@@ -117,15 +328,44 @@
 			</p>
 		</li>
 		<li>
-			<h2>Relativity</h2>
+			<!-- <h2>Relativity</h2> -->
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(78,50)" stroke-linecap="round">
+					<g fill="#fff">
+						<path d="M-34 -34 l68 68
+						M34 -34 l-68 68
+						"></path>
+					</g>
+					<ellipse cx="0" cy="35" rx="34.5" ry="7" fill="#fff" />
+					<ellipse cx="0" cy="-35" rx="34.5" ry="7" pathLength="10" fill="none" />
+					<g stroke="#fff" stroke-width="3.5">
+						<circle cx="0" cy="0" r="3.5" />
+					</g>
+			</svg>
 			<p>
 				<a href="notes/relativity/special/index.html">Special Relativity</a>
 				<br>
 				<a href="notes/relativity/general/index.html">General Relativity</a>
+				<br> <br>
 			</p>
 		</li>
 		<li>
-			<h2>Reference</h2>
+			<!-- <h2>Reference</h2> -->
+			<svg class="SVG-title" width="160" height="100">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(48,70)" stroke-linecap="round">
+					<g fill="none">
+						<!-- <path d="M0 0 l60 -34"></path> -->
+						<path d="M4.28 -2.57 l51.44 -30.86"></path>
+						<path d="M5 0 h50" stroke-dashoffset="0.7" stroke-dasharray="3"></path>
+						<path d="M60 -5 v-28" stroke-dashoffset="0.8" stroke-dasharray="3"></path>
+					</g>
+					<g stroke="none">
+						<circle cx="0" cy="0" r="1.5" />
+						<circle cx="60" cy="0" r="1.5" />
+						<circle cx="60" cy="-36" r="1.55" />
+					</g>
+				</g>
+			</svg>
 			<p>
 				<a href="notes/review/units/index.html">Units</a>
 				<br>
@@ -138,22 +378,24 @@
 	<article>
 		<h2 class='underlined'>About</h2>
 		<p>
-			This site contains course notes for algebra based physics.
-			It combines <a href="https://explorabl.es/">explorable</a> <a href="http://worrydream.com/ExplorableExplanations/">explanations</a> with traditional methods of teaching physics.
-			<!-- The explorables are mostly interactive physics simulations paired with conceptual and math based questions. -->
+			This site contains course notes for algebra based physics with <a href="https://explorabl.es/">explorable</a> <a href="http://worrydream.com/ExplorableExplanations/">explanations</a>.
+			The explorables attempt to instill an intuitive understanding of physical systems, but mostly they are just fun.
+
+
+			<!-- It combines <a href="https://explorabl.es/">explorable</a> <a href="http://worrydream.com/ExplorableExplanations/">explanations</a>
+			 with traditional methods of teaching physics.
 			The explorables attempt to instill an intuitive understanding of physics and how it connects to our everyday experience.
-			Also, they are just fun to play with.
-			<!-- I hope it leads people towards an intuitive understanding of how physics connects to our everyday experience. -->
+			Also, they are just fun to play with. -->
 		</p>
 		<p>
-			I wrote it for my students, but it might be useful if you are learning or teaching physics.
-			I'm still adding content for 2019-2020. Let me know if you have any ideas or if you have found one of the numerous mistakes.</p>
+			I'm still adding content for 2019-2020. Let me know if you have any ideas or if you have found one of the numerous mistakes.
+		</p>
 		<p>
 			rlandgreen@newwestcharter.org
 		</p>
 		<p>
-			The code is open source and hosted on <a href="https://github.com/landgreen/landgreen.github.io">github</a>.
-			<br class="hide-on-mobile">It's free to use under the <a href="https://github.com/landgreen/landgreen.github.io/blob/master/LICENSE">GNU General Public License v3.0</a>.
+			The code is open source and hosted on <a href="https://github.com/landgreen/physics">github</a>.
+			<br class="hide-on-mobile">It's free to use under the <a href="https://github.com/landgreen/physics/blob/master/LICENSE">GNU General Public License v3.0</a>.
 			<br class="hide-on-mobile">The diagrams are SVG written in a text editor.
 			<br class="hide-on-mobile">The math is rendered with the typesetting library <a href="https://katex.org/">KaTeX</a>.
 			<br class="hide-on-mobile">The simulations are JavaScript outputting to canvas or SVG.
