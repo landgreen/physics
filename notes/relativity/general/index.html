@@ -2,7 +2,6 @@
 <html lang="en-US">
 
 <head>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="theme-color" content="#222" />
@@ -15,16 +14,13 @@
 
 	<title>General Relativity</title>
 	<link rel='shortcut icon' href='../../../media/favicon.ico' type='image/x-icon' />
-
 	<link rel="stylesheet" type="text/css" href="../../../lib/katex/katex.min.css">
 	<script src="../../../lib/katex/katex.min.js"></script>
 	<script src="../../../lib/katex/contrib/auto-render.min.js"></script>
-
 	<script defer src='../../../lib/gravityClass.js'></script>
 	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/three.js/98/three.min.js'></script>
 	<script defer src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/464612/orbitcontrols.js'></script>
 	<script defer src="fabric.js "></script>
-
 	<link rel="stylesheet" type="text/css" href="../../../style.css">
 </head>
 
@@ -33,22 +29,62 @@
 		<h1>
 			<a href="../../../index.html">General Relativity</a>
 		</h1>
-
 	</header>
+
 	<article>
-
 		<p>
-			General relativity, published by Einstein in 1915, extended the scope of special relativity to acceleration, specifically gravitational acceleration.
+			In 1907 Einstein had a <a href="https://www.youtube.com/watch?v=jx3wcdCtL58">thought experiment</a>.
+			Imagine a person in a box with no way to observe the outside world.
+			That person would have no way to distinguish between the acceleration of gravity or floating in space with no acceleration.
+			A free fall feels the same as not accelerating.
 		</p>
-		<p>
-			The theory of general relativity proposed a unified description of gravity as a geometric property of space and time, or spacetime.
-			Energy curves spacetime. <a href="..\special\index.html#mass-energy">Mass</a> is a type of potential energy so it also curves spacetime.
+		<svg viewBox="0 60 595 160" fill="#222" stroke="#222" stroke-width="2">
+			<defs>
+				<g id="vector">
+					<line x1="0" y1="0" x2="0" y2="35" />
+					<polygon points="0,0 -6,-12 0,-10 6,-12" transform='translate(0 40)' />
+				</g>
+			</defs>
+			<circle r="205" cx="150" cy="365" fill="#abc" stroke="none" />
+			<rect x="120.5" y="100.5" width="60" height="60" fill="#eee" />
+			<use xlink:href="#vector" transform='translate(105 100) rotate(0)' />
+			<text x="98" y="160" stroke="none" font-size="25">g</text>
+			<path d="M145 120 q20 0 20 40" fill="none" stroke="#000" stroke-dasharray="0 6" stroke-width="3" stroke-linecap="round" />
+			<circle r="5" cx="142" cy="120" fill="#f50" stroke="none" />
 
+			<path d="M310.5 0 v250" stroke="#aaa" stroke-width="1" />
+
+			<rect x="420.5" y="100.5" width="60" height="60" fill="#eee" />
+			<use xlink:href="#vector" transform='translate(495 160) rotate(180)' />
+			<text x="488" y="113" stroke="none" font-size="25">a</text>
+			<path d="M420 164 l15 20 l15 -20 l15 20 l15 -20" fill="#fa0" stroke="none" />
+			<path d="M445 120 q20 0 20 40" fill="none" stroke="#000" stroke-dasharray="0 6" stroke-width="3" stroke-linecap="round" />
+			<circle r="5" cx="442" cy="120" fill="#f50" stroke="none" />
+		</svg>
+		<p>
+			Additionally, a person in a box couldn't distinguish between the acceleration of gravity or the acceleration from a rocket.
+			They are equivalent.
+			This <a href="https://www.youtube.com/watch?v=NblR01hHK6U">principle</a> of <a href="https://www.youtube.com/watch?v=1ENkP0h8nAg">equivalence</a> drove Einstein towards an equation that unified acceleration and gravity.
+			With collaboration from the scientific community, Einstein discovered the theory of general relativity in 1915.
 		</p>
-		<h3 class="definition">
-			Spacetime is <a href="https://www.youtube.com/watch?v=DdC0QN6f3G4">curved</a> by energy.
-			Gravitation occurs when a body tries to move in a straight line through curved spacetime.
-		</h3>
+		<div class="example-small">
+			<p>
+				General relativity extended the scope of special relativity to acceleration, specifically gravitational acceleration.
+				The theory of general relativity proposed a unified description of gravity as a geometric property of space and time, or spacetime.
+				Energy curves spacetime.
+				<a href="..\special\index.html#mass-energy">Mass</a> is a type of potential energy so it also curves spacetime.
+			</p>
+			<h3 class="definition">
+				Spacetime is <a href="https://www.youtube.com/watch?v=DdC0QN6f3G4">curved</a> by energy.
+				Gravitation occurs when a body tries to move in a straight line through curved spacetime.
+			</h3>
+			<p>
+				As bodies travel through curved space they follow the shortest distance between two points, a straight line.
+				The pull of gravity is what a straight line through curved spacetime looks like.
+				Another example of a straight line through a curved space is the <a href="https://www.greatcirclemap.com/roadmap?routes=%20LAX-SIN%2C%20LAX-ATL%2C%20ATL-LON">great circle routes</a> around a sphere.
+			</p>
+			<br>
+		</div>
 		<div class="example-small" style="min-height: 498px;">
 			<style>
 				.full-page {
@@ -60,15 +96,10 @@
 					padding: 0;
 				}
 			</style>
-			<canvas id='three-fabric-load' width='600' height='400' onclick="fabric('three-fabric')"></canvas>
+			<canvas id='three-fabric-load' width='600' height='100' onclick="fabric('three-fabric')"></canvas>
 			<canvas id='three-fabric' width='600' height='0'></canvas>
 			In the simulation above, gravitational potential energy is represented as warping a 2-D surface into a 3rd dimension.
 			This is similar to how our higher dimensional universe is curved in space and time.
-			<p>
-				As bodies travel through curved space they follow the shortest distance between two points, a straight line.
-				The pull of gravity is what a straight line through curved spacetime looks like.
-				Another example of a straight line through a curved space is the <a href="https://www.greatcirclemap.com/roadmap?routes=%20LAX-SIN%2C%20LAX-ATL%2C%20ATL-LON">great circle routes</a> around a sphere.
-			</p>
 		</div>
 		<p>
 			A full mathematical explanation of general relativity is beyond the scope of this page, but we will explore some of the predictions:

@@ -51,9 +51,12 @@
 			display: grid;
 			grid-template: "a a a a a""b b b b b";
 			max-width: 1700px;
-			margin: -4px auto;
+			margin: auto;
 			grid-gap: 4px;
-			border: var(--svg-color) solid 4px;
+			/* border: var(--svg-color) solid 4px; */
+			border-bottom: var(--svg-color) solid 4px;
+			border-left: var(--svg-color) solid 4px;
+			border-right: var(--svg-color) solid 4px;
 			background-color: var(--svg-color);
 		}
 
@@ -80,6 +83,8 @@
 		@media screen and (max-width: 850px) {
 			.table-of-contents {
 				grid-template: "a a""b b""c c""d d""e e";
+				border-left: var(--svg-color) solid 0px;
+				border-right: var(--svg-color) solid 0px;
 			}
 		}
 
@@ -194,7 +199,7 @@
 		</li>
 		<li>
 			<svg class="SVG-title" width="160" height="120">
-				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(25,63)" stroke-linecap="round">
+				<g fill="var(--svg-color)" stroke="var(--svg-color)" stroke-width="1" transform="translate(31,63)" stroke-linecap="round">
 					<g fill="none">
 						<circle cx="0.5" cy="0.5" r="10" />
 						<circle cx="90.5" cy="0.5" r="25" />
@@ -214,7 +219,7 @@
 				</g>
 			</svg>
 			<p>
-				<a href="notes/gravity/gravitation/index.html">Universal Gravitation</a>
+				<a href="notes/gravity/gravitation/index.html">Gravity</a>
 				<br> <a href="notes/gravity/circular/index.html">Orbits</a>
 				<br>
 				<br>
