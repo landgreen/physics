@@ -189,7 +189,7 @@
 <body>
     <canvas id='grav0' height='250px' width='600px' style="position: absolute;top: 0px; left: 0px; padding: 0; margin:0; border-radius: 0px; box-shadow: none; z-index: 1;"> </canvas>
     <header id="myHeader">
-        <h1> <a href=" ../../../index.html">Gravity</a> </h1>
+        <h1> <a href=" ../../../index.html"> Gravity </a> </h1>
     </header>
     <article>
         <div class='center'>
@@ -310,7 +310,7 @@
         <p>
             Kepler's laws mostly agreed with the Copernican model, but with a few improvements.
             In Kepler's <a href="http://galileoandeinstein.phys.virginia.edu/more_stuff/Applets/Kepler/kepler.html">model</a> orbits moved in an ellipse, not a circle.
-            The sun wasn't the center of a planetary orbit, it was a foci of an elliptical orbit.
+            The Sun wasn't the center of a planetary orbit, it was a foci of an elliptical orbit.
             Also, the planets would speed up and slow down as they orbited.
         </p>
         <div class="example-small">
@@ -393,7 +393,7 @@
                     </td>
                     <td>Mars</td>
                     <td>1.524 AU</td>
-                    <td> _____ yr</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td class="black">
@@ -403,7 +403,7 @@
                     </td>
                     <td>Jupiter</td>
                     <td>5.204 AU</td>
-                    <td>11.862 yr</td>
+                    <td>11.86 yr</td>
                 </tr>
                 <tr>
                     <td class="black">
@@ -415,16 +415,60 @@
                     </td>
                     <td>Saturn</td>
                     <td>9.582 AU</td>
-                    <td>29.457 yr</td>
+                    <td>29.46 yr</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Uranus">
+                            <div class="planet uranus">
+                                <div class="uranus-ring"></div>
+                            </div>
+                        </a>
+                    </td>
+                    <td>Uranus</td>
+                    <td>19.22 AU</td>
+                    <td>84.02 yr</td>
+                </tr>
+                <tr>
+                    <td class="black">
+                        <a href="https://en.wikipedia.org/wiki/Neptune">
+                            <div class="planet neptune"></div>
+                        </a>
+                    </td>
+                    <td>Neptune</td>
+                    <td>30.11 AU</td>
+                    <td>164.8 yr</td>
                 </tr>
             </table>
-            <strong>Example:</strong> Calculate the time it takes Mars to orbit the sun in years.
+            <strong>Example:</strong> Calculate the time it takes Mars to orbit the Sun in years.
             <details>
                 <summary>solution</summary>
                 $$T^2 = r^3$$
                 $$T^2 = (1.524)^3$$
                 $$T^2 = 3.540$$
                 $$T = 1.88 \, \mathrm{yr}$$
+
+                <svg id="SVG-graph-5" viewBox="0 0 600 300">
+                    <circle r="7" cx="113" cy="205" stroke="none" fill="#f50" />
+                </svg>
+                <script defer>
+                    funGraphSVG("SVG-graph-5", x => Math.pow(x, 2 / 3), {
+                        x0: 20,
+                        y0: 280,
+                        fill: "rgba(0, 0, 0,0.2)",
+                        stroke: "none",
+                        strokeWidth: 2,
+                        scale: 50,
+                        positiveOnly: true,
+                        gridSize: 50,
+                        xLabel: "orbital period (yr)",
+                        yLabel: "semi-major axis (AU)",
+                        showMouseCoords: true,
+                    });
+                </script>
+                <p>
+                    Each planet in the solar system lands somewhere on this graph.
+                </p>
             </details>
         </div>
 
@@ -490,9 +534,11 @@
             Universal gravitation improved on Kepler's laws of planetary motion because it had a more universal application.
             Kepler's laws only applied to the orbit of planets around the Sun, but Newton's gravitation applied to all matter.
         </p>
+        <!-- General relativity views gravity as a consequence of warped spacetime -->
         <p>
             In 1915 universal gravitation was improved on by Einstein's <a href="../../relativity/general/index.html">general relativity</a>.
-            General relativity views gravity as a consequence of warped spacetime.
+            Although, even general relativity is an approximation.
+            No current theory perfectly describes reality.
         </p>
 
         <!-- <div class="example-small">
