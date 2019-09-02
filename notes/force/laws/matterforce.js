@@ -102,22 +102,17 @@ function matterForce(el) {
     // engine.world.gravity.scale = 0.000001 * SCALE;
     // engine.world.gravity.y = 9.8;
 
-    // let impulse = []
-    // let position = []
+
     let force = []
     Events.on(engine, "collisionActive", function (event) {
-        // console.log(event)
-
 
         function getForce(who) {
             if (who) {
-
-                const mag = who.normalImpulse;
-
+                // const mag = who.normalImpulse;
                 force.push({
                     impulse: {
-                        x: 0,
-                        y: 0
+                        x: who.normalImpulse,
+                        y: who.tangentImpulse
                     },
                     position: {
                         x: who.vertex.x,
@@ -127,18 +122,12 @@ function matterForce(el) {
             }
         }
 
-        impulse[0] = event.pairs[0].contacts["1_0"].normalImpulse
-        position = []
-        position.push({
-            x: event.pairs[0].contacts["1_0"].vertex.x,
-            y: event.pairs[0].contacts["1_0"].vertex.y
-        })
-
-
-        getForce(event.pairs[0].contacts["1_0"])
-        getForce(event.pairs[0].contacts["1_1"])
-        getForce(event.pairs[0].contacts["1_2"])
-        getForce(event.pairs[0].contacts["1_3"])
+        for (let i = 0; i < event.pairs.length; i++) {
+            for (let j = 0; j < event.pairs[i].activeContacts.length; j++) {
+                getForce(event.pairs[i].activeContacts[i])
+            }
+        }
+        // console.log(event)
         console.log(force)
     });
 
@@ -179,6 +168,16 @@ function matterForce(el) {
         }
 
         //draw force
+        const SCALE = 300
+        for (let i = 0; i < force.length; i++) {
+            ctx.beginPath();
+            ctx.moveTo(force[i].position.x, force[i].position.y);
+            ctx.lineTo(force[i].position.x + force[i].impulse.x * SCALE, force[i].position.y + force[i].impulse.y * SCALE);
+        }
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "#000";
+        ctx.stroke();
+        force = []
         // if (position[0]) {
         //     ctx.beginPath();
         //     ctx.moveTo(position[0].x, position[0].y);
