@@ -71,12 +71,12 @@ function gases(el) {
             const dx = gas[i].position.x - mouse.x;
             const dy = gas[i].position.y - mouse.y;
             const a = Math.atan2(dy, dx);
-            const r = dx * dx + dy * dy + 2000;
-            const mag = 20000 / r;
-            gas[i].velocity.x += mag * Math.cos(a);
-            gas[i].velocity.y += mag * Math.sin(a);
+            gas[i].speed = 20000 / (dx * dx + dy * dy + 2000)
+            gas[i].velocity.x += gas[i].speed * Math.cos(a);
+            gas[i].velocity.y += gas[i].speed * Math.sin(a);
         }
         calculateValues();
+        output();
     });
 
     physics = {
@@ -84,7 +84,7 @@ function gases(el) {
         time: 0,
         radius: 1,
         netDeltaV: 0,
-        timeStep: 60,
+        timeStep: 30,
         smoothing: 0, //set this to zero after any change in values
         pressure: 0,
         temperature: 0,
@@ -100,18 +100,14 @@ function gases(el) {
     document.getElementById("gas-width-slider").value = canvas.width
 
     document.getElementById("gas-width").addEventListener("input", () => {
-        // if (document.getElementById("gas-width").value < window.innerWidth - 15) {
         physics.widthGoal = document.getElementById("gas-width").value
         document.getElementById("gas-width-slider").value = physics.widthGoal
-        // }
     }, false);
-
 
     document.getElementById("gas-width-slider").addEventListener("input", () => {
         physics.widthGoal = document.getElementById("gas-width-slider").value
         document.getElementById("gas-width").value = physics.widthGoal
     }, false);
-
 
     document.getElementById("gas-n").addEventListener("input", () => {
         const number = Math.floor(Math.min(document.getElementById("gas-n").value, 999999))
@@ -119,6 +115,7 @@ function gases(el) {
         addRemoveGas(number)
         physics.n = number
         calculateValues();
+        output();
     }, false);
 
     document.getElementById("gas-n-slider").addEventListener("input", () => {
@@ -128,6 +125,7 @@ function gases(el) {
         addRemoveGas(number)
         physics.n = number
         calculateValues();
+        output();
     }, false);
 
     function addRemoveGas(numberRequested) {
@@ -145,6 +143,7 @@ function gases(el) {
                         x: speed * Math.cos(angle),
                         y: speed * Math.sin(angle)
                     },
+                    speed: speed
                 }
                 gas.push(index) //add gas particles
             }
@@ -167,6 +166,7 @@ function gases(el) {
                 x: speed * Math.cos(angle),
                 y: speed * Math.sin(angle)
             },
+            speed: speed
         }
         gas.push(index)
     }
@@ -191,21 +191,29 @@ function gases(el) {
         ctx.putImageData(imgData, 0, 0);
     }
 
+
+
     function move() {
         if (physics.isMovingWidth) {
+            function calculateSpeed(velocity) {
+                return Math.sqrt(velocity.x * velocity.x + velocity.y * velocity.y)
+            }
+
             for (let i = 0, len = gas.length; i < len; i++) {
                 //move
                 gas[i].position.x += gas[i].velocity.x
                 gas[i].position.y += gas[i].velocity.y
                 //walls x
                 if (gas[i].position.x < physics.radius) {
-                    gas[i].position.x = physics.radius
+                    gas[i].position.x = physics.radius + Math.random()
                     gas[i].velocity.x = Math.abs(gas[i].velocity.x + physics.widthRate)
+                    gas[i].speed = calculateSpeed(gas[i].velocity)
                     physics.netDeltaV += gas[i].velocity.x * 2
                 } else if (gas[i].position.x > canvas.width - physics.radius) {
-                    gas[i].position.x = canvas.width - physics.radius
+                    gas[i].position.x = canvas.width - physics.radius - Math.random()
                     physics.netDeltaV += gas[i].velocity.x * 2 //used in pressure calculation
                     gas[i].velocity.x = -Math.abs(gas[i].velocity.x - physics.widthRate)
+                    gas[i].speed = calculateSpeed(gas[i].velocity)
                 }
                 //walls y
                 if (gas[i].position.y < physics.radius) {
@@ -252,11 +260,13 @@ function gases(el) {
         physics.volume = canvas.width * canvas.height
 
         //temperature
-        let v2Sum = 0
+        // let v2Sum = 0
+        let totalSpeed = 0
         for (let i = 0, len = gas.length; i < len; i++) {
-            v2Sum += gas[i].velocity.x * gas[i].velocity.x + gas[i].velocity.y * gas[i].velocity.y
+            totalSpeed += gas[i].speed
+            // v2Sum += gas[i].velocity.x * gas[i].velocity.x + gas[i].velocity.y * gas[i].velocity.y
         }
-        physics.temperature = 1 / 2 * v2Sum / physics.n // T = 1/2 mv^2
+        physics.temperature = 1 / 2 * totalSpeed * totalSpeed / physics.n // T = 1/2 mv^2
     }
     calculateValues();
 
@@ -270,7 +280,8 @@ function gases(el) {
             } else {
                 canvas.width -= physics.widthRate
             }
-            calculateValues()
+            calculateValues();
+            document.getElementById("gas-v").innerHTML = `Volume = ${canvas.width}m x ${canvas.height}m x 1m = ${commafy(physics.volume)} m³`
         }
     }
 
@@ -283,23 +294,26 @@ function gases(el) {
         physics.pressure = physics.pressure * physics.smoothing + P * (1 - physics.smoothing) // smoothing function
 
         //calculate R with ideal gas law
-        const k = physics.pressure * physics.volume / physics.n / physics.temperature
+
         //out to html
-        function commafy(num) {
-            var str = num.toString().split('.');
-            if (str[0].length >= 5) {
-                str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-            }
-            if (str[1] && str[1].length >= 5) {
-                str[1] = str[1].replace(/(\d{3})/g, '$1 ');
-            }
-            return str.join('.');
-        }
-        document.getElementById("gas-p").innerHTML = `P = ${commafy(physics.pressure.toFixed(6))} N/m²`
-        document.getElementById("gas-v").innerHTML = `V = ${canvas.width} x ${canvas.height} x 1 = ${commafy(physics.volume)} m³`
+        document.getElementById("gas-p").innerHTML = `Pressure = ${commafy(physics.pressure.toFixed(6))} N/m²`
+        document.getElementById("gas-v").innerHTML = `Volume = ${canvas.width}m x ${canvas.height}m x 1m = ${commafy(physics.volume)} m³`
+        document.getElementById("gas-t").innerHTML = `Average Kinetic Energy (T) = ${physics.temperature.toFixed(3)} Nm`
         // document.getElementById("gas-n").innerHTML = `N = ${commafy(physics.n)} particles`
-        document.getElementById("gas-t").innerHTML = `T = ${physics.temperature.toFixed(3)} Nm`
-        // document.getElementById("gas-r").innerHTML = `k = ${k.toFixed(4)}`
+
+        const k = physics.pressure * physics.volume / physics.n / physics.temperature
+        document.getElementById("gas-k").innerHTML = `k = ${k.toFixed(4)}`
+    }
+
+    function commafy(num) { //used to format numbers with commas and spaces
+        var str = num.toString().split('.');
+        if (str[0].length >= 5) {
+            str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+        }
+        if (str[1] && str[1].length >= 5) {
+            str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+        }
+        return str.join('.');
     }
 
     function cycle() {
