@@ -206,13 +206,15 @@ function gases(el) {
                 //walls x
                 if (gas[i].position.x < physics.radius) {
                     gas[i].position.x = physics.radius + Math.random()
+                    physics.netDeltaV += gas[i].velocity.x
                     gas[i].velocity.x = Math.abs(gas[i].velocity.x + physics.widthRate)
                     gas[i].speed = calculateSpeed(gas[i].velocity)
-                    physics.netDeltaV += gas[i].velocity.x * 2
+                    physics.netDeltaV += gas[i].velocity.x
                 } else if (gas[i].position.x > canvas.width - physics.radius) {
                     gas[i].position.x = canvas.width - physics.radius - Math.random()
-                    physics.netDeltaV += gas[i].velocity.x * 2 //used in pressure calculation
+                    physics.netDeltaV += gas[i].velocity.x //used in pressure calculation
                     gas[i].velocity.x = -Math.abs(gas[i].velocity.x - physics.widthRate)
+                    physics.netDeltaV += -gas[i].velocity.x //used in pressure calculation
                     gas[i].speed = calculateSpeed(gas[i].velocity)
                 }
                 //walls y
@@ -256,17 +258,17 @@ function gases(el) {
     }
 
     function calculateValues() {
-        physics.smoothing = 0
+        physics.smoothing = 0; //reset smoothing to low
         physics.volume = canvas.width * canvas.height
 
-        //temperature
-        // let v2Sum = 0
+        // calculate temperature
         let totalSpeed = 0
+        // let totalSpeed2 = 0
         for (let i = 0, len = gas.length; i < len; i++) {
-            totalSpeed += gas[i].speed
-            // v2Sum += gas[i].velocity.x * gas[i].velocity.x + gas[i].velocity.y * gas[i].velocity.y
+            totalSpeed += gas[i].speed * gas[i].speed
+            // totalSpeed2 += gas[i].velocity.x * gas[i].velocity.x + gas[i].velocity.y * gas[i].velocity.y
         }
-        physics.temperature = 1 / 2 * totalSpeed * totalSpeed / physics.n // T = 1/2 mv^2
+        physics.temperature = 1 / 2 * totalSpeed / physics.n // T = 1/2 mv^2
     }
     calculateValues();
 
