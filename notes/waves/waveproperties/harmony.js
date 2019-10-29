@@ -1,5 +1,5 @@
-harmony(document.getElementById("sound-play-1"), 300, 150)
-harmony(document.getElementById("sound-play-2"), 243, 150, 0.75)
+harmony(document.getElementById("sound-play-1"), 300, 150, 0.4)
+harmony(document.getElementById("sound-play-2"), 294, 190)
 
 function harmony(el, freq1, freq2, gain = 0.5) {
     let audioCtx, oscillator1, gainNode1, oscillator2, gainNode2
