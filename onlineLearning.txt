@@ -1,6 +1,3 @@
-add to git:   include something about the nature of measurement and irreversibility to QM notes
-
-
 videos
     content
         short 3 minute daily video
