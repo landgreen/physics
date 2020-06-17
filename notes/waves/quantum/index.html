@@ -43,36 +43,47 @@
       <!-- They were also surprised to discover that particles could produce wave-like <a href="https://en.wikipedia.org/wiki/Double-slit_experiment">interference patterns</a>. -->
     </p>
   </article>
-  <svg viewBox="0 0 400 180" id="double-slit">
+  <!-- <g dominant-baseline="central" font-size="8" font-family="Times New Roman" stroke="none" fill="#abaeb3">
+    <text x="8.5" y="75" fill="#fff">e⁻</text>
+    <text x="2" y="87">electron</text>
+    <text x="2" y="95">emitter</text>
+    <text x="72" y="87">double</text>
+    <text x="72" y="95">slit</text>
+    <text x="163" y="95">measurement</text>
+    <text x="250" y="95">probability</text>
+    <text x="340" y="87">wave</text>
+    <text x="340" y="95">function</text>
+    <text x="253" y="4">|Ψ(x)|²</text>
+    <text x="343" y="4">Ψ(x)</text>
+  </g> -->
+  <svg viewBox="0 0 400 150" id="double-slit">
     <g fill="#234" stroke="#234" stroke-width="0">
-      <rect width="140.5" height="98" x="1" y="1" rx="2" ry="2" fill="#eceef2" stroke="#234" stroke-width="1.5" />
-      <rect width="2" height="8" x="18" y="46" rx="0.5" ry="0.5" fill="#567" />
-      <rect width="15" height="10" x="4" y="45" rx="1" ry="1" />
-      <path d="M50 1 v44 m0 2 v6 m0 2 v44" stroke-width="1.5" />
-      <!-- <rect width="200" height="100" x="150" y="0" fill="#89a" /> -->
-      <!-- <path d="M 150 0 v100" stroke-width="1" /> -->
-      <!-- <rect width="22" height="100" x="149" y="0" fill="#e9eef3" /> -->
-      <!-- <rect width="200" height="100" x="250" y="0" fill="#234" /> -->
+      <rect width="140.5" height="148" x="1" y="1" rx="2" ry="2" fill="#eceef2" stroke="#234" stroke-width="1.5" />
+      <rect width="2" height="8" x="18" y="71" rx="0.5" ry="0.5" fill="#567" />
+      <rect width="15" height="10" x="4" y="70" rx="1" ry="1" />
+      <path d="M40 1 v69 m0 2 v6 m0 2 v69" stroke-width="1.5" />
       <path id="double-slit-probability-function" d="M 200 0 v100" stroke-width="0" fill="#234" stroke-linecap="round" stroke-linejoin="round" />
-      <!-- <rect width="200" height="100" x="325" y="0" fill="#89a" /> -->
       <path id="double-slit-wave-function" d="M 300 0 v100" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      <g dominant-baseline="central" font-size="8" font-family="Times New Roman" stroke="none" fill="#abaeb3">
-        <text x="8.5" y="50" fill="#fff">e⁻</text>
-        <!-- <text x="2" y="87">electron</text>
-        <text x="2" y="95">emitter</text>
-        <text x="72" y="87">double</text>
-        <text x="72" y="95">slit</text> -->
-        <!-- <text x="163" y="95">measurement</text>
-        <text x="250" y="95">probability</text>
-        <text x="340" y="87">wave</text>
-        <text x="340" y="95">function</text> -->
-        <text x="249" y="4">|Ψ(x)|²</text>
-        <text x="338" y="4">Ψ(x)</text>
-      </g>
     </g>
+    <g id="double-slit-hits"></g>
   </svg>
-
   <article>
+    <ul class="listing">
+      <li>
+        <div>
+          <button id="emit" style="margin:0; background-color: #eee;">Emit</button>
+        </div>
+      </li>
+      <li>
+        <div>
+          separation = <input id='slit-separation' type="number" value='2' min="0" step="0.05" style="width:80px;">
+          <br>distance = <input id='slit-distance' type="number" value='100' min="0" step="1" style="width:80px;">
+          <br>wavelength = <input id='slit-wavelength' type="number" value='0.5' min="0" step="0.001" style="width:80px;">
+        </div>
+      </li>
+    </ul>
+
+
     <!-- <details class="derive">
       <summary>the particle model vs. the wave model</summary>
       <p>
@@ -106,8 +117,6 @@
         <li><strong>Waves</strong> don't interact with each other, but when they are in superposition they interfere constructively and destructively.</li>
       </p>
     </details> -->
-
-
     <p>
       The overlap between the wave and particle models at the nanometer scale led to many more exciting <a href="https://www.youtube.com/watch?v=p-MNSLsjjdo">experiments</a>.
       Over time, physicists developed and refined a new model, called <strong>quantum mechanics</strong>.
@@ -119,6 +128,7 @@
       Building an intuition without the math can be <a href="https://www.smbc-comics.com/comic/the-talk-3">confusing</a>,
       but here is a brief and inevitably flawed description.
     </p>
+
     <details class="derive">
       <summary>how quantum mechanics makes predictions</summary>
       <p>
