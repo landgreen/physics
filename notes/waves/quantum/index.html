@@ -42,6 +42,100 @@
       <!-- Instead, physicists <a href="https://phet.colorado.edu/sims/html/rutherford-scattering/latest/rutherford-scattering_en.html">fired</a> subatomic particles, like electrons, at each other. -->
       <!-- They were also surprised to discover that particles could produce wave-like <a href="https://en.wikipedia.org/wiki/Double-slit_experiment">interference patterns</a>. -->
     </p>
+    <br>
+    <p>
+      The wave-like interference of particles can be seen in the <a href="https://www.youtube.com/watch?v=p-MNSLsjjdo">double slit experiment</a>.
+      When a wave passes through two small gaps it will <a href="../waveproperties/index.html#diffraction">diffract</a>.
+      The waves originating from each slit will travel different distances.
+      The superposition of the wave from each slit will alternate between constructive and destructive interference.
+    </p>
+    <details>
+      <summary>single slit wave diffraction</summary>
+      <svg viewBox="100 0 600 400">
+        <g transform="translate(300, 200)" fill="none" stroke-width="20" stroke="#f08">
+          <circle r="40" opacity="0.8" />
+          <circle r="100" opacity="0.7" />
+          <circle r="160" opacity="0.6" />
+          <circle r="220" opacity="0.5" />
+          <circle r="280" opacity="0.41" />
+          <circle r="340" opacity="0.33" />
+          <!-- <circle r="400" opacity="0.25" /> -->
+        </g>
+        <g fill="none">
+          <rect x="-101" y="0" width="400" height="400" fill="#fff" stroke="none" />
+          <path d="M60 0 v400 M110 0 v400 M170 0 v400 M230 0 v400 M280 0 v400" stroke="#f08" opacity="1" stroke-width="20" />
+          <path d="M300 0 v195 M300 205 v200" stroke="#000" stroke-width="10" />
+        </g>
+      </svg>
+    </details>
+    <details>
+      <summary>double slit wave interference</summary>
+      <div>gap separation = <input id='slit-width-slider' type="range" step="1" value="100" min="5" max="290" style="width: 165px;"></div>
+      <svg viewBox="100 0 600 600">
+        <g stroke="#f08" stroke-width="20" fill="none">
+          <g id="slit-1" transform="translate(300, 200)">
+            <circle r="40" opacity="0.7" />
+            <circle r="100" opacity="0.63" />
+            <circle r="160" opacity="0.56" />
+            <circle r="220" opacity="0.49" />
+            <circle r="280" opacity="0.42" />
+            <circle r="340" opacity="0.35" />
+            <circle r="400" opacity="0.28" />
+            <circle r="460" opacity="0.21" />
+            <circle r="520" opacity="0.15" />
+            <circle r="580" opacity="0.1" />
+            <circle r="640" opacity="0.07" />
+            <circle r="700" opacity="0.04" />
+          </g>
+          <g id="slit-2" transform="translate(300, 400)">
+            <circle r="40" opacity="0.7" />
+            <circle r="100" opacity="0.63" />
+            <circle r="160" opacity="0.56" />
+            <circle r="220" opacity="0.49" />
+            <circle r="280" opacity="0.42" />
+            <circle r="340" opacity="0.35" />
+            <circle r="400" opacity="0.28" />
+            <circle r="460" opacity="0.21" />
+            <circle r="520" opacity="0.15" />
+            <circle r="580" opacity="0.1" />
+            <circle r="640" opacity="0.07" />
+            <circle r="700" opacity="0.04" />
+          </g>
+        </g>
+        <rect x="-101" y="0" width="406" height="600" fill="#fff" stroke="none" />
+        <path d="M60 0 v600 M110 0 v600 M170 0 v600 M230 0 v600 M280 0 v600" stroke="#f08" opacity="1" stroke-width="20" fill="none" />
+        <path id="wall" d="M300 0 v195 M300 205 v190 M300 405 v200" stroke="#000" stroke-width="10" fill="none" />
+      </svg>
+      <script>
+        (function twoSlit() {
+          const slit1 = document.getElementById("slit-1")
+          const slit2 = document.getElementById("slit-2")
+          const wall = document.getElementById("wall")
+
+          document.getElementById("slit-width-slider").addEventListener("input", () => {
+            slitSeparation = Number(document.getElementById("slit-width-slider").value);
+            const slit1Vertical = 300 - slitSeparation
+            const slit2Vertical = 300 + slitSeparation
+
+            slit1.setAttribute("transform", `translate(300, ${slit1Vertical})`)
+            slit2.setAttribute("transform", `translate(300, ${slit2Vertical})`)
+            wall.setAttribute("d", `M300 0 v${slit1Vertical-5} M300 ${slit1Vertical+5}
+                        v${Math.abs(slitSeparation*2 - 10)}
+                        M300 ${slit2Vertical-5} M300 ${slit2Vertical+5} v400`)
+          });
+        })()
+      </script>
+    </details>
+    <p>
+      Thomas Young in 1801 produced a double slit interference pattern with beams of red light.
+      In 1927 the experiment was repeated just a single photon at a time.
+      Each photon was measured at single location, but the distribution of hits still followed an interference pattern.
+    </p>
+    <p>
+      The double slit experiment isn't limited to photons.
+      It works with particles like electrons, atoms, or antimatter.
+      In 2019 an interference pattern was produced by particles made of 2000 atoms.
+    </p>
   </article>
   <!-- <g dominant-baseline="central" font-size="8" font-family="Times New Roman" stroke="none" fill="#abaeb3">
     <text x="8.5" y="75" fill="#fff">e⁻</text>
@@ -59,11 +153,10 @@
   <svg viewBox="0 0 400 150" id="double-slit">
     <g fill="#234" stroke="#234" stroke-width="0">
       <rect width="140.5" height="148" x="1" y="1" rx="2" ry="2" fill="#eceef2" stroke="#234" stroke-width="1.5" />
-      <rect width="2" height="8" x="18" y="71" rx="0.5" ry="0.5" fill="#567" />
-      <rect width="15" height="10" x="4" y="70" rx="1" ry="1" />
-      <path d="M40 1 v69 m0 2 v6 m0 2 v69" stroke-width="1.5" />
+      <rect width="2" height="6" x="15" y="72" rx="0.5" ry="0.5" fill="#89a" />
+      <rect width="12" height="8" x="4" y="71" rx="1" ry="1" />
+      <path id="slit" d="M40 1 v70.5 m0 0.5 v5 m0 0.5 v70.5" stroke-width="1.5" />
       <path id="double-slit-probability-function" d="M 200 0 v100" stroke-width="0" fill="#234" stroke-linecap="round" stroke-linejoin="round" />
-      <path id="double-slit-wave-function" d="M 300 0 v100" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" />
     </g>
     <g id="double-slit-hits"></g>
   </svg>
@@ -71,19 +164,53 @@
     <ul class="listing">
       <li>
         <div>
-          <button id="emit" style="margin:0; background-color: #eee;">Emit</button>
+          <button id="emit" style="margin:0; background-color: #eee;">emit</button>
+          <br>
+          <label for="slit-one-checkbox">
+            <input type="checkbox" id="slit-one-checkbox" name="slit-one-checkbox" style="width:14px;">
+            <span>emit one at a time</span>
+          </label>
+          <br>
+          <label for="slit-blocked-checkbox">
+            <input type="checkbox" id="slit-blocked-checkbox" name="slit-blocked-checkbox" style="width:14px;">
+            <span>slit blocked</span>
+          </label>
         </div>
       </li>
       <li>
         <div>
-          separation = <input id='slit-separation' type="number" value='2' min="0" step="0.05" style="width:80px;">
-          <br>distance = <input id='slit-distance' type="number" value='100' min="0" step="1" style="width:80px;">
-          <br>wavelength = <input id='slit-wavelength' type="number" value='0.5' min="0" step="0.001" style="width:80px;">
+          wavelength = <input id='slit-wavelength' type="number" value='0.5' min="0" step="0.0001" style="width:105px;">
+          <br>slit separation = <input id='slit-separation' type="number" value='2' min="0" step="0.001" style="width:85px;">
+          <br>slit width = <input id='slit-slitWidth' type="number" value='2' min="0" step="0.01" style="width:122px;">
+          <!-- <br>target distance = <input id='slit-distance' type="number" value='100' min="0" step="1" style="width:100px;"> -->
         </div>
       </li>
     </ul>
-
-
+    <div class="example-small">
+      <strong>Question:</strong> What happens when one slit is blocked? Why?
+      <details>
+        <summary>answer</summary>
+        <p>
+          The interference pattern goes away, because the waves are all originating from the same point, so they have the same phase.
+        </p>
+        <p>
+          Although, there is still a diffraction pattern related to the width of the slit.
+        </p>
+      </details>
+    </div>
+    <div class="example-small">
+      <strong>Question:</strong> When a one particle at a time is fired, the distribution of hits still produces an interference pattern.
+      What could the single particle be interfering with?
+      <details>
+        <summary>answer</summary>
+        <p>
+          A single particle goes through both slits.
+          It interferes with it's self.
+        </p>
+      </details>
+    </div>
+    <br>
+    <br>
     <!-- <details class="derive">
       <summary>the particle model vs. the wave model</summary>
       <p>
@@ -117,8 +244,9 @@
         <li><strong>Waves</strong> don't interact with each other, but when they are in superposition they interfere constructively and destructively.</li>
       </p>
     </details> -->
+
     <p>
-      The overlap between the wave and particle models at the nanometer scale led to many more exciting <a href="https://www.youtube.com/watch?v=p-MNSLsjjdo">experiments</a>.
+      The overlap between the wave and particle models at the nanometer scale led to many more exciting experiments.
       Over time, physicists developed and refined a new model, called <strong>quantum mechanics</strong>.
       Predictions based on <a href="https://www.youtube.com/watch?v=fjZXqdUZDZA">quantum mechanics</a> can only give probabilities,
       but when applied to repeated experiments they have an unparalleled level of accuracy.
@@ -206,8 +334,9 @@
       <h2 class='underlined-small'>The Copenhagen Interpretation</h2>
       <p>
         The Copenhagen interpretation was the first popular explanation of the math behind quantum mechanics.
-        Like the many-worlds interpretation, the Copenhagen interpretation calculates the wave function by adding the amplitudes of every possible outcome.
-        It maintains a single reality by randomly choosing one possible outcome from every interaction.
+        Like the many-worlds interpretation, the evolution of the wave function is still calculated with the Schrödinger equation.
+        It differs from many-worlds during interactions.
+        Instead of suggesting that all possible outcomes of an interaction occur, one outcome is randomly chosen to occur.
       </p>
       <p>
         The unchosen outcomes are said to be collapsed.
@@ -218,16 +347,14 @@
       <h2 class='underlined-small'>Pilot Wave Theory</h2>
       <p>
         The <a href="https://www.youtube.com/watch?v=RlXdsyctD50">pilot wave theory</a> proposes an deterministic universe made of particles.
-        The theory also proposes a single wave function for the entire universe that guides all particles.
+        Additionally there is a second level of reality made of a single wave function.
+        This wave function guides the motion of particles.
         Like other interpretations, the evolution of the wave function is still calculated with the Schrödinger equation.
-        Also, the effect of the wave function on particles is still calculated by adding the amplitudes of all the possible ways an event could happen.
-        <!-- this is odd because this theory doesn't branch -->
       </p>
       <p>
         The wave function guides particles down a single path.
         The pilot wave theory says that the particle's position must be hidden until it is measured.
         If we do try to measure the position of a particle it will no longer be guided by the wave function.
-        This is comparable to wave function collapse or branching worlds from the other interpretations.
       </p>
 
       <!-- <h2 class='underlined-small'>Bell's Theorem</h2>
@@ -311,7 +438,7 @@
       </p>
       <p>
         In this theory there is a field spread across all of space and time for each type of fundamental particle.
-        Each individual particle a localized excited state of its underlying field.
+        Each individual particle is a localized excited state of its field.
         For example, a single electron is a place in space and time where the electron field is vibrating.
         The electron field exists everywhere, but electrons are more likely to be measured in areas that are excited.
       </p>
@@ -321,7 +448,7 @@
       </p>
       <p>
         Electrons model well as particles because in most cases their interactions are weak enough to be mathematically canceled out.
-        Quarks, the particles inside protons and neutrons, interact with through the "strong force".
+        Quarks, the particles inside protons and neutrons, interact through the "strong force".
         This force has frequent and complex interactions that don't cancel out, making the particle model less useful.
       </p>
     </details>
@@ -371,7 +498,7 @@
       <summary>observing quantum phenomena</summary>
       <p>
         Quantum mechanics explains almost all observable <a href="https://www.youtube.com/watch?v=xnWxtU2OUTE">phenomena</a>.
-        It explains the color of materials, rigidity of solids, conductivity, <a href="https://www.youtube.com/watch?v=zPqEEZa2Gis">superconductivity</a>, magnetism, all of chemistry, and just about everything else in reality.
+        It explains the color of materials, rigidity of solids, conductivity, superconductivity, magnetism, all of chemistry, and just about everything else in reality.
         You are observing quantum mechanical phenomena in every moment.
       </p>
       <br>
