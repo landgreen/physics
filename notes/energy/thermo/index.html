@@ -399,7 +399,8 @@
 		<h1 class='underlined' id="entropy">Entropy</h1>
 		<p>
 			<strong>Entropy</strong> is hard to define because different fields of study use the term to describe slightly different ideas.
-			The definitions of entropy are all loosely centered around disorder. A high entropy system of particles is not organized.
+			The definitions of entropy are all loosely centered around disorder.
+			A high entropy system of particles is not organized.
 			A low entropy system is orderly, but how do you measure order?
 		</p>
 		<svg viewBox="0 0 600 145">
@@ -440,18 +441,33 @@
 			</g>
 		</svg>
 		<p>
-			A common definition of order is a concentration of something measurable, like energy, temperature, or pressure.
+			A common definition of order is a concentration of energy.
 			This means a concentration of energy has lower entropy than an evenly spread out distribution.
 		</p>
-		<p>
-			We can also define entropy as <a href="https://www.youtube.com/watch?v=8Uilw9t-syQ">information</a>.
-			Computer memory can record the information about a system's state.
-			A high entropy system would require more memory to store the extra information.
-			This extra memory is less concentrated, so it loosely fits with the other definitions of entropy.
-		</p>
+		<details class='derive'>
+            <summary>macrostates vs. microstates</summary>
+			<p>
+				In statistical mechanics entropy is defined as <a href="https://www.youtube.com/watch?v=8Uilw9t-syQ">information</a>.
+				It's calculated by counting the number of microstates that could produce a macrostate.
+				A macrostate is a collection of measurable properties for a system of particles, like their temperature, pressure, or volume.
+				A microstate is a possible configuration of particles that could produce those measurable properties.
+				
+			</p>
+			<p>
+				The macrostate of a disorderly system could arise from many possible microstates.
+				In other words there are many ways things could be arranged and still be disorderly.
+				On the other hand the macrostate of an orderly system has fewer possible microstates.	
+			</p>
+        </details>
+
 		<div class="example">
 			<p>
-				Entropy plays a role in how engines convert concentrations of energy into <a href="../../energy/energy/#work">work</a>.
+				Not all energy can make an engine do <a href="../../energy/energy/#work">work</a>.
+				Just making an engine hot adds energy to the engine, but we the energy to be concentrated in the right place.
+				Engines need energy that is in a specific orderly state.
+				Entropy allows us to measure useable energy, and make a model of how engines do work.
+			</p>
+			<p>
 				The simulation below shows a simple engine that is designed to turn a rotor.
 				What state of the system would make the rotor turn?
 			</p>
