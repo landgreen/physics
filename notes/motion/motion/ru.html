@@ -160,13 +160,13 @@
 		</div>
 
 
-		<h1 class='underlined' id="time">Time</h1>
-		<p> We keep track of time in the same way as position. We use t as the symbol with seconds as our main unit.</p>
+		<h1 class='underlined' id="time">Время</h1>
+		<p> Мы используем t в качестве символа, а секунды - в качестве основной единицы измерения.</p>
 		<div class='definition'>
 			<h1>$$\Delta t = t_{f}-t_{i}$$</h1>
-			<p>\(\Delta t\) = change in time, time period [s, seconds]</p>
-			<p>\(t_i\) = initial time [s, seconds]</p>
-			<p>\(t_f\) = final time [s, seconds]</p>
+			<p>\(\Delta t\) = изменение времени, временной промежуток [с, секунды]</p>
+			<p>\(t_i\) = начальное время [с, секунды]</p>
+			<p>\(t_f\) = конечное время [с, секунды]</p>
 		</div>
 		<svg id="motion-2" class="SVG-shadow" viewBox="0 0 580 100">
 			<g font-size="16" stroke="none" fill="#444">
@@ -183,43 +183,43 @@
 		</svg>
 
 		<div class='example'>
-			<strong>Example:</strong> School ends at 2:30 PM. I got home today at 2:49 PM. How long did it take me to get home in minutes?
+			<strong>Пример:</strong> Занятия в школе заканчиваются в 2:30 вечера. Я вернулся домой сегодня в 2:49 вечера. Сколько минут мне потребовалось, чтобы добраться домой?
 			<details>
-				<summary>solution</summary>
-				<p>We can just focus on the minutes, since the hours didn't change.</p>
+				<summary>решение</summary>
+				<p>Мы можем посчитать разницу в минутах, поскольку часы не изменились.</p>
 				$$\Delta t = t_{f}-t_{i}$$
-				$$\Delta t = 49\,\mathrm{min}-30\, \mathrm{min}$$
-				$$\Delta t = 19\, \mathrm{min}$$
+				$$\Delta t = 49\,\mathrm{мин}-30\, \mathrm{мин}$$
+				$$\Delta t = 19\, \mathrm{мин}$$
 			</details>
 		</div>
 
 		<div class='example'>
 			<p>
-				<strong>Example:</strong> My school starts early at 7:30 am.
-				Each class is 1 hour long with 3 minutes between classes.
-				What time is it at the end of the second period?
+				<strong>Пример:</strong> Занятия в школе начинаются рано рано, в 7:30 утра.
+				Каждое занятие длится 1 час с перерывом в 3 минуты.
+				Сколько времени в конце второго периода?
 			</p>
-			You can probably solve this in your head, but try using Δt = tf - ti for practice.
+			Скорее всего, вы можете решить это в своей голове, но попробуйте использовать Δt = tf - ti для тренировки.
 			<details>
-				<summary>solution</summary>
+				<summary>решение</summary>
 
-				$$\Delta t = 1\, \mathrm{hr} + 1 \, \mathrm{hr} + 3\, \mathrm{min}$$
-				$$\Delta t = 2\, \mathrm{hr} + 3\, \mathrm{min}$$
+				$$\Delta t = 1\, \mathrm{ч} + 1 \, \mathrm{ч} + 3\, \mathrm{min}$$
+				$$\Delta t = 2\, \mathrm{ч} + 3\, \mathrm{мин}$$
 				<br>
 				$$\Delta t = t_{f}-t_{i}$$
 				$$t_{f} = \Delta t + t_{i}$$
-				$$t_{f} = (2\, \mathrm{hr} + 3\, \mathrm{min}) + (7\, \mathrm{hr} + 30\, \mathrm{min})$$
-				$$t_{f} = 9\, \mathrm{hr} + 33\, \mathrm{min}$$
+				$$t_{f} = (2\, \mathrm{ч} + 3\, \mathrm{мин}) + (7\, \mathrm{ч} + 30\, \mathrm{мин})$$
+				$$t_{f} = 9\, \mathrm{ч} + 33\, \mathrm{мин}$$
 			</details>
 		</div>
 
-		<h1 class='underlined' id="velocity">Velocity</h1>
-		<p>Velocity measures how much position changes, Δx, over a period of time, Δt.</p>
+		<h1 class='underlined' id="velocity">Скорость</h1>
+		<p>Скорость измеряет, насколько сильно изменяется положение, Δx, за период времени, Δt.</p>
 		<div class='definition'>
-			<h1>$$v_{\mathrm{avg}} = \frac{\Delta x}{\Delta t}$$</h1>
-			<p>\(\Delta x\) = change in position, displacement [m, meters] <em>vector</em> </p>
-			<p>\(\Delta t\) = time period [s, seconds]</p>
-			<p>\(v\) = average velocity [m/s, meters per second] <em>vector</em> </p>
+			<h1>$$v_{\mathrm{сред}} = \frac{\Delta x}{\Delta t}$$</h1>
+			<p>\(\Delta x\) = изменение положения, смещение [м, метры] <em>вектор</em> </p>
+			<p>\(\Delta t\) = временной промежуток [с, секунд]</p>
+			<p>\(v\) = средняя скорость [м/с, метры в секундe] <em>вектор</em> </p>
 		</div>
 		<svg id="motion-3" class="SVG-shadow" viewBox="0 0 580 100">
 			<g font-size="16" stroke="none" fill="#444">
@@ -235,14 +235,14 @@
 			</g>
 		</svg>
 		<div class='example'>
-			<strong>Example:</strong> A car is traveling at an average of 2 m/s for 80 seconds. How far does the car travel?
+			<strong>Пример:</strong> Автомобиль движется со средней скоростью 2 м/с в течение 80 секунд. Как далеко проедет машина?
 			<details>
-				<summary>solution</summary>
+				<summary>решение</summary>
 				$$ v = \frac{\Delta x}{\Delta t} $$
 				$$ v \Delta t= \Delta x$$
-				$$ (2 \mathrm{\tfrac{m}{s}}) (80\, \mathrm{s}) = \Delta x $$
-				$$ (2 \mathrm{\tfrac{m}{\cancel{s}}}) (80\, \mathrm{\cancel{s}}) = \Delta x $$
-				$$ 160\, \mathrm{m} = \Delta x $$
+				$$ (2 \mathrm{\tfrac{м}{с}}) (80\, \mathrm{с}) = \Delta x $$
+				$$ (2 \mathrm{\tfrac{м}{\cancel{с}}}) (80\, \mathrm{\cancel{с}}) = \Delta x $$
+				$$ 160\, \mathrm{м} = \Delta x $$
 
 				<svg id="motion-5" class="SVG-shadow" viewBox="0 0 580 100">
 					<g font-size="16" stroke="none" fill="#444">
@@ -260,13 +260,13 @@
 			</details>
 		</div>
 		<div class='example'>
-			<strong>Question:</strong> Why are we solving for average velocity? Why not just velocity?
+			<strong>Вопрос:</strong> Почему в решении мы используем среднюю скорость? Почему не просто скорость?
 			<details>
-				<summary>answer</summary>
+				<summary>решение</summary>
 				<p>
-					The velocity might change over the journey.
-					What if someone speeds up or slows down?
-					There are many possible velocities that fit a given distance and time, but only one average velocity.
+					Скорость может изменяться в течение путешествия.
+					Что, если кто-то ускорится или замедлится?
+					Существует множество возможных скоростей, которые соответствуют заданному расстоянию и времени, но средняя скорость только одна.
 				</p>
 
 				<svg viewBox="0 0 600 300" title="average velocity paths">
@@ -298,61 +298,61 @@
 					<text x="33" y="6" transform="rotate(-90, 33, 3)" style="fill: rgb(0, 0, 0); font-size: 16px; text-anchor: end; font-family: monospace;">position (m)</text>
 				</svg>
 				<p>
-					In the next <a href="../kinematics/index.html">unit</a> we will learn how to find the instantaneous velocity.
+					В следующей <a href="../kinematics/index.html">главе</a> мы узнаем, как найти мгновенную скорость
 				</p>
 			</details>
 		</div>
 		<div class='example'>
-			<strong>Example:</strong> Someone tells you they can run 10 km in about an hour. What velocity is that in m/s? Is that fast? (1 m/s is walking speed)
+			<strong>Пример:</strong> Кто-то говорит вам, что может пробежать 10 км примерно за час. Какая это скорость в м/с? Это быстро? (1 м/с - скорость ходьбы)
 			<details>
-				<summary>solution</summary>
-				$$10 \, \mathrm{km} = 10(1000) \mathrm{m} = \color{#f07} 10\,000 \, \mathrm{m}$$
-				$$1\, \mathrm{h} \left(\frac{60\, \mathrm{min}}{1\, \mathrm{h}}\right)\left(\frac{60\, \mathrm{s}}{1\, \mathrm{min}}\right) = \color{#09d} 3600 \,\mathrm{s}$$
+				<summary>решение</summary>
+				$$10 \, \mathrm{км} = 10(1000) \mathrm{м} = \color{#f07} 10\,000 \, \mathrm{м}$$
+				$$1\, \mathrm{ч} \left(\frac{60\, \mathrm{мин}}{1\, \mathrm{ч}}\right)\left(\frac{60\, \mathrm{c}}{1\, \mathrm{мин}}\right) = \color{#09d} 3600 \,\mathrm{c}$$
 				<br>
 				$$v = \frac{\Delta x}{\Delta t}$$
-				$$v = \frac{\color{#f07}10\,000\, \mathrm{m}}{\color{#09d} 3600\, \mathrm{s}}$$
-				$$v = 2.7\, \mathrm{\tfrac{m}{s}}$$
+				$$v = \frac{\color{#f07}10\,000\, \mathrm{м}}{\color{#09d} 3600\, \mathrm{с}}$$
+				$$v = 2.7\, \mathrm{\tfrac{м}{с}}$$
 			</details>
 		</div> 
 
 		<div class='example'>
-			<strong>Example:</strong> Google maps says Las Vegas is 4 hours away from Los Angeles. Google says it is 270 miles away. How fast does google think I will drive? Answer this one in miles/hour.
+			<strong>Пример:</strong> В Google maps указано, что Лас-Вегас находится в 4 часах езды от Лос-Анджелеса. Google говорит, что это в 270 милях отсюда. Как быстро, по мнению Google, я буду ездить? Ответьте на этот вопрос в милях / час.
 			<details>
-				<summary>solution</summary>
+				<summary>решение</summary>
 				$$v = \frac{\Delta x}{\Delta t}$$
-				$$v = \frac{270\, \mathrm{miles} }{4\, \mathrm{hour}}$$
-				$$v = 67.5\, \mathrm{\tfrac{miles}{hour} }$$
-				<p>The posted speed limit is 70 mph.</p>
+				$$v = \frac{270\, \mathrm{миль} }{4\, \mathrm{часа}}$$
+				$$v = 67.5\, \mathrm{\tfrac{миль}{час} }$$
+				<p>Ограничение скорости составляет 70 миль в час.</p>
 			</details>
 		</div>
 
 		<div class='example'>
-				<strong>Question:</strong> Imagine you are in a plane with your eyes closed.
-				Can you feel when the plane is increasing or decreasing altitude?
-				What does it feel like?
+				<strong>Вопрос:</strong> Представьте, что вы находитесь в самолете с закрытыми глазами.
+				Можете ли вы почувствовать, когда самолет набирает или уменьшает высоту?
+				На что это похоже?
 				<details>
-					<summary>answer</summary>
+					<summary>ответ</summary>
 					<p>
-						A place dropping at a constant 100 m/s would feel the same as a plane staying at the same altitude.
-						There is no way to directly measure your velocity relative to the Earth, but you can indirectly guess your velocity by looking outside, or measuring air pressure.
+						Место, снижающееся с постоянной скоростью 100 м/с, будет ощущаться так же, как самолет, остающийся на той же высоте.
+						Нет способа напрямую измерить вашу скорость относительно Земли, но вы можете косвенно определить свою скорость, выглянув наружу или измерив давление воздуха.
 					</p>
 					<p>
-						You can feel acceleration, the change in velocity.
-						For me, accelerating down feels like butterflies, and accelerating up feels like pressure.
+						Вы можете почувствовать ускорение, изменение скорости.
+						Для меня ускорение вниз похоже на бабочек, а ускорение вверх похоже на давление.
 					</p>
 				</details>
 			</div>
 
 		<div class='example'>
-			<strong>Example:</strong> If I walk at a speed of 1.2 m/s how long will it take for me to walk 2&nbsp;km?
+			<strong>Пример:</strong> Если я иду со скоростью 1,2 м/с, сколько времени мне потребуется, чтобы пройти 2&nbsp;км?
 			<details>
-				<summary>solution</summary>
-				$$2 \, \mathrm{km} = 2(1000) \mathrm{m} = 2000 \, \mathrm{m}$$
+				<summary>решение</summary>
+				$$2 \, \mathrm{км} = 2(1000) \mathrm{м} = 2000 \, \mathrm{м}$$
 				<br>$$v = \frac{\Delta x}{\Delta t}$$
 				$$\Delta t = \frac{\Delta x}{v}$$
-				$$\Delta t = \frac{2000\, \mathrm{m}}{1.2\, \mathrm{\tfrac{m}{s}}}$$
-				$$\Delta t = \frac{2000}{1.2}\, \mathrm{s}$$
-				$$\Delta t = 1666.\overline{6} \, \mathrm{s}$$
+				$$\Delta t = \frac{2000\, \mathrm{м}}{1.2\, \mathrm{\tfrac{м}{с}}}$$
+				$$\Delta t = \frac{2000}{1.2}\, \mathrm{с}$$
+				$$\Delta t = 1666.\overline{6} \, \mathrm{с}$$
 			</details>
 		</div>
 
@@ -374,26 +374,26 @@
 					showMouseCoords: true,
 				});
 			</script>
-			<strong>Question:</strong> This graph shows position vs. time. What does its slope represent?
+			<strong>Вопрос:</strong> Этот график показывает зависимость положения от времени. Что представляет собой его наклон?
 			<details>
-				<summary>answer</summary>
-				<p>velocity</p>
-				<p>Velocity is defined as the change in position every second. This is the same as the rise over the run, which is slope.</p>
+				<summary>ответ</summary>
+				<p>скорость</p>
+				<p>Скорость определяется как изменение положения каждую секунду. Это то же самое, что и подъем по склону, который является уклоном.</p>
 			</details>
 		</div>
 
-		<h1 class='underlined' id="acceleration">Acceleration</h1>
+		<h1 class='underlined' id="acceleration">Ускорение</h1>
 		<p>
-			Acceleration is a measure of how much velocity <a href ="https://whscience.org/motionyn/">changes</a> (Δv) over a period of time (Δt).
+			Ускорение - это мера того, насколько сильно <a href ="https://whscience.org/motionyn/">изменяется</a> скорость (Δv) за период времени (Δt).
 		</p>
 		<div class='definition'>
-			<h1>$$a_{\mathrm{avg}} = \frac{\Delta v}{\Delta t}$$</h1>
-			<p>\(\Delta v\) = change in velocity [m/s] = \(v_f-v_i\)
-				<em>vector</em>
+			<h1>$$a_{\mathrm{сред}} = \frac{\Delta v}{\Delta t}$$</h1>
+			<p>\(\Delta v\) = изменение скорости [м/с] = \(v_f-v_i\)
+				<em>вектор</em>
 			</p>
-			<p>\(\Delta t\) = time period, change in time [s, seconds]</p>
-			<p>\(a\) = acceleration [m/s²]
-				<em>vector</em>
+			<p>\(\Delta t\) = временной промежуток, изменение во времени [с, секунды]</p>
+			<p>\(a\) = ускорение [м/с²]
+				<em>вектор</em>
 			</p>
 		</div>
 
@@ -412,23 +412,22 @@
 		</svg>
 
 		<div class='example'>
-			<strong>Example:</strong> A basketball falls off a table and hits the floor in 0.45 s. The ball has a velocity of 4.43 m/s right before it hits the ground. What is the acceleration of the basketball as it falls?
+			<strong>Пример:</strong> Баскетбольный мяч падает со стола и ударяется об пол за 0,45 секунды. Мяч имеет скорость 4,43 м/с непосредственно перед тем, как он ударится о землю. Каково ускорение баскетбольного мяча при падении?
 			<details>
-				<summary>solution</summary>
+				<summary>решение</summary>
 				$$a = \frac{\Delta v}{\Delta t}$$
-				$$a = \frac{4.43\, \mathrm{\tfrac{m}{s}}} {0.45\, \mathrm{s}}$$
-				$$a = 9.84\, \mathrm{\tfrac{m}{s^{2}} }$$
+				$$a = \frac{4.43\, \mathrm{\tfrac{м}{с}}} {0.45\, \mathrm{с}}$$
+				$$a = 9.84\, \mathrm{\tfrac{м}{с^{2}} }$$
 			</details>
 		</div>
-
 		<div class='example'>
-			<strong>Example:</strong> A <a href="https://en.wikipedia.org/wiki/List_of_fastest_production_cars_by_acceleration">Tesla</a> can go from 0 to 60 miles per hour in 2.28 s. What is the acceleration in m/s²? (1 mile = 1609 meters)
+			<strong>Пример:</strong> <a href="https://en.wikipedia.org/wiki/List_of_fastest_production_cars_by_acceleration">Tesla</a> может разогнаться с 0 до 60 миль в час за 2,28 секунды. Каково ускорение в м/с2? (1 миля = 1609 метров)
 			<details>
-				<summary>solution</summary>
-				$$ 60\left( \mathrm{ \frac{\color{#f05}{mile}}{\color{#07b}{hour}}} \right)\left(\frac{1609\,\mathrm{ m}}{1 \,\color{#f05}{\mathrm{mile} }}\right)\left(\frac{1\, \color{#07b}{ \mathrm{hour} }}{3600\, \mathrm{s} }\right) = 26.8 \mathrm{\tfrac{m}{s}} $$
+				<summary>решение</summary>
+				$$ 60\left( \mathrm{ \frac{\color{#f05}{миль}}{\color{#07b}{час}}} \right)\left(\frac{1609\,\mathrm{ м}}{1 \,\color{#f05}{\mathrm{миль} }}\right)\left(\frac{1\, \color{#07b}{ \mathrm{час} }}{3600\, \mathrm{с} }\right) = 26.8 \mathrm{\tfrac{м}{с}} $$
 				$$a = \frac{\Delta v}{\Delta t}$$
-				$$a = \frac{26.8\,\mathrm{ \tfrac{m}{s}}} {2.28\, \mathrm{s}}$$
-				$$a = 11.8\, \mathrm{ \tfrac{m}{s^{2}} }$$
+				$$a = \frac{26.8\,\mathrm{ \tfrac{м}{с}}} {2.28\, \mathrm{с}}$$
+				$$a = 11.8\, \mathrm{ \tfrac{м}{с^{2}} }$$
 				<svg id="motion-0" class="SVG-shadow" viewBox="0 0 580 100">
 					<g font-size="16" stroke="none" fill="#000">
 						<text id="x-0" x="578" y="20" text-anchor="end">Δx=0</text>
@@ -446,18 +445,18 @@
 		</div>
 
 		<div class='example'>
-			<strong>Example:</strong> I start a velocity of 1 m/s. I speed up to 3 m/s over 10 seconds. What is my acceleration?
+			<strong>Пример:</strong> Я начинаю со скоростью 1 м/с. Я разгоняюсь до 3 м/с за 10 секунд. Каково мое ускорение?
 			<details>
-				<summary>solution</summary>
+				<summary>решение</summary>
 				<div class="col-group">
 					<div>
-						$$\Delta v = v_{f}-v_{i}$$ $$\Delta v = 3 \,\mathrm{ \tfrac{m}{s}} -1\, \mathrm{ \tfrac{m}{s} }$$
-						$$\Delta v = 2\, \mathrm{\tfrac{m}{s}}$$
+						$$\Delta v = v_{f}-v_{i}$$ $$\Delta v = 3 \,\mathrm{ \tfrac{м}{с}} -1\, \mathrm{ \tfrac{м}{с} }$$
+						$$\Delta v = 2\, \mathrm{\tfrac{м}{с}}$$
 					</div>
 					<div>
 						$$a = \frac{\Delta v}{\Delta t}$$
-						$$a = \frac{2\, \mathrm{\tfrac{m}{s}} }{10\, \mathrm{s} }$$
-						$$a = 0.2\,\mathrm{ \tfrac{m}{s^{2}}}$$
+						$$a = \frac{2\, \mathrm{\tfrac{м}{с}} }{10\, \mathrm{с} }$$
+						$$a = 0.2\,\mathrm{ \tfrac{м}{с^{2}}}$$
 					</div>
 				</div>
 			</details>
@@ -480,24 +479,24 @@
 					showMouseCoords: true,
 				});
 			</script>
-			<strong>Question:</strong> This graph shows velocity vs. time. What does its slope represent?
+			<strong>Вопрос:</strong> Этот график показывает зависимость скорости от времени. Что представляет собой его наклон?
 			<details>
-				<summary>answer</summary>
-				<p>acceleration</p>
+				<summary>ответ</summary>
+				<p>ускорение</p>
 				<p>
-					Acceleration is defined as the change in velocity every second. This is the same as the rise over the run, which is slope.
+					<!-- Ускорение определяется как изменение скорости каждую секунду. Это то же самое, что и подъем по склону, который является уклоном. -->
 				</p>
 			</details>
 		</div>
 
-		<h1 class='underlined' id="graphing">Graphing Motion</h1>
+		<h1 class='underlined' id="graphing">Построение графика движения</h1>
 		<p>
-			Velocity is the slope of the position vs. time graph.
-			<br>Acceleration is the slope of the velocity vs. time graph.
+			Скорость - это наклон графика зависимости положения от времени.
+			<br>Ускорение - это наклон графика зависимости скорости от времени.
 		</p>
 		<p>
-			If the acceleration is positive, the velocity increases with time.
-			<br>If the velocity is positive the position increases with time.
+			Если ускорение положительное, то скорость увеличивается со временем.
+			<br>Если скорость положительна, то положение увеличивается со временем.
 		</p>
 		<style>
 			.graph-box {
@@ -510,7 +509,7 @@
 			<svg id="SVG-graph-4" class="graph-box" width="290" height="250"></svg>
 			<svg id="SVG-graph-5" class="graph-box" width="290" height="250"></svg>
 			<div class="center">
-				acceleration = <input id='acceleration-slider' type="range" min="-2.5" max="2.5" step="0.01" value="0.5" style="width:100px;"> <input id='acceleration-input' type="number" step="0.01" value="0.5" style="width: 70px;"> m/s²
+				ускорение = <input id='acceleration-slider' type="range" min="-2.5" max="2.5" step="0.01" value="0.5" style="width:100px;"> <input id='acceleration-input' type="number" step="0.01" value="0.5" style="width: 70px;"> m/s²
 			</div>
 			<svg id="SVG-graph-6" class="graph-box center" width="290" height="250"></svg>
 			<script defer>
@@ -601,28 +600,28 @@
 					yLabel: "velocity (m/s)",
 				});
 			</script>
-			<strong>Graph:</strong> Use this graph of velocity vs. time to determine acceleration.
+			<strong>График:</strong>Используйте этот график зависимости скорости от времени для определения ускорения.
 			<details>
-				<summary>solution</summary>
-				<p>Acceleration is the slope of the velocity vs. time graph. Slope is the vertical rise of the graph divided by the horizontal run.
+				<summary>решение</summary>
+				<p>Ускорение - это наклон графика зависимости скорости от времени. Наклон - это вертикальный подъем графика, деленный на горизонтальный отрезок.
 				</p>
-				$$\mathrm{slope} = \frac{\mathrm{rise}}{\mathrm{run}}$$ $$a = \frac{\Delta v}{\Delta t}$$ $$a = \frac{1}{4}$$
+				$$\mathrm{наклон} = \frac{\mathrm{подъем}}{\mathrm{горизонталь}}$$ $$a = \frac{\Delta v}{\Delta t}$$ $$a = \frac{1}{4}$$
 			</details>
 		</div>
 
 		<div class='example'>
-			<strong>Graph:</strong> Sketch the position vs. time and velocity vs. time graphs for an object falling for 10 s. For your sketch, just make sure your graphs have the right shape.
+			<strong>График:</strong> SНарисуйте графики зависимости положения от времени и скорости от времени для объекта, падающего в течение 10 секунд. Для вашего эскиза просто убедитесь, что ваши графики имеют правильную форму.
 			<details>
-				<summary>hint</summary>
-				<br>The acceleration is -9.8 m/s².
-				<br>The magnitude of the velocity will increase by about 10 m/s every second.
-				<br>The direction of the velocity is negative so the velocity should slope down
-				<br>The position should also curve downwards.
+				<summary>подсказка</summary>
+				<br>Ускорение составляет -9,8 м/с².
+				<br>Величина скорости будет увеличиваться примерно на 10 м/с каждую секунду.
+				<br>Направление скорости отрицательное, поэтому скорость должна наклоняться вниз
+				<br>Линия грфика должна изгибаться вниз.
 				<br>
 				<br>
 			</details>
 			<details id="example1">
-				<summary>solution</summary>
+				<summary>решение</summary>
 				<svg id="SVG-graph-14" viewBox="0 0 600 300"></svg>
 				<svg id="SVG-graph-15" viewBox="0 0 600 300"></svg>
 				<script defer>
@@ -663,9 +662,9 @@
 			</details>
 		</div>
 		<div class='example'>
-			<strong>Graph:</strong> Draw the position vs. time and velocity vs. time graphs for an object moving at 2 m/s for 10 s.
+			<strong>График:</strong> Нарисуйте графики зависимости положения от времени и скорости от времени для объекта, движущегося со скоростью 2 м/с в течение 10 секунд.
 			<details id="example0">
-				<summary>solution</summary>
+				<summary>решение</summary>
 				<svg id="SVG-graph-12" width="280" height="250"></svg> &nbsp;
 				<svg id="SVG-graph-13" width="280" height="250"></svg>
 				<script defer>
@@ -704,19 +703,19 @@
 			</details>
 		</div>
 		<div class='example'>
-			<p>Acceleration doesn't have to be constant. In the graphs below, acceleration is increasing. The change in acceleration over time is called <strong>jerk</strong>.</p>
+			<p>Ускорение не обязательно должно быть постоянным. На приведенных ниже графиках ускорение увеличивается. Изменение ускорения с течением времени называется<strong> рывок</strong>.</p>
 			<div class='center'>
 				<svg id="SVG-graph-8" class="graph-box" width="290" height="250"></svg>
 				<svg id="SVG-graph-9" class="graph-box" width="290" height="250"></svg>
 				<div>
-					jerk =
+					рывок =
 					<input id='jerk-slider' type="range" min="-2.5" max="2.5" step="0.01" value="0.5" style="width:100px;">
 					<input id='jerk' type="number" step="0.01" value="0.5" style="width: 70px;"> m/s³
 				</div>	
 				<svg id="SVG-graph-10" class="graph-box" width="290" height="250"></svg>
 				<svg id="SVG-graph-11" class="graph-box" width="290" height="250"></svg>
 			</div>
-			<p>A large jerk can cause you to stumble. A jerk could come from a short lasting push or pull. It could come from a car starting to break, or accelerate. Falling causes a jerk. Jumping. Bouncing. Any change in acceleration.</p>
+			<p>Сильный рывок может привести к тому, что вы споткнетесь. Рывок может быть вызван кратковременным толчком. Это может быть вызвано тем, что машина начинает останавливаться или ускоряться. Падение, прыжок, отскок, любое изменение ускорения - рывок</p>
 		</div>
 		<script defer>
 			settings8 = {
@@ -790,7 +789,7 @@
 		</script>
 	</article>
 	<footer>
-		<a href="../../../">Back</a>
+		<a href="../../../">Назад</a>
 	</footer>	
 		
 	<script src="../../../lib/katex/katex.min.js"></script>
