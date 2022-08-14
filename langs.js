@@ -7,6 +7,9 @@ window.onload = function() {
 
 	// Creating <select>...</select>
 	let select = document.createElement(SELECT_TAG);
+	select.style.padding = "5px 10px";
+	select.style.border = "1px #FFF solid";
+	select.style.outline = "none";
 
 	for (var i = 0; i < langs.length; i++) {
 		// Creating <option>
